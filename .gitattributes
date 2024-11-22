@@ -1,2 +1,20 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Normalize EOL for all files that Git considers text files.
+* text=auto eol=lf
+
+# lfs macro
+[attr]lfs -text filter=lfs diff=lfs merge=lfs
+
+# Image
+*.jpg lfs
+*.jpeg lfs
+*.png lfs
+
+# Audio
+*.mp3 lfs
+*.ogg lfs
+*.wav lfs
+
+# 3D
+*.fbx lfs
+*.obj lfs
+
