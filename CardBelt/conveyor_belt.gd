@@ -3,7 +3,7 @@ extends Node2D
 const baseSpeed = 20
 var beltSpeed = baseSpeed
 var acceleration = 15
-const deceleration = 30
+const deceleration = 20
 const maxSpeed = 100
 
 var isButtonHeld = false

@@ -8,7 +8,7 @@ size = Vector2(482, 72)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_myecq"]
 a = Vector2(-14.5, -9)
-b = Vector2(-1.5, -30.5)
+b = Vector2(-11, -28)
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_hbk5u")
@@ -36,16 +36,14 @@ position = Vector2(91, 85)
 position = Vector2(29, 17)
 scale = Vector2(2, 2)
 shape = SubResource("SegmentShape2D_myecq")
-metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Belt/CursorArea"]
-offset_left = 16.0
-offset_top = -50.0
-offset_right = 28.0
-offset_bottom = 4.0
-rotation = 0.523598
+offset_left = 3.0
+offset_top = -37.0
+offset_right = 9.0
+offset_bottom = -3.0
+rotation = 0.174533
 color = Color(0.806147, 0.717303, 0.29991, 1)
-metadata/_edit_lock_ = true
 
 [node name="CardHolder" parent="Belt" instance=ExtResource("2_r3s8w")]
 z_index = 0

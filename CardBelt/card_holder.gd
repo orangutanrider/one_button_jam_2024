@@ -6,6 +6,11 @@ var power = 0
 var onBelt: bool = false
 var velocity = Vector2.ZERO
 
+var fallTimer = 0
+const stopFallTime = 1
+var resetTimer = 0
+const resetTime = 3
+
 var properties = [
 	{"type": "Ammo", "name": "HE", "power": 100},
 	{"type": "Ammo", "name": "AP", "power": 500},
@@ -28,6 +33,17 @@ func _process(delta: float) -> void:
 	if onBelt:
 		var motion = velocity * delta 
 		move_and_collide(motion)
+	
+	if gravity_scale > 0 || gravity_scale < 0:
+		fallTimer += delta
+		
+	if fallTimer > stopFallTime: 
+		gravity_scale = 0
+		resetTimer +=delta
+		if resetTimer > resetTime:
+			fallTimer = 0
+			resetTimer = 0
+			position = Vector2(526, 55)
 
 
 func activate() -> void:
