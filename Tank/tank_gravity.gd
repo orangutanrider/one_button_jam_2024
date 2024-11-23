@@ -10,6 +10,6 @@ func _ready() -> void:
 	grav_point = $GravPoint
 
 func _physics_process(delta: float) -> void:
-	var force: Vector2 = (global_position + grav_point.global_position) * GRAV_STRENGTH
+	var force: Vector2 = (global_position + grav_point.global_position).normalized() * GRAV_STRENGTH
 	apply_central_force(force)
 	pass

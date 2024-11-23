@@ -27,6 +27,10 @@ position = Vector2(0, 37)
 shape = SubResource("CircleShape2D_0lkvf")
 
 [node name="GravPoint" type="Node2D" parent="TankBody"]
+position = Vector2(0, 1)
+
+[node name="ForwardPoint" type="Node2D" parent="TankBody"]
+position = Vector2(1, 0)
 
 [node name="Ground" type="Node2D" parent="."]
 
