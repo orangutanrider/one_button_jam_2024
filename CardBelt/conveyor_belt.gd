@@ -5,14 +5,17 @@ var beltSpeed = baseSpeed
 var acceleration = 15
 const deceleration = 30
 const maxSpeed = 100
+
 var isButtonHeld = false
 var tapThreshold = 0.2 
 var tapTimer = 0.0
+
 var detectedCard = null
+var beltArea
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	beltArea = $Belt/BeltArea.get_overlapping_areas()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -52,6 +55,7 @@ func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, l
 	var parent = area.get_parent()
 	if parent.is_in_group("cards"):
 		parent.updateOnBelt(false)
+		parent.send_to_discard()
 
 
 func _update_card_velocity() -> void: 
@@ -60,14 +64,11 @@ func _update_card_velocity() -> void:
 		card.updateVelocity(beltSpeed)
 
 
-#func _has_overlapping_areas() -> bool: 
-	#var overlapping_areas = $Belt/CursorArea.get_overlapping_areas() 
-	#return overlapping_areas.size() > 0
-
 func _use_card() -> void:
 	var overlapping_areas = $Belt/CursorArea.get_overlapping_areas()
 	for area in overlapping_areas: 
-		var parent = area.get_parent()
-		if parent.is_in_group("cards"): 
-			detectedCard = parent
-			print("use item", detectedCard)
+		detectedCard = area.get_parent()
+		if detectedCard.is_in_group("cards"): 
+			detectedCard.updateOnBelt(false)
+			detectedCard.activate()
+			print("use item: ", detectedCard)

@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dt151du5dyyq2" path="res://CardBelt/card_holder.tscn" id="2_r3s8w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_difk7"]
-size = Vector2(509, 72)
+size = Vector2(482, 72)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_myecq"]
 a = Vector2(-14.5, -9)
-b = Vector2(6.5, -29.5)
+b = Vector2(-1.5, -30.5)
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_hbk5u")
@@ -25,7 +25,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Belt/BeltArea"]
-position = Vector2(302.5, 44)
+position = Vector2(316, 44)
 shape = SubResource("RectangleShape2D_difk7")
 
 [node name="CursorArea" type="Area2D" parent="Belt"]
@@ -39,11 +39,11 @@ shape = SubResource("SegmentShape2D_myecq")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Belt/CursorArea"]
-offset_left = 33.0
-offset_top = -48.0
-offset_right = 45.0
-offset_bottom = 6.0
-rotation = 0.785397
+offset_left = 16.0
+offset_top = -50.0
+offset_right = 28.0
+offset_bottom = 4.0
+rotation = 0.523598
 color = Color(0.806147, 0.717303, 0.29991, 1)
 metadata/_edit_lock_ = true
 

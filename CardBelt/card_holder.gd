@@ -22,15 +22,23 @@ func apply_properties(property):
 	self.type = property.type
 	self.power = property.power
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if onBelt:
 		var motion = velocity * delta 
 		move_and_collide(motion)
 
-func loadItem() -> int:
-	return power
-		
+
+func activate() -> void:
+	print("item used")
+	send_to_discard()
+
+
+func send_to_discard() -> void:
+	gravity_scale = -1
+
+
 func updateVelocity(v: int) -> void: 
 	velocity = Vector2(-v, 0)
 	
