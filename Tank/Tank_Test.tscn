@@ -26,6 +26,8 @@ position = Vector2(0, 37)
 [node name="Shape" type="CollisionShape2D" parent="TankBody/RollerPivot/Roller"]
 shape = SubResource("CircleShape2D_0lkvf")
 
+[node name="GravPoint" type="Node2D" parent="TankBody"]
+
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
