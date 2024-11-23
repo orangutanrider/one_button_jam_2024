@@ -26,8 +26,9 @@ var roller: Area2D
 func read_pressure() -> float:
 	return pressure
 
+## roller_pos is it's y-position contextual to the roller pivot
 func pressure_formula(roller_pos: float) -> float:
-	return 1.0 # todo
+	return smoothstep(EXTENSION_POINT, RETRACTION_POINT, roller_pos)
 
 func _ready() -> void:
 	roller = $Roller
