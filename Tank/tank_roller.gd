@@ -1,3 +1,9 @@
+##! The roller is a no-clipping collider that can extend and retract from a pivot.
+##! It will create a pressure value based on how compressed it is.
+##! It is not expected to be offset in an x-axis direction from its pivot.
+
+# todo: Create parameters as a resource-type so they can easily be shared across multiple rollers in a scene
+
 extends Node2D
 
 # Resources
