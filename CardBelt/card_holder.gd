@@ -55,11 +55,7 @@ func _process(delta: float) -> void:
 		gravity_scale = 0
 		resetTimer +=delta
 		if resetTimer > resetTime:
-			fallTimer = 0
-			resetTimer = 0
-			angular_velocity = 0
-			discarding = false
-			position = Vector2(beltStartX, beltLineY)
+			respawn_card()
 
 
 func activate() -> void:
@@ -79,3 +75,10 @@ func updateVelocity(v: int) -> void:
 	
 func updateOnBelt(state : bool) -> void:
 	onBelt = state
+	
+func respawn_card() -> void:
+	fallTimer = 0
+	resetTimer = 0
+	angular_velocity = 0
+	discarding = false
+	position = Vector2(beltStartX, beltLineY)
