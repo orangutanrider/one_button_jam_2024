@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1d2ylcrwxifj"]
+[gd_scene load_steps=6 format=3 uid="uid://c1d2ylcrwxifj"]
 
 [ext_resource type="Script" path="res://CardBelt/conveyor_belt.gd" id="1_hbk5u"]
 [ext_resource type="PackedScene" uid="uid://dt151du5dyyq2" path="res://CardBelt/card_holder.tscn" id="2_r3s8w"]
@@ -9,6 +9,9 @@ size = Vector2(482, 72)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_myecq"]
 a = Vector2(-14.5, -9)
 b = Vector2(-11, -28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7gj"]
+size = Vector2(25.25, 20)
 
 [node name="ConveyorBelt" type="Node2D"]
 script = ExtResource("1_hbk5u")
@@ -60,6 +63,16 @@ position = Vector2(445, 46)
 [node name="CardHolder4" parent="Belt" instance=ExtResource("2_r3s8w")]
 z_index = 0
 position = Vector2(526, 44)
+
+[node name="BeltFloors" type="StaticBody2D" parent="Belt"]
+
+[node name="bump" type="CollisionShape2D" parent="Belt/BeltFloors"]
+position = Vector2(133, -7)
+shape = SubResource("RectangleShape2D_ua7gj")
+
+[node name="right" type="CollisionShape2D" parent="Belt/BeltFloors"]
+position = Vector2(574, 42)
+shape = SubResource("RectangleShape2D_ua7gj")
 
 [connection signal="area_shape_entered" from="Belt/BeltArea" to="." method="_on_area_shape_entered"]
 [connection signal="area_shape_exited" from="Belt/BeltArea" to="." method="_on_area_shape_exited"]
