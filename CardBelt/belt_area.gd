@@ -13,9 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	var parent = area.get_parent()
-	print(parent.name)
 	if parent.is_in_group("cards"):
-		print(parent.name)
 		parent._updateVelocity(100)
 
 
