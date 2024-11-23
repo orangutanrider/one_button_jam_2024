@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1d2ylcrwxifj"]
+
+[ext_resource type="Script" path="res://CardBelt/belt_area.gd" id="1_oqb6c"]
+[ext_resource type="PackedScene" uid="uid://dt151du5dyyq2" path="res://CardBelt/card_holder.tscn" id="2_r3s8w"]
+[ext_resource type="Script" path="res://CardBelt/card_holder.gd" id="3_nak6x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_difk7"]
+size = Vector2(509, 72)
+
+[node name="ConveyorBelt" type="Node2D"]
+
+[node name="Belt" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Belt"]
+offset_right = 561.0
+offset_bottom = 91.0
+metadata/_edit_use_anchors_ = true
+
+[node name="BeltArea" type="Area2D" parent="Belt"]
+script = ExtResource("1_oqb6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Belt/BeltArea"]
+position = Vector2(302.5, 44)
+shape = SubResource("RectangleShape2D_difk7")
+
+[node name="CardHolder" parent="Belt" groups=["cards"] instance=ExtResource("2_r3s8w")]
+position = Vector2(286, 44)
+script = ExtResource("3_nak6x")
+
+[node name="CardHolder2" parent="Belt" groups=["cards"] instance=ExtResource("2_r3s8w")]
+position = Vector2(380, 43)
+script = ExtResource("3_nak6x")
+
+[connection signal="area_shape_entered" from="Belt/BeltArea" to="Belt/BeltArea" method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Belt/BeltArea" to="Belt/BeltArea" method="_on_area_shape_exited"]
