@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1d2ylcrwxifj"]
+[gd_scene load_steps=6 format=3 uid="uid://c1d2ylcrwxifj"]
 
-[ext_resource type="Script" path="res://CardBelt/belt_area.gd" id="1_oqb6c"]
+[ext_resource type="Script" path="res://CardBelt/conveyor_belt.gd" id="1_hbk5u"]
 [ext_resource type="PackedScene" uid="uid://dt151du5dyyq2" path="res://CardBelt/card_holder.tscn" id="2_r3s8w"]
-[ext_resource type="Script" path="res://CardBelt/card_holder.gd" id="3_nak6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_difk7"]
-size = Vector2(509, 72)
+size = Vector2(482, 72)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_myecq"]
+a = Vector2(-14.5, -9)
+b = Vector2(-11, -28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ua7gj"]
+size = Vector2(25.25, 20)
 
 [node name="ConveyorBelt" type="Node2D"]
+script = ExtResource("1_hbk5u")
 
 [node name="Belt" type="CanvasLayer" parent="."]
 
@@ -15,21 +22,58 @@ size = Vector2(509, 72)
 offset_right = 561.0
 offset_bottom = 91.0
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="BeltArea" type="Area2D" parent="Belt"]
-script = ExtResource("1_oqb6c")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Belt/BeltArea"]
-position = Vector2(302.5, 44)
+position = Vector2(316, 44)
 shape = SubResource("RectangleShape2D_difk7")
 
-[node name="CardHolder" parent="Belt" groups=["cards"] instance=ExtResource("2_r3s8w")]
-position = Vector2(286, 44)
-script = ExtResource("3_nak6x")
+[node name="CursorArea" type="Area2D" parent="Belt"]
+z_index = 10
+position = Vector2(91, 85)
 
-[node name="CardHolder2" parent="Belt" groups=["cards"] instance=ExtResource("2_r3s8w")]
-position = Vector2(380, 43)
-script = ExtResource("3_nak6x")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Belt/CursorArea"]
+position = Vector2(29, 17)
+scale = Vector2(2, 2)
+shape = SubResource("SegmentShape2D_myecq")
 
-[connection signal="area_shape_entered" from="Belt/BeltArea" to="Belt/BeltArea" method="_on_area_shape_entered"]
-[connection signal="area_shape_exited" from="Belt/BeltArea" to="Belt/BeltArea" method="_on_area_shape_exited"]
+[node name="ColorRect" type="ColorRect" parent="Belt/CursorArea"]
+offset_left = 3.0
+offset_top = -37.0
+offset_right = 9.0
+offset_bottom = -3.0
+rotation = 0.174533
+color = Color(0.806147, 0.717303, 0.29991, 1)
+
+[node name="CardHolder" parent="Belt" instance=ExtResource("2_r3s8w")]
+z_index = 0
+position = Vector2(290, 45)
+
+[node name="CardHolder2" parent="Belt" instance=ExtResource("2_r3s8w")]
+z_index = 0
+position = Vector2(370, 43)
+
+[node name="CardHolder3" parent="Belt" instance=ExtResource("2_r3s8w")]
+z_index = 0
+position = Vector2(445, 46)
+
+[node name="CardHolder4" parent="Belt" instance=ExtResource("2_r3s8w")]
+z_index = 0
+position = Vector2(526, 44)
+
+[node name="BeltFloors" type="StaticBody2D" parent="Belt"]
+
+[node name="bump" type="CollisionShape2D" parent="Belt/BeltFloors"]
+position = Vector2(133, -7)
+shape = SubResource("RectangleShape2D_ua7gj")
+
+[node name="right" type="CollisionShape2D" parent="Belt/BeltFloors"]
+position = Vector2(574, 42)
+shape = SubResource("RectangleShape2D_ua7gj")
+
+[connection signal="area_shape_entered" from="Belt/BeltArea" to="." method="_on_area_shape_entered"]
+[connection signal="area_shape_exited" from="Belt/BeltArea" to="." method="_on_area_shape_exited"]
+[connection signal="area_shape_entered" from="Belt/CursorArea" to="." method="_on_cursor_area_area_shape_entered"]
