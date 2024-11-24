@@ -1,42 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqahj1i83rac5"]
+[gd_scene load_steps=4 format=3 uid="uid://bqahj1i83rac5"]
 
+[ext_resource type="PackedScene" uid="uid://cu2yufsq3wm2e" path="res://Tank/roller_pivot.tscn" id="1_0pfu7"]
+[ext_resource type="Script" path="res://Tank/tank_gravity.gd" id="1_78oc3"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_c7cy1"]
-[ext_resource type="Script" path="res://Tank/tank_roller.gd" id="2_1fxmi"]
-[ext_resource type="Resource" uid="uid://dum0vkh4d0s7p" path="res://Tank/roller_params.tres" id="2_hjl31"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0lkvf"]
-radius = 71.007
 
 [node name="Node2D" type="Node2D"]
 
 [node name="TankBody" type="RigidBody2D" parent="."]
-position = Vector2(-205, -214)
+position = Vector2(-195, -228)
 can_sleep = false
 freeze = true
+script = ExtResource("1_78oc3")
 
-[node name="RollerPivot" type="Node2D" parent="TankBody"]
-position = Vector2(-41, 50)
-script = ExtResource("2_1fxmi")
-params = ExtResource("2_hjl31")
+[node name="RollerPivot1" parent="TankBody" instance=ExtResource("1_0pfu7")]
+position = Vector2(160, 80)
 
-[node name="Roller" type="Area2D" parent="TankBody/RollerPivot"]
-position = Vector2(0, 37)
+[node name="RollerPivot2" parent="TankBody" instance=ExtResource("1_0pfu7")]
+position = Vector2(0, 80)
 
-[node name="Shape" type="CollisionShape2D" parent="TankBody/RollerPivot/Roller"]
-shape = SubResource("CircleShape2D_0lkvf")
-
-[node name="ColorRect" type="ColorRect" parent="TankBody/RollerPivot/Roller"]
-offset_left = -65.0
-offset_top = -62.0
-offset_right = 63.0
-offset_bottom = 59.0
-color = Color(0, 1, 0.883333, 1)
-
-[node name="ColorRect" type="ColorRect" parent="TankBody/RollerPivot"]
-offset_left = -11.0
-offset_top = -11.0
-offset_right = 12.0
-offset_bottom = 11.0
+[node name="RollerPivot3" parent="TankBody" instance=ExtResource("1_0pfu7")]
+position = Vector2(-160, 80)
 
 [node name="GravPoint" type="Node2D" parent="TankBody"]
 position = Vector2(0, 1)
