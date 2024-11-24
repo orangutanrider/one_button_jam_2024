@@ -1,36 +1,71 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqahj1i83rac5"]
+[gd_scene load_steps=8 format=3 uid="uid://bqahj1i83rac5"]
 
+[ext_resource type="PackedScene" uid="uid://cu2yufsq3wm2e" path="res://Tank/roller_pivot.tscn" id="1_0pfu7"]
+[ext_resource type="Script" path="res://Tank/tank_rigidbody.gd" id="1_ajkvf"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_c7cy1"]
-[ext_resource type="Script" path="res://Tank/tank_roller.gd" id="2_1fxmi"]
-[ext_resource type="Shape2D" uid="uid://c2ubj14fjdwcv" path="res://Tank/roller_capsule.tres" id="3_u0pw5"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0lkvf"]
-radius = 71.007
+[ext_resource type="Script" path="res://Tank/tank_suspension.gd" id="2_syq5m"]
+[ext_resource type="Resource" uid="uid://d3qtdos2pom6t" path="res://Tank/suspension_params.tres" id="3_bsn0m"]
+[ext_resource type="Script" path="res://Tank/tank_down_force.gd" id="5_bm7cw"]
+[ext_resource type="Script" path="res://Tank/tank_forward_force.gd" id="6_tsxii"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="TankBody" type="RigidBody2D" parent="."]
-position = Vector2(-239, -114)
+[node name="TankBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("POSITIONED_UP_FORCES", "DOWN_FORCES", "FORWARD_FORCES")]
+position = Vector2(-195, -228)
 gravity_scale = 0.0
 can_sleep = false
-freeze = true
+script = ExtResource("1_ajkvf")
+POSITIONED_UP_FORCES = [NodePath("Suspension1"), NodePath("Suspension2"), NodePath("Suspension3")]
+DOWN_FORCES = [NodePath("Gravity")]
+FORWARD_FORCES = [NodePath("ForwardMovement")]
 
-[node name="RollerPivot" type="Node2D" parent="TankBody"]
-position = Vector2(-41, -151)
-script = ExtResource("2_1fxmi")
-ROLLER_SHAPE = ExtResource("3_u0pw5")
+[node name="Suspension1" type="Node2D" parent="TankBody" node_paths=PackedStringArray("ROLLER")]
+position = Vector2(160, 80)
+script = ExtResource("2_syq5m")
+PARAMS = ExtResource("3_bsn0m")
+ROLLER = NodePath("../RollerPivot1")
 
-[node name="Roller" type="Area2D" parent="TankBody/RollerPivot"]
-position = Vector2(0, 37)
+[node name="RollerPivot1" parent="TankBody" instance=ExtResource("1_0pfu7")]
+position = Vector2(160, 80)
 
-[node name="Shape" type="CollisionShape2D" parent="TankBody/RollerPivot/Roller"]
-shape = SubResource("CircleShape2D_0lkvf")
+[node name="Suspension2" type="Node2D" parent="TankBody" node_paths=PackedStringArray("ROLLER")]
+position = Vector2(0, 80)
+script = ExtResource("2_syq5m")
+PARAMS = ExtResource("3_bsn0m")
+ROLLER = NodePath("../RollerPivot2")
 
-[node name="GravPoint" type="Node2D" parent="TankBody"]
+[node name="RollerPivot2" parent="TankBody" instance=ExtResource("1_0pfu7")]
+position = Vector2(0, 80)
+
+[node name="Suspension3" type="Node2D" parent="TankBody" node_paths=PackedStringArray("ROLLER")]
+position = Vector2(-160, 78)
+script = ExtResource("2_syq5m")
+PARAMS = ExtResource("3_bsn0m")
+ROLLER = NodePath("../RollerPivot3")
+
+[node name="RollerPivot3" parent="TankBody" instance=ExtResource("1_0pfu7")]
+position = Vector2(-160, 80)
+
+[node name="UpPoint" type="Node2D" parent="TankBody"]
+position = Vector2(0, -1)
+
+[node name="DownPoint" type="Node2D" parent="TankBody"]
 position = Vector2(0, 1)
 
 [node name="ForwardPoint" type="Node2D" parent="TankBody"]
 position = Vector2(1, 0)
+
+[node name="Gravity" type="Node" parent="TankBody"]
+script = ExtResource("5_bm7cw")
+
+[node name="ForwardMovement" type="Node" parent="TankBody"]
+script = ExtResource("6_tsxii")
+
+[node name="ColorRect" type="ColorRect" parent="TankBody"]
+offset_left = -19.0
+offset_top = -20.0
+offset_right = 21.0
+offset_bottom = 20.0
 
 [node name="Ground" type="Node2D" parent="."]
 
@@ -39,6 +74,9 @@ polygon = PackedVector2Array(-190, -19, 206, -38, 529, -2, 403, 149, 38, 247, -2
 script = ExtResource("1_c7cy1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground/Polygon2D"]
+
+[node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
+monitoring = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-16, -1)

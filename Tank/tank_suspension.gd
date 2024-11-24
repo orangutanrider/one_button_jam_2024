@@ -1,23 +1,16 @@
-##! Uses pressure values from the rollers to create an opposite force on the body of the tank
-##! Forces are positional, so they create rotation 
+extends Node2D
 
-extends RigidBody2D
+@export var PARAMS: TankSuspensionRes
+@export var ROLLER: Node2D
 
-@export var ROLLERS: Array[Node2D]
-@export var FORCE_SCALAR: float = 1.0
+var force_strength: float = 0.0
 
-# GravPoint is re-used for the force vector of the rollers (going in the opposite direction)
-var grav_point: Node2D
+func read_positioned_up_force_position() -> Vector2:
+	return position # todo
 
-func _ready() -> void:
-	grav_point = $GravPoint
+func read_positioned_up_force_strength() -> float:
+	return force_strength # todo
 
-func _physics_process(delta: float) -> void:
-	var force_direction: Vector2 = -(global_position + grav_point.global_position).normalized()
-
-	for roller in ROLLERS:
-		var pressure: float = roller.read_pressure()
-		apply_force(force_direction * pressure * FORCE_SCALAR, roller.position)
+func _physics_process(_delta: float) -> void:
+	force_strength = ROLLER.read_pressure() * PARAMS.FORCE_SCALAR
 	pass
-
-# todo
