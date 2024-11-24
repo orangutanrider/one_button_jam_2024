@@ -4,5 +4,5 @@ extends Node
 
 @export var STRENGTH: float = 1.0;
 
-func read_grav_force() -> float:
+func read_down_force() -> float:
 	return STRENGTH

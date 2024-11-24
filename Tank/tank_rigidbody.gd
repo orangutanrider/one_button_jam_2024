@@ -12,27 +12,27 @@ var down_point: Node2D
 var forward_point: Node2D
 
 func _ready() -> void:
-    down_point = $DownPoint
-    forward_point = $ForwardPoint
-    up_point = $UpPoint
-    pass
+	down_point = $DownPoint
+	forward_point = $ForwardPoint
+	up_point = $UpPoint
+	pass
 
 func _physics_process(_delta: float) -> void:
-    var up: Vector2 = (up_point.global_position - global_position).normalized()
-    for node in POSITIONED_UP_FORCES: 
-        var force_position: Vector2 = node.read_positioned_up_force_position()
-        var force: float = node.read_positioned_up_force_strength()
+	var up: Vector2 = (up_point.global_position - global_position).normalized()
+	for node in POSITIONED_UP_FORCES: 
+		var force_position: Vector2 = node.read_positioned_up_force_position()
+		var force: float = node.read_positioned_up_force_strength()
 
-        apply_force(up * FORCE_SCALAR * force, force_position)
+		apply_force(up * FORCE_SCALAR * force, force_position)
 
-    var down: Vector2 = (down_point.global_position - global_position).normalized()
-    for node in DOWN_FORCES: 
-        var force: float = node.read_down_force()
+	var down: Vector2 = (down_point.global_position - global_position).normalized()
+	for node in DOWN_FORCES: 
+		var force: float = node.read_down_force()
 
-        apply_central_force(down * FORCE_SCALAR * force)
+		apply_central_force(down * FORCE_SCALAR * force)
 
-    var forward: Vector2 = (forward_point.global_position - global_position).normalized()
-    for node in FORWARD_FORCES: 
-        var force: float = node.read_forward_force()
+	var forward: Vector2 = (forward_point.global_position - global_position).normalized()
+	for node in FORWARD_FORCES: 
+		var force: float = node.read_forward_force()
 
-        apply_central_force(forward * FORCE_SCALAR * force)
+		apply_central_force(forward * FORCE_SCALAR * force)
