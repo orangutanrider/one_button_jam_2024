@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://cn7kpytcc8vb6"]
+
+[ext_resource type="Script" path="res://Tank/scripts/tank_rigidbody.gd" id="1_amvpl"]
+[ext_resource type="Script" path="res://Tank/scripts/tank_suspension.gd" id="2_45dcj"]
+[ext_resource type="Resource" uid="uid://d3qtdos2pom6t" path="res://Tank/suspension_params.tres" id="3_no2mk"]
+[ext_resource type="PackedScene" uid="uid://cu2yufsq3wm2e" path="res://Tank/roller_pivot.tscn" id="4_r5jje"]
+[ext_resource type="Script" path="res://Tank/scripts/tank_down_force.gd" id="5_ccc8s"]
+[ext_resource type="Script" path="res://Tank/scripts/tank_forward_force.gd" id="6_7x6ft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cha1t"]
+size = Vector2(411, 65)
+
+[node name="TankBody" type="RigidBody2D" node_paths=PackedStringArray("POSITIONED_UP_FORCES", "DOWN_FORCES", "FORWARD_FORCES")]
+position = Vector2(-195, -228)
+collision_layer = 4
+mass = 100.0
+gravity_scale = 0.0
+can_sleep = false
+linear_damp = 0.66
+script = ExtResource("1_amvpl")
+POSITIONED_UP_FORCES = [NodePath("Suspension1"), NodePath("Suspension2"), NodePath("Suspension3")]
+DOWN_FORCES = [NodePath("Traction")]
+FORWARD_FORCES = [NodePath("ForwardMovement")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -17.5)
+shape = SubResource("RectangleShape2D_cha1t")
+
+[node name="Suspension1" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
+position = Vector2(160, 80)
+script = ExtResource("2_45dcj")
+PARAMS = ExtResource("3_no2mk")
+ROLLER = NodePath("../RollerPivot1")
+
+[node name="RollerPivot1" parent="." instance=ExtResource("4_r5jje")]
+position = Vector2(160, 80)
+
+[node name="Suspension2" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
+position = Vector2(0, 80)
+script = ExtResource("2_45dcj")
+PARAMS = ExtResource("3_no2mk")
+ROLLER = NodePath("../RollerPivot2")
+
+[node name="RollerPivot2" parent="." instance=ExtResource("4_r5jje")]
+position = Vector2(0, 80)
+
+[node name="Suspension3" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
+position = Vector2(-160, 78)
+script = ExtResource("2_45dcj")
+PARAMS = ExtResource("3_no2mk")
+ROLLER = NodePath("../RollerPivot3")
+
+[node name="RollerPivot3" parent="." instance=ExtResource("4_r5jje")]
+position = Vector2(-160, 80)
+
+[node name="UpPoint" type="Node2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="DownPoint" type="Node2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="ForwardPoint" type="Node2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Traction" type="Node" parent="."]
+script = ExtResource("5_ccc8s")
+STRENGTH = 1600.0
+
+[node name="ForwardMovement" type="Node" parent="."]
+script = ExtResource("6_7x6ft")
+STRENGTH = 4800.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -198.0
+offset_top = -43.0
+offset_right = 198.0
+offset_bottom = 7.0

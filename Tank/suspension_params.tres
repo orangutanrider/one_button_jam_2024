@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TankSuspensionRes" load_steps=2 format=3 uid="uid://d3qtdos2pom6t"]
 
-[ext_resource type="Script" path="res://Tank/tank_suspension_res.gd" id="1_q1ou4"]
+[ext_resource type="Script" path="res://Tank/scripts/tank_suspension_res.gd" id="1_ah2mo"]
 
 [resource]
-script = ExtResource("1_q1ou4")
-FORCE_SCALAR = 1.0
+script = ExtResource("1_ah2mo")
+FORCE_SCALAR = 2000.0
