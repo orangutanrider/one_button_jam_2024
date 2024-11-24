@@ -6,20 +6,8 @@
 
 extends Node2D
 
-# Resources
-@export var ROLLER_SHAPE: CapsuleShape2D
-
 # Parameters
-## The distance from the roller's pivot at which the roller is no longer allowed to retract
-@export var RETRACTION_POINT: float = 1.0 
-@export var RETRACTION_ACCEL: float = 0.01
-## The speed limit of the retraction movement
-@export var RETRACTION_LIMIT: float = 2.0
-## The maximum distance away from the roller's pivot at which the roller is no longer allowed to extend
-@export var EXTENSION_POINT: float = 10.0
-@export var EXTENSION_ACCEL: float = 0.01
-## The speed limit of the extension movement
-@export var EXTENSION_LIMIT: float = 2.0
+@export var params: TankRollerRes
 
 # Internal variables
 var grounded: bool = false
@@ -34,28 +22,30 @@ func read_pressure() -> float:
 
 ## roller_pos is it's y-position contextual to the roller pivot
 func pressure_formula(roller_pos: float) -> float:
-	return smoothstep(EXTENSION_POINT, RETRACTION_POINT, roller_pos)
+	return smoothstep(params.EXTENSION_POINT, params.RETRACTION_POINT, roller_pos)
 
 func _ready() -> void:
 	roller = $Roller
+	roller.area_entered.connect(_contact)
+	roller.area_exited.connect(_contact_exit)
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Retract when grounded.
 	if grounded:
-		roller_movement = clampf(roller_movement - RETRACTION_ACCEL, -RETRACTION_LIMIT, 0.0)
+		roller_movement = clampf(roller_movement - params.RETRACTION_ACCEL, -params.RETRACTION_LIMIT, 0.0)
 	else: # Extende while not grounded
-		roller_movement = clampf(roller_movement + EXTENSION_ACCEL, 0.0, EXTENSION_LIMIT)
+		roller_movement = clampf(roller_movement + params.EXTENSION_ACCEL, 0.0, params.EXTENSION_LIMIT)
 
 	# new_pos is relative to pivot, 0.0 is pivot's position
 	# roller position calculations can be dealt with linearly along y-axis
 	var new_pos: float = roller.position.y + roller_movement
 
 	# Position constraints
-	if new_pos <= RETRACTION_POINT:
-		new_pos = RETRACTION_POINT
-	if new_pos >= EXTENSION_POINT:
-		new_pos = EXTENSION_POINT
+	if new_pos <= params.RETRACTION_POINT:
+		new_pos = params.RETRACTION_POINT
+	if new_pos >= params.EXTENSION_POINT:
+		new_pos = params.EXTENSION_POINT
 
 	# Set position
 	roller.position.y = new_pos
@@ -65,11 +55,13 @@ func _physics_process(delta: float) -> void:
 	pass
 
 # For now it is expected that the only valid collision are ones that are intended to be grounding; It is expected that layermasks will handle this.
-func contact(area: Area2D) -> void:
+func _contact(_area: Area2D) -> void:
+	print("entered: grounded")
 	grounded = true
 	pass
 
 # For now it is expected that the only valid collision are ones that are intended to be grounding; It is expected that layermasks will handle this.
-func contact_exit(area: Area2D) -> void:
+func _contact_exit(_area: Area2D) -> void:
+	print("exited: grounded")
 	grounded = false
 	pass
