@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dahwfkakp8b4x"]
+
+[ext_resource type="Script" path="res://Gun_Test/Bullets/RegularBullet_Script.gd" id="1_r31xq"]
+
+[node name="RegularBullet" type="CharacterBody2D"]
+script = ExtResource("1_r31xq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="BulletFired" from="." to="." method="_on_bullet_fired"]
