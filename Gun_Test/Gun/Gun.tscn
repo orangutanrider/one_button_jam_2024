@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0n1mrhpljpa7"]
+[gd_scene load_steps=2 format=3 uid="uid://d0n1mrhpljpa7"]
 
-[ext_resource type="Script" path="res://Gun_Test/Gun_Body/gun_Script.gd" id="1_cwe5r"]
-[ext_resource type="PackedScene" uid="uid://cgwhmeveyr87l" path="res://Gun_Test/Bullet/Bullet.tscn" id="2_e3p5d"]
+[ext_resource type="Script" path="res://Gun_Test/Gun/Gun_Script.gd" id="1_cwe5r"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_cwe5r")
-bullet_scene = ExtResource("2_e3p5d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = 1.0
@@ -18,6 +16,5 @@ position = Vector2(200, 0)
 
 [node name="Shoottimer" type="Timer" parent="."]
 process_callback = 0
-autostart = true
 
 [connection signal="timeout" from="Shoottimer" to="." method="_on_shoottimer_timeout"]
