@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj2cy4m2860g7"]
+
+[ext_resource type="Script" path="res://Enemies/crawler.gd" id="1_jonwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mch8a"]
+size = Vector2(59, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7msu4"]
+size = Vector2(66, 68)
+
+[node name="Crawler" type="CharacterBody2D"]
+script = ExtResource("1_jonwt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mch8a")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.635294, 0.180392, 0.109804, 1)
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_7msu4")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
