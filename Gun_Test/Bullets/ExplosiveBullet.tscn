@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://wukljnnicdwi"]
+
+[ext_resource type="PackedScene" uid="uid://de2xd5kk32rma" path="res://Gun_Test/Bullets/MasterBullet.tscn" id="1_ni0ni"]
+[ext_resource type="Script" path="res://Gun_Test/Bullets/Explosive_Bullet_Script.gd" id="2_1bjm2"]
+
+[node name="RegularBullet" instance=ExtResource("1_ni0ni")]
+script = ExtResource("2_1bjm2")
+
+[node name="ColorRect" type="ColorRect" parent="." index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.658927, 0, 0, 1)
