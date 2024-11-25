@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu2yufsq3wm2e"]
 
-[ext_resource type="Script" path="res://Tank/tank_roller.gd" id="1_xh4hc"]
+[ext_resource type="Script" path="res://Tank/scripts/tank_roller.gd" id="1_xh4hc"]
 [ext_resource type="Resource" uid="uid://dum0vkh4d0s7p" path="res://Tank/roller_params.tres" id="2_nmne0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0lkvf"]
@@ -12,6 +12,7 @@ params = ExtResource("2_nmne0")
 
 [node name="Roller" type="Area2D" parent="."]
 position = Vector2(0, 37)
+collision_layer = 2
 
 [node name="Shape" type="CollisionShape2D" parent="Roller"]
 shape = SubResource("CircleShape2D_0lkvf")

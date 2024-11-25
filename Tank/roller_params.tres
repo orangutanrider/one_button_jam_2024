@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="TankRollerRes" load_steps=2 format=3 uid="uid://dum0vkh4d0s7p"]
 
-[ext_resource type="Script" path="res://Tank/tank_roller_res.gd" id="1_b617o"]
+[ext_resource type="Script" path="res://Tank/scripts/tank_roller_res.gd" id="1_5ivli"]
 
 [resource]
-script = ExtResource("1_b617o")
+script = ExtResource("1_5ivli")
 RETRACTION_POINT = 15.0
-RETRACTION_ACCEL = 0.02
+RETRACTION_ACCEL = 0.1
 RETRACTION_LIMIT = 4.0
 EXTENSION_POINT = 75.0
 EXTENSION_ACCEL = 0.01

@@ -54,12 +54,10 @@ func _physics_process(_delta: float) -> void:
 
 # For now it is expected that the only valid collision are ones that are intended to be grounding; It is expected that layermasks will handle this.
 func _contact(_area: Area2D) -> void:
-	print("entered: grounded")
 	grounded = true
 	pass
 
 # For now it is expected that the only valid collision are ones that are intended to be grounding; It is expected that layermasks will handle this.
 func _contact_exit(_area: Area2D) -> void:
-	print("exited: grounded")
 	grounded = false
 	pass

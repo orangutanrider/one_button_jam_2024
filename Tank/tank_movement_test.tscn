@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqahj1i83rac5"]
+
+[ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="1_57ywe"]
+[ext_resource type="Script" path="res://create_polygon_collision.gd" id="2_5f6hp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TankBody" parent="." instance=ExtResource("1_57ywe")]
+gravity_scale = 0.01
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+polygon = PackedVector2Array(-190, -19, 206, -38, 529, -2, 1153, 431, 1708, 1046, 2393, 1560, 2784, 1561, 3071, 1425, 3388, 1531, 3464, 1395, 3693, 1387, 3826, 1425, 4038, 1470, 4098, 1365, 4249, 1319, 4400, 1123, 4582, 1078, 4823, 955, 5397, 911, 5775, 670, 6973, -869, 7655, -1084, 8643, -1030, 11735, -452, 12542, 2207, 9075, 3203, 4031, 3445, 708, 3385, 105, 381, -306, 149, -461, 86, -456, -11)
+script = ExtResource("2_5f6hp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground/Polygon2D"]
+
+[node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
+monitoring = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(4118, 526)
+zoom = Vector2(0.135, 0.135)
