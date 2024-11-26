@@ -4,6 +4,9 @@ extends Node
 
 var count: int = 0
 
+func count() -> int:
+    return count
+
 func check_draw() -> bool:
     if count - 1 < 0:
         return false
