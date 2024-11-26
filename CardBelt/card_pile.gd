@@ -4,16 +4,16 @@ extends Node
 
 var count: int = 0
 
-func count() -> int:
+func read_count() -> int:
     return count
 
-func check_draw() -> bool:
-    if count - 1 < 0:
-        return false
-    else:
+func is_empty() -> bool:
+    if count <= 0:
         return true
+    else:
+        return false
 
-## use check_draw() before using this function
+## use is_empty() before using this function
 ## It is expected that the caller will take the card out of this node's hierarchy
 ## It is also expected that the caller will be the one to ghost or un-ghost the card
 func draw_card() -> Node:
