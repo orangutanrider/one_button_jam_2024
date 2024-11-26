@@ -21,3 +21,6 @@ func _process(delta: float) -> void:
 func increase_engine_pressure(value: float):
     engine_pressure = engine_pressure + value
     pass
+
+func read() -> float:
+    return engine_pressure
