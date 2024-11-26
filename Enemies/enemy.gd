@@ -11,7 +11,7 @@ extends CharacterBody2D
 var attackTimer = 0
 var coolDown = false
 
-@onready var targetBody = get_node_or_null("../TankBody.tscn")
+@onready var targetBody = get_node_or_null("../TankBody")
 var targetDistance = 10000
 
 @export var scanPeriod = 5
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 		if targetBody != null:
 			targetDistance = global_position.distance_to(targetBody.global_position)
 		else:
-			targetBody = get_node_or_null("../TankBody.tscn")
+			targetBody = get_node_or_null("../TankBody")
 			print("targetBody is null")
 	
 	_action_updates(delta)
@@ -61,7 +61,8 @@ func _action_updates(delta):
 
 func _fire_attack() -> void:
 	if targetBody != null:
-		targetBody.take_damage(attack)
+		pass
+		#targetBody.take_damage(attack)
 
 
 func _take_damage(damage: int) -> void :

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/crawler.gd" id="1_jonwt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mch8a"]
-size = Vector2(59, 58)
+size = Vector2(2.5, 2.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7msu4"]
 size = Vector2(66, 68)

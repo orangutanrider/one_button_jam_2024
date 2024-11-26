@@ -30,3 +30,12 @@ position = Vector2(503, -54)
 
 [node name="Flyer" parent="." instance=ExtResource("4_cbii3")]
 position = Vector2(327, -595)
+
+[node name="Flyer2" parent="." instance=ExtResource("4_cbii3")]
+position = Vector2(436, -488)
+
+[node name="Flyer3" parent="." instance=ExtResource("4_cbii3")]
+position = Vector2(212, -519)
+
+[node name="Flyer4" parent="." instance=ExtResource("4_cbii3")]
+position = Vector2(459, -593)
