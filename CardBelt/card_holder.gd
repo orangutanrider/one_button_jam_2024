@@ -15,6 +15,17 @@ var resetTimer = 0
 const resetTime = 3
 var discarding = false
 
+# Being ghost means it is not active on the conveyor
+# The implications of which are *todo*
+var ghost: bool = false
+
+func make_ghost():
+	ghost = true
+	pass
+
+func un_ghost():
+	pass
+
 var properties = [
 	{"type": "Ammo", "name": "HE", "power": 100},
 	{"type": "Ammo", "name": "AP", "power": 500},
