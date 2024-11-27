@@ -4,7 +4,7 @@ extends Area2D
 
 # It is expected to automatically filter detections via layermasks
 func area_entered(_area: Area2D):
-    # todo
+    
     pass
 
 func add_card_to_discard(card: Node):
