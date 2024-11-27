@@ -46,4 +46,5 @@ position = Vector2(459, -593)
 position = Vector2(706, -68)
 
 [node name="Bomber" parent="." instance=ExtResource("6_n86xy")]
-position = Vector2(358, -87)
+position = Vector2(404, -61)
+attackDistance = 10000

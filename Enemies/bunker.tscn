@@ -6,6 +6,11 @@
 
 [node name="Bunker" type="CharacterBody2D"]
 script = ExtResource("1_8c28m")
+hp = 10
+attack = 3
+attackCooldown = 4
+attackDistance = 5000
+scanPeriod = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 8
