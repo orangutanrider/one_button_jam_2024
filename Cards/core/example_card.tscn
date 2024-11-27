@@ -9,6 +9,6 @@
 
 [node name="CardPhysical" parent="CardRoot" instance=ExtResource("2_cvakc")]
 
-[node name="CardSpecificSprite" type="Sprite2D" parent="CardRoot"]
+[node name="CardSpecificSprite" type="Sprite2D" parent="CardRoot/CardPhysical"]
 
 [node name="CardSpecificLogic" type="Node" parent="."]
