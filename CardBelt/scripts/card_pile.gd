@@ -1,7 +1,5 @@
 extends Node
 
-@export var params: CardPileRes
-
 var count: int = 0
 
 func read_count() -> int:
