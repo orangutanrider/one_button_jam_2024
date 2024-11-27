@@ -10,6 +10,11 @@ extends Node2D
 @export var collision: Node
 @export var mover: Node
 
+func draw_trigger():
+	# todo: animation
+	un_ghost()
+	pass
+
 func _ready() -> void:
 	bang.played.connect(played)
 	bang.armed.connect(armed)
@@ -38,7 +43,6 @@ func ghost():
 	mover.ghost()
 	pass
 
-# un_ghost callers are todo
 func un_ghost():
 	visible = true
 	bang.un_ghost()

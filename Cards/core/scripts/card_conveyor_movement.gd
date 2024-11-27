@@ -5,8 +5,6 @@ extends RigidBody2D
 var onBelt: bool = false
 var velocity = Vector2.ZERO
 var collideSpeedMultiplier = 1
-const beltStartX = 525
-const beltLineY = 50
 
 var fallTimer = 0
 const stopFallTime = 1
@@ -14,21 +12,6 @@ var resetTimer = 0
 const resetTime = 3
 var discarding = false
 
-# Being ghost means it is not active on the conveyor
-# The implications of which are *todo*
-var ghost: bool = false
-
-func make_ghost():
-	ghost = true
-	pass
-
-func un_ghost():
-	ghost = false
-	pass
-
-func _ready() -> void: 
-	gravity_scale = 0
-	angular_velocity = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,18 +37,11 @@ func _process(delta: float) -> void:
 		if resetTimer > resetTime:
 			respawn_card()
 
-
-func activate() -> void:
-	print("item used")
-	send_to_discard()
-
-
 func send_to_discard() -> void:
 	discarding = true
 	angular_velocity = 1
 	gravity_scale = -3
 	rotation_degrees = 0
-
 
 func updateVelocity(v: int) -> void: 
 	velocity = Vector2(-v, 0)
