@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/bunker.gd" id="1_8c28m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6kww"]
+size = Vector2(20, 3)
 
 [node name="Bunker" type="CharacterBody2D"]
 script = ExtResource("1_8c28m")
@@ -27,5 +28,5 @@ grow_vertical = 2
 color = Color(0.477336, 0.26112, 0.539681, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 50)
+position = Vector2(0, 58.5)
 shape = SubResource("RectangleShape2D_f6kww")

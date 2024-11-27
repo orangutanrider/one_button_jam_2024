@@ -10,6 +10,7 @@ extends CharacterBody2D
 
 var attackTimer = 0
 var coolDown = false
+var projectile_scene: PackedScene = preload("res://Enemies/enemy_projectile.tscn")
 
 @onready var targetBody = get_node_or_null("../TankBody")
 var targetDistance = 10000
@@ -62,9 +63,10 @@ func _action_updates(delta) -> void:
 
 func _fire_attack() -> void:
 	if targetBody != null:
-		pass
-		#needs implementation on tank body
-		#targetBody.take_damage(attack)
+		var projectile = projectile_scene.instantiate()
+		projectile.position = global_position 
+		projectile.targetBody = targetBody 
+		get_parent().add_child(projectile)
 
 
 func _take_damage(damage: int) -> void :
@@ -78,3 +80,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	if targetBody != null:
 		if body.name == targetBody.name:
 			_take_damage(crushDamage)
+
+func self_destruct() -> int:
+	_die()
+	return attack
