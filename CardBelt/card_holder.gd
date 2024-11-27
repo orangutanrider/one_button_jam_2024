@@ -24,25 +24,12 @@ func make_ghost():
 	pass
 
 func un_ghost():
+	ghost = false
 	pass
 
-var properties = [
-	{"type": "Ammo", "name": "HE", "power": 100},
-	{"type": "Ammo", "name": "AP", "power": 500},
-]
-
 func _ready() -> void: 
-	var randomProperty = properties[randi() % properties.size()]
-	apply_properties(randomProperty)
 	gravity_scale = 0
 	angular_velocity = 0
-	
-
-func apply_properties(property): 
-	self.itemName = property.name
-	self.type = property.type
-	self.power = property.power
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
