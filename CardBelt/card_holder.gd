@@ -27,7 +27,7 @@ func _ready() -> void:
 	angular_velocity = 0
 	
 
-func apply_properties(property): 
+func apply_properties(property) -> void: 
 	self.itemName = property.name
 	self.type = property.type
 	self.power = property.power

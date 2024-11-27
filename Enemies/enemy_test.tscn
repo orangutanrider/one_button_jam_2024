@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctfh0ti5qfr3b"]
+[gd_scene load_steps=7 format=3 uid="uid://ctfh0ti5qfr3b"]
 
 [ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="1_nbw5k"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="2_swjse"]
 [ext_resource type="PackedScene" uid="uid://bj2cy4m2860g7" path="res://Enemies/crawler.tscn" id="3_g0qsl"]
 [ext_resource type="PackedScene" uid="uid://ishejxjgc7e2" path="res://Enemies/flyer.tscn" id="4_cbii3"]
+[ext_resource type="PackedScene" uid="uid://dmadsdug41qt5" path="res://Enemies/bunker.tscn" id="5_w68lu"]
+[ext_resource type="PackedScene" uid="uid://d2vuwquytkym8" path="res://Enemies/bomber.tscn" id="6_n86xy"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,7 +15,7 @@ gravity_scale = 0.01
 [node name="Ground" type="Node2D" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
-polygon = PackedVector2Array(-190, -19, 206, -38, 529, -2, 1153, 431, 1708, 1046, 2393, 1560, 2784, 1561, 3071, 1425, 3388, 1531, 3464, 1395, 3693, 1387, 3826, 1425, 4038, 1470, 4098, 1365, 4249, 1319, 4400, 1123, 4582, 1078, 4823, 955, 5397, 911, 5775, 670, 6973, -869, 7655, -1084, 8643, -1030, 11735, -452, 12542, 2207, 9075, 3203, 4031, 3445, 708, 3385, 105, 381, -306, 149, -461, 86, -456, -11)
+polygon = PackedVector2Array(-190, -19, -0.0768738, -28.1125, 206, -38, 529, -2, 1153, 431, 1708, 1046, 2393, 1560, 2784, 1561, 3071, 1425, 3388, 1531, 3464, 1395, 3693, 1387, 3826, 1425, 4038, 1470, 4098, 1365, 4249, 1319, 4400, 1123, 4582, 1078, 4823, 955, 5397, 911, 5775, 670, 6973, -869, 7655, -1084, 8643, -1030, 11735, -452, 12542, 2207, 9075, 3203, 4031, 3445, 708, 3385, 105, 381, -306, 149, -461, 86, -456, -11)
 script = ExtResource("2_swjse")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground/Polygon2D"]
@@ -39,3 +41,9 @@ position = Vector2(212, -519)
 
 [node name="Flyer4" parent="." instance=ExtResource("4_cbii3")]
 position = Vector2(459, -593)
+
+[node name="Bunker" parent="." instance=ExtResource("5_w68lu")]
+position = Vector2(706, -68)
+
+[node name="Bomber" parent="." instance=ExtResource("6_n86xy")]
+position = Vector2(358, -87)
