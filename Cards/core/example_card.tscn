@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpb3y1md35ft5"]
+
+[ext_resource type="PackedScene" uid="uid://bu1expwdkv3p8" path="res://Cards/core/card_root.tscn" id="1_7rjmd"]
+[ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="2_cvakc"]
+
+[node name="ExampleCard" type="Node"]
+
+[node name="CardRoot" parent="." instance=ExtResource("1_7rjmd")]
+
+[node name="CardPhysical" parent="CardRoot" instance=ExtResource("2_cvakc")]
+
+[node name="CardSpecificSprite" type="Sprite2D" parent="CardRoot"]
+
+[node name="CardSpecificLogic" type="Node" parent="."]

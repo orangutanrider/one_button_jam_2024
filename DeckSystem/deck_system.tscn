@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b77ufvx0kverl"]
+
+[node name="DeckSystem" type="Node2D"]
+
+[node name="DrawMachine" type="Node" parent="."]
+
+[node name="DrawPile" type="Node" parent="."]
+
+[node name="DiscardPile" type="Node" parent="."]
+
+[node name="ConveyorBelt" type="Node2D" parent="."]
+
+[node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]

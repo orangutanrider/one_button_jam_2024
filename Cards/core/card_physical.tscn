@@ -1,0 +1,30 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8hcsxjvnjful"]
+
+[ext_resource type="Script" path="res://Cards/core/scripts/card_mover.gd" id="1_1iqkl"]
+[ext_resource type="Script" path="res://Cards/core/scripts/card_body.gd" id="2_pdihp"]
+[ext_resource type="Script" path="res://Cards/core/scripts/card_collision.gd" id="3_us1pb"]
+[ext_resource type="Script" path="res://Cards/core/scripts/card_conveyor_movement.gd" id="4_s2lsr"]
+[ext_resource type="Script" path="res://Cards/core/scripts/card_played_script.gd" id="5_ul4hb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qx4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i48fr"]
+
+[node name="CardPhysical" type="RigidBody2D"]
+script = ExtResource("1_1iqkl")
+
+[node name="Body" type="Area2D" parent="."]
+script = ExtResource("2_pdihp")
+
+[node name="Shape" type="CollisionShape2D" parent="Body"]
+shape = SubResource("RectangleShape2D_2qx4r")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_i48fr")
+script = ExtResource("3_us1pb")
+
+[node name="ConveyorMovement" type="Node" parent="."]
+script = ExtResource("4_s2lsr")
+
+[node name="PlayedScript" type="Node" parent="."]
+script = ExtResource("5_ul4hb")
