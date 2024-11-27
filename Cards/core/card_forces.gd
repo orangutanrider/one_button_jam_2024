@@ -1,8 +1,7 @@
+# Handles the movement of the card along the belt and up the discard-duct
+
 extends RigidBody2D
 
-var itemName = ""
-var type = "null"
-var power = 0
 var onBelt: bool = false
 var velocity = Vector2.ZERO
 var collideSpeedMultiplier = 1

@@ -1,0 +1,1 @@
+# Handles the disabling and enabling of the card's collision
