@@ -1,1 +1,0 @@
-# Will handle the movement and ghosting of the card when it is played

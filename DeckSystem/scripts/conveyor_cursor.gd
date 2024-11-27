@@ -17,7 +17,11 @@ func _physics_process(delta: float) -> void:
         push_warning("Unexpected null detection")
         return
 
-    #todo
+    play_detected_card(detection)
+
+func play_detected_card(card: Object):
+    card.play()
+    active_timer = 0.0
     pass
 
 ## Activates the cursor to play a card underneath it
