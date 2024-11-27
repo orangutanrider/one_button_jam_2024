@@ -37,13 +37,14 @@ func _process(delta: float) -> void:
 		_die()
 
 	if coolDown:
-			attackTimer += delta
+		attackTimer += delta
+	elif targetDistance < attackDistance:
+		_fire_attack()
+		coolDown = true
 	if attackTimer >= attackCooldown:
-			coolDown = false
-	if targetDistance < attackDistance:
-		if !coolDown:
-			_fire_attack()
-			coolDown = true
+		coolDown = false
+		attackTimer = 0
+		
 	
 	scanTimer += delta
 	if scanTimer >= scanPeriod:
@@ -56,12 +57,13 @@ func _process(delta: float) -> void:
 	
 	_action_updates(delta)
 
-func _action_updates(delta):
+func _action_updates(delta) -> void:
 	pass
 
 func _fire_attack() -> void:
 	if targetBody != null:
 		pass
+		#needs implementation on tank body
 		#targetBody.take_damage(attack)
 
 
