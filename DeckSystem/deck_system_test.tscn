@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://epub6fc8kipt"]
+[gd_scene load_steps=19 format=3 uid="uid://epub6fc8kipt"]
 
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_4vuiw"]
 [ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_sbsdg"]
 [ext_resource type="PackedScene" uid="uid://djuk0ats3jaev" path="res://Cards/core/test_card.tscn" id="4_34fny"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/initializer.gd" id="4_et6el"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="4_rb3j5"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="5_ntbt8"]
 [ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="6_dis8b"]
-[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure_res.gd" id="7_l46wj"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="8_7is2o"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="8_7n1sw"]
 [ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="9_2icce"]
+[ext_resource type="Resource" uid="uid://bot4oo3bc224u" path="res://DeckSystem/res/conveyor_engine_pressure_params.tres" id="9_rodb0"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt.gd" id="10_j5hwx"]
 [ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/res/conveyor_res.tres" id="11_drrkw"]
 [ext_resource type="Shape2D" uid="uid://ddwm33113h1iw" path="res://DeckSystem/res/conveyor_shape.tres" id="12_i34ol"]
@@ -29,11 +31,13 @@ params = ExtResource("2_sbsdg")
 draw_pile = NodePath("../DrawPile")
 discard_pile = NodePath("../DiscardPile")
 
-[node name="DrawPile" type="Node" parent="." node_paths=PackedStringArray("init")]
+[node name="DrawPile" type="Node" parent="."]
 script = ExtResource("4_rb3j5")
-init = NodePath("Initializer")
 
-[node name="Initializer" type="Node" parent="DrawPile"]
+[node name="Initializer" type="Node" parent="DrawPile" node_paths=PackedStringArray("card_pile", "discard_pile")]
+script = ExtResource("4_et6el")
+card_pile = NodePath("..")
+discard_pile = NodePath("../../DiscardPile")
 
 [node name="TestCard" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
 
@@ -82,8 +86,10 @@ script = ExtResource("4_rb3j5")
 script = ExtResource("5_ntbt8")
 params = ExtResource("6_dis8b")
 
-[node name="EnginePressure" type="Node" parent="ConveyorBelt"]
-script = ExtResource("7_l46wj")
+[node name="EnginePressure" type="Node" parent="ConveyorBelt" node_paths=PackedStringArray("conveyor_belt")]
+script = ExtResource("8_7n1sw")
+params = ExtResource("9_rodb0")
+conveyor_belt = NodePath("../Conveyor")
 
 [node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]
 position = Vector2(133, 5)
