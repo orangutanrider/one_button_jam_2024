@@ -6,11 +6,16 @@ var armed_bang: bool = false
 
 signal armed
 signal played
+signal jettisoned
 signal discarded
 
 func play():
 	armed.emit()
 	execution_delay_timer = params.execution_delay
+
+func jettison():
+	jettisoned.emit()
+	pass
 
 func discard():
 	discarded.emit()

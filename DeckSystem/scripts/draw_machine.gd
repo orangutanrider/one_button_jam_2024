@@ -20,20 +20,21 @@ func draw_card_onto_conveyor():
     if draw_pile.is_empty():
         shuffle_discard_into_draw()
     
-    var card: Node = draw_pile.draw_card()
+    var card: Node2D = draw_pile.draw_a_card()
     if card == null: 
         push_warning("Attempted to draw a card but got null, this indicates that the deck has no remaining cards; Unexpected.")
         return # If deck is empty, should never happen
-
-    card.un_ghost()
-    card.respawn_card()
+    
+    add_child(card)
+    card.position = Vector2.ZERO
+    card.draw_trigger()
 
 func shuffle_discard_into_draw():
     var cards: Array[Node]
 
     var i: int = 0
     while i < discard_pile.read_count():
-        cards.push_back(discard_pile.draw_card())
+        cards.push_back(discard_pile.draw_a_card())
         i = i + 1
 
     cards.shuffle()
