@@ -25,9 +25,10 @@ func draw_card_onto_conveyor():
 	if card == null: 
 		push_warning("Attempted to draw a card but got null, this indicates that the deck has no remaining cards; Unexpected.")
 		return # If deck is empty, should never happen
-	
+
 	add_child(card)
 	card.position = Vector2.ZERO
+	card.reset_physical()
 	card.draw_trigger()
 
 func shuffle_discard_into_draw():

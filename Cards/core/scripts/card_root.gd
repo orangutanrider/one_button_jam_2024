@@ -8,7 +8,10 @@ extends Node2D
 # Internal reference
 @export var bang: Node
 @export var collision: Node
-@export var physical: Node
+@export var physical: RigidBody2D
+
+func reset_physical():
+	physical.position = Vector2.ZERO
 
 func flash_discard_pile(flash: Node):
 	discard_pile = flash
