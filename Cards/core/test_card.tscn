@@ -13,8 +13,7 @@ physical = NodePath("CardPhysical")
 [node name="CardPhysical" parent="." instance=ExtResource("2_wvwug")]
 
 [node name="ColorRect" type="ColorRect" parent="CardPhysical"]
-offset_left = -20.0
-offset_top = -30.0
-offset_right = 20.0
-offset_bottom = 30.0
-metadata/_edit_use_anchors_ = true
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0

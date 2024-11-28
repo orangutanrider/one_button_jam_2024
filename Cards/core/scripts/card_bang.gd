@@ -32,11 +32,11 @@ func _process(delta: float):
 	execution_delay_timer = execution_delay_timer - delta
 
 func ghost():
-	monitorable = false
-	monitoring = false
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
 
 func un_ghost():
-	monitorable = true
-	monitoring = true
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
 
 # todo: animate card to disappear before it is played
