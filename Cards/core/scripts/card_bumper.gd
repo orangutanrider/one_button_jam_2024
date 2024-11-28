@@ -10,14 +10,13 @@ signal bump(movement: float)
 func _on_area_entered(area: Area2D):
 	if area.position.x < position.x: # If the intersecting area is further to the left than this area is (then do nothing)
 		return
-	print("E")
 	shuffle(area)
 
 # The actor pushes the subject
 # self is the subject
 func shuffle(actor: Area2D):
 	var dist: float = absf(actor.position.x - position.x)
-	var intersection: float = absf(dist - collision_shape.width)
+	var intersection: float = absf(dist - collision_shape.size.x)
 
 	# Move
 	var motion: float = intersection + params.bumper_push
