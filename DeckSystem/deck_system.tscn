@@ -1,6 +1,5 @@
-[gd_scene load_steps=17 format=3 uid="uid://b77ufvx0kverl"]
+[gd_scene load_steps=16 format=3 uid="uid://b77ufvx0kverl"]
 
-[ext_resource type="PackedScene" uid="uid://bbf0iwq528edl" path="res://DeckSystem/deck.tscn" id="1_dtueu"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_uug5s"]
 [ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_6xdhb"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="2_uhb1w"]
@@ -26,10 +25,14 @@ size = Vector2(25.25, 20)
 position = Vector2(527, 43)
 script = ExtResource("1_uug5s")
 params = ExtResource("2_6xdhb")
-draw_pile = NodePath("../DrawPile")
+draw_pile = NodePath("")
 discard_pile = NodePath("../DiscardPile")
 
-[node name="DrawPile" parent="." instance=ExtResource("1_dtueu")]
+[node name="DrawPile" type="Node" parent="." node_paths=PackedStringArray("init")]
+script = ExtResource("2_uhb1w")
+init = NodePath("Initializer")
+
+[node name="Initializer" type="Node" parent="DrawPile"]
 
 [node name="DiscardPile" type="Node" parent="."]
 script = ExtResource("2_uhb1w")

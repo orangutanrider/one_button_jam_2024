@@ -1,6 +1,18 @@
 extends Node
 
-@export var count: int = 0
+## Optional initialization cards
+@export var init: Node
+
+var count: int = 0
+
+func _ready() -> void:
+	if init == null: return
+
+	var stack = init.get_children()
+	stack.shuffle()
+	for card in stack:
+		add_ontop(card)
+	pass
 
 func read_count() -> int:
 	return count
