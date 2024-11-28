@@ -4,9 +4,9 @@ extends RigidBody2D
 
 @export var conveyor_movement: Node
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var motion: Vector2 = Vector2.LEFT * conveyor_movement.read_speed()
-	move_and_collide(motion)
+	move_and_collide(motion * delta)
 
 func ghost():
 	sleeping = true
