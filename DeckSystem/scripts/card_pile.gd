@@ -33,4 +33,5 @@ func add_ontop(card: Node):
 	count = count + 1
 	card.ghost()
 	card.name = "card-" + str(count)
-	add_child(card)
+	card.get_parent().remove_child(card)
+	add_child.call_deferred(card)
