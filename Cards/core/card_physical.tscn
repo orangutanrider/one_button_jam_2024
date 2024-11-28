@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8hcsxjvnjful"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_physical.gd" id="1_1iqkl"]
-[ext_resource type="Shape2D" uid="uid://bdme5lq538l1t" path="res://Cards/core/card_bumper_shape.tres" id="2_hu7op"]
-[ext_resource type="Resource" uid="uid://csxgd12pll64l" path="res://Cards/core/card_movement_params.tres" id="2_w7t8g"]
+[ext_resource type="Shape2D" uid="uid://bdme5lq538l1t" path="res://Cards/core/res/card_bumper_shape.tres" id="2_hu7op"]
+[ext_resource type="Resource" uid="uid://csxgd12pll64l" path="res://Cards/core/res/card_movement_params.tres" id="2_w7t8g"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bumper.gd" id="3_gwcx1"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bang.gd" id="3_jdc7x"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_collision.gd" id="3_us1pb"]
-[ext_resource type="Resource" uid="uid://4ygpod2eyteb" path="res://Cards/core/card_bang_params.tres" id="4_cjmdr"]
+[ext_resource type="Resource" uid="uid://4ygpod2eyteb" path="res://Cards/core/res/card_bang_params.tres" id="4_cjmdr"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_conveyor_movement.gd" id="4_s2lsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qx4r"]
@@ -29,6 +29,7 @@ script = ExtResource("3_jdc7x")
 params = ExtResource("4_cjmdr")
 
 [node name="Shape" type="CollisionShape2D" parent="TriggerBang"]
+scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_2qx4r")
 
 [node name="Bumper" type="Area2D" parent="."]
@@ -37,12 +38,18 @@ collision_mask = 32
 script = ExtResource("3_gwcx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bumper"]
+scale = Vector2(2.4, 3.6)
 shape = ExtResource("2_hu7op")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_i48fr")
 script = ExtResource("3_us1pb")
 
 [node name="ConveyorMovement" type="RayCast2D" parent="."]
+target_position = Vector2(0, 1)
 collision_mask = 16
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("4_s2lsr")

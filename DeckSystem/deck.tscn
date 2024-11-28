@@ -4,3 +4,5 @@
 
 [node name="DrawPile" type="Node"]
 script = ExtResource("1_wgvw4")
+
+[node name="Initializer" type="Node" parent="."]

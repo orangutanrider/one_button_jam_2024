@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_4vuiw"]
 [ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_sbsdg"]
-[ext_resource type="PackedScene" uid="uid://bbf0iwq528edl" path="res://DeckSystem/deck.tscn" id="3_aq3qk"]
+[ext_resource type="PackedScene" uid="uid://djuk0ats3jaev" path="res://Cards/core/test_card.tscn" id="4_34fny"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="4_rb3j5"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="5_ntbt8"]
 [ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="6_dis8b"]
@@ -29,7 +29,49 @@ params = ExtResource("2_sbsdg")
 draw_pile = NodePath("../DrawPile")
 discard_pile = NodePath("../DiscardPile")
 
-[node name="DrawPile" parent="." instance=ExtResource("3_aq3qk")]
+[node name="DrawPile" type="Node" parent="." node_paths=PackedStringArray("init")]
+script = ExtResource("4_rb3j5")
+init = NodePath("Initializer")
+
+[node name="Initializer" type="Node" parent="DrawPile"]
+
+[node name="TestCard" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard2" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard3" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard4" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard5" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard6" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard7" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard8" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard9" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard10" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard11" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard12" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard13" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard14" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard15" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard16" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard17" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard18" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard19" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
 
 [node name="DiscardPile" type="Node" parent="."]
 script = ExtResource("4_rb3j5")
