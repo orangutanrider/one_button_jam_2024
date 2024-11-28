@@ -13,12 +13,13 @@ func _process(delta: float) -> void:
 	draw_timer = draw_timer + delta
 
 	if draw_timer > 1 / params.draw_rate:
-		draw_timer = 0.0
 		draw_card_onto_conveyor()
 
 func draw_card_onto_conveyor():
 	if draw_pile.is_empty():
 		shuffle_discard_into_draw()
+		return
+	draw_timer = 0.0
 	
 	var card: Node2D = draw_pile.draw_a_card()
 	if card == null: 
@@ -42,7 +43,8 @@ func shuffle_discard_into_draw():
 
 	cards.shuffle()
 
-	cards.all(draw_pile.add_ontop)
+	for card in cards:
+		draw_pile.add_ontop(card)
 
 	# for card in cards:
 	# 	draw_pile.add_ontop(card)
