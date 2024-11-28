@@ -18,11 +18,14 @@ var targetDistance = 10000
 @export var scanPeriod = 5
 var scanTimer = 0
 
+@onready var hitBox = $Hitbox
 
 func _prep() -> void:
 	push_error("_prep() needs to be overridden in derived class")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	hitBox.connect("area_shape_entered", _on_hitbox_area_shape_entered)
+	add_to_group("enemy")
 	_prep()
 
 
@@ -45,16 +48,11 @@ func _process(delta: float) -> void:
 	if attackTimer >= attackCooldown:
 		coolDown = false
 		attackTimer = 0
-		
 	
 	scanTimer += delta
 	if scanTimer >= scanPeriod:
 		scanTimer = 0
-		if targetBody != null:
-			targetDistance = global_position.distance_to(targetBody.global_position)
-		else:
-			targetBody = get_node_or_null("../TankBody")
-			print("targetBody is null")
+		update_target_distance()
 	
 	_action_updates(delta)
 
@@ -75,12 +73,18 @@ func _take_damage(damage: int) -> void :
 func _die():
 	self.queue_free()
 
-
-func _on_hitbox_body_entered(body: Node2D) -> void:
-	if targetBody != null:
-		if body.name == targetBody.name:
-			_take_damage(crushDamage)
+func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	if !area.get_parent().is_in_group("enemy"):
+		_take_damage(crushDamage)
 
 func self_destruct() -> int:
 	_die()
+	#TODO needs replacement with actual damage to player
 	return attack
+	
+func update_target_distance() -> void:
+	if targetBody != null:
+		targetDistance = global_position.distance_to(targetBody.global_position)
+	else:
+		targetBody = get_node_or_null("../TankBody")
+		print("targetBody is null")

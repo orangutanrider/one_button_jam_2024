@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
-	velocity.y -= 1000
+	add_to_group("enemy_projectiles")
 
 
 func _physics_process(delta: float) -> void: 
@@ -27,4 +27,5 @@ func _home_in_on_target(delta: float) -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	pass
+	if !body.is_in_group("enemy_projectiles"):
+		self.queue_free()

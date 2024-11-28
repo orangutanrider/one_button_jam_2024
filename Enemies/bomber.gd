@@ -2,6 +2,7 @@ extends Enemy
 @export var directionForce = 500
 @export var jumpForce = 150
 @export var damping = 0.95
+@export var explosionRadius = 300
 
 func _prep() -> void:
 	print("bomber spawned")
@@ -23,3 +24,6 @@ func _chase() -> void:
 func _fire_attack() -> void:
 	if targetBody != null:
 		_chase()
+		update_target_distance()
+		if targetDistance <= explosionRadius:
+			self.queue_free()

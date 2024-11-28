@@ -25,4 +25,3 @@ func jettison_trigger():
 	angular_velocity = params.jettison_angular
 	gravity_scale = params.jettison_grav
 	pass
-

@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !is_colliding():
 		return
-    
+	
 	var detection: Object = get_collider()
 	if detection == null:
 		push_warning("Unexpected null detection")

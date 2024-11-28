@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b14l78odu6bed"]
+[gd_scene load_steps=8 format=3 uid="uid://b14l78odu6bed"]
 
 [ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="1_fqyh1"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="2_hgvcl"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ishejxjgc7e2" path="res://Enemies/flyer.tscn" id="4_t2geb"]
 [ext_resource type="PackedScene" uid="uid://dmadsdug41qt5" path="res://Enemies/bunker.tscn" id="5_esfoy"]
 [ext_resource type="PackedScene" uid="uid://d2vuwquytkym8" path="res://Enemies/bomber.tscn" id="6_n6i7i"]
+[ext_resource type="PackedScene" uid="uid://dmmmdnc8ncew3" path="res://Levels/enemy_spawn_point.tscn" id="7_jg2t3"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -30,7 +31,7 @@ script = ExtResource("2_hgvcl")
 monitoring = false
 
 [node name="Crawler" parent="." instance=ExtResource("3_fyosg")]
-position = Vector2(2946, 1047)
+position = Vector2(793, 920)
 
 [node name="Flyer" parent="." instance=ExtResource("4_t2geb")]
 position = Vector2(3387, 213)
@@ -50,3 +51,6 @@ position = Vector2(3119, 1021)
 [node name="Bomber" parent="." instance=ExtResource("6_n6i7i")]
 position = Vector2(3380, 1064)
 attackDistance = 10000
+
+[node name="enemySpawnPoint" parent="." instance=ExtResource("7_jg2t3")]
+position = Vector2(4304, 1109)

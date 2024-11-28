@@ -2,8 +2,11 @@ extends CharacterBody2D
 @onready var targetBody = get_node_or_null("../TankBody")
 @export var despawnTime = 2
 @onready var despawnTimer = despawnTime
-@export var initialSpeed = 200000
+@export var initialSpeed = 150000
 @export var deceleration = 0.95
+
+func _ready() -> void:
+	add_to_group("enemy_projectiles")
 
 func _physics_process(delta: float) -> void: 
 	despawnTimer -= delta
@@ -23,4 +26,4 @@ func _home_in_on_target(delta: float) -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	pass
+	self.queue_free()
