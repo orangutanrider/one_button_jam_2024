@@ -10,8 +10,10 @@ size = Vector2(66, 68)
 
 [node name="Flyer" type="CharacterBody2D"]
 script = ExtResource("1_bmu4m")
+kiteDistance = 800
+flyingHeight = 400
 attackCooldown = 3
-attackDistance = 3000
+attackDistance = 1500
 scanPeriod = 0
 
 [node name="ColorRect" type="ColorRect" parent="."]

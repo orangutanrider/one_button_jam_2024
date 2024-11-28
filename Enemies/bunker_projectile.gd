@@ -2,13 +2,14 @@ extends CharacterBody2D
 @onready var targetBody = get_node_or_null("../TankBody")
 @export var despawnTime = 2
 @onready var despawnTimer = despawnTime
-@export var acceleration = 5000.0 
+@export var initialSpeed = 200000
+@export var deceleration = 0.95
 
 func _physics_process(delta: float) -> void: 
 	despawnTimer -= delta
 	if despawnTimer <= 0:
 		self.queue_free()
-		
+	velocity *= deceleration
 	if targetBody != null: 
 		_home_in_on_target(delta) 
 	else:
@@ -18,10 +19,8 @@ func _physics_process(delta: float) -> void:
 	
 func _home_in_on_target(delta: float) -> void: 
 	var direction = (targetBody.global_position - global_position).normalized() 
-	velocity += direction * acceleration * delta
+	velocity = direction * initialSpeed * delta
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if targetBody != null:
-		if targetBody.name == body.name:
-			self.queue_free()
+	pass

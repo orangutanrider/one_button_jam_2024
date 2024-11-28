@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://Enemies/enemy_projectile.gd" id="1_lyo12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qt33n"]
-size = Vector2(16, 4)
+size = Vector2(1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i83ah"]
 radius = 2.0
 height = 16.0
 
 [node name="EnemyProjectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_lyo12")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -28,7 +30,7 @@ color = Color(0.294434, 0.0675901, 0.113772, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qt33n")
-disabled = true
+one_way_collision_margin = 0.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 

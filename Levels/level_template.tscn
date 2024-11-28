@@ -42,7 +42,7 @@ position = Vector2(3496, 320)
 position = Vector2(3272, 289)
 
 [node name="Flyer4" parent="." instance=ExtResource("4_t2geb")]
-position = Vector2(3519, 215)
+position = Vector2(1234, 407)
 
 [node name="Bunker" parent="." instance=ExtResource("5_esfoy")]
 position = Vector2(3119, 1021)
