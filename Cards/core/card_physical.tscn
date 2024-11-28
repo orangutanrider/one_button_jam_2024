@@ -52,3 +52,5 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("4_s2lsr")
+
+[connection signal="area_entered" from="Bumper" to="Bumper" method="_on_area_entered"]

@@ -171,7 +171,6 @@ script = ExtResource("13_4dbr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
 position = Vector2(-34.7268, 0.233014)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
@@ -195,3 +194,6 @@ shape = SubResource("RectangleShape2D_7ebdv")
 [node name="right" type="CollisionShape2D" parent="StaticCollision"]
 position = Vector2(574, 42)
 shape = SubResource("RectangleShape2D_7ebdv")
+
+[connection signal="area_entered" from="ConveyorBelt/JettisonTrigger" to="ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
+[connection signal="area_entered" from="ConveyorBelt/DiscardTrigger" to="ConveyorBelt/DiscardTrigger" method="_on_area_entered"]
