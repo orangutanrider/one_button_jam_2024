@@ -6,8 +6,8 @@ extends Node2D
 @export var conveyor_belt: Node
 
 func speed_bonus_formula() -> float:
-    return engine_pressure.read() * params.SCALAR
+	return engine_pressure.read() * params.SCALAR
 
 func _process(_delta: float):
-    conveyor_belt.set_pressure_bonus(speed_bonus_formula())
-    pass
+	conveyor_belt.set_pressure_bonus(speed_bonus_formula())
+	pass

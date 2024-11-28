@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DrawMachineRes" load_steps=2 format=3 uid="uid://k3kkpsyl26go"]
+
+[ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine_res.gd" id="1_clgnq"]
+
+[resource]
+script = ExtResource("1_clgnq")
+draw_rate = 1.0

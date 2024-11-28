@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ConveyorCursorRes" load_steps=2 format=3 uid="uid://jl8xycbq1i3v"]
+
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor_res.gd" id="1_0qrcn"]
+
+[resource]
+script = ExtResource("1_0qrcn")
+active_time = 0.1

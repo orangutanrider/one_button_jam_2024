@@ -1,13 +1,61 @@
-[gd_scene format=3 uid="uid://b77ufvx0kverl"]
+[gd_scene load_steps=14 format=3 uid="uid://b77ufvx0kverl"]
+
+[ext_resource type="PackedScene" uid="uid://bbf0iwq528edl" path="res://DeckSystem/deck.tscn" id="1_dtueu"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_uug5s"]
+[ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/draw_machine_params.tres" id="2_6xdhb"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="2_uhb1w"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt.gd" id="5_2yeou"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="5_5ehfm"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="5_m3tqt"]
+[ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/input_params.tres" id="6_l0rdh"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure_res.gd" id="6_thw3v"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="9_7pk0c"]
+[ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/cursor_params.tres" id="9_hbfni"]
+[ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/conveyor_res.tres" id="11_ikrmt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dki"]
 
 [node name="DeckSystem" type="Node2D"]
 
-[node name="DrawMachine" type="Node" parent="."]
+[node name="DrawMachine" type="Node" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
+script = ExtResource("1_uug5s")
+params = ExtResource("2_6xdhb")
+draw_pile = NodePath("../DrawPile")
+discard_pile = NodePath("../DiscardPile")
 
-[node name="DrawPile" type="Node" parent="."]
+[node name="DrawPile" parent="." instance=ExtResource("1_dtueu")]
 
 [node name="DiscardPile" type="Node" parent="."]
+script = ExtResource("2_uhb1w")
 
 [node name="ConveyorBelt" type="Node2D" parent="."]
 
+[node name="Input" type="Node" parent="ConveyorBelt"]
+script = ExtResource("5_m3tqt")
+params = ExtResource("6_l0rdh")
+
+[node name="EnginePressure" type="Node" parent="ConveyorBelt"]
+script = ExtResource("6_thw3v")
+
 [node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]
+collision_mask = 64
+script = ExtResource("5_5ehfm")
+params = ExtResource("9_hbfni")
+
+[node name="Conveyor" type="Area2D" parent="ConveyorBelt"]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("5_2yeou")
+params = ExtResource("11_ikrmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/Conveyor"]
+shape = SubResource("RectangleShape2D_w7dki")
+
+[node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("9_7pk0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/DiscardTrigger"]
+shape = SubResource("RectangleShape2D_w7dki")
