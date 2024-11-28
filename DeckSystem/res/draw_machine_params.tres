@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_clgnq")
-draw_rate = 1.0
+draw_rate = 0.5
