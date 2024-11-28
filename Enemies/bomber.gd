@@ -1,8 +1,8 @@
 extends Enemy
 @export var directionForce = 500
-@export var jumpForce = 150
+@export var jumpForce = 300
 @export var damping = 0.95
-@export var explosionRadius = 300
+@export var explosionRadius = 150
 
 func _prep() -> void:
 	print("bomber spawned")

@@ -53,4 +53,4 @@ position = Vector2(3380, 1064)
 attackDistance = 10000
 
 [node name="enemySpawnPoint" parent="." instance=ExtResource("7_jg2t3")]
-position = Vector2(4304, 1109)
+position = Vector2(2953, 690)
