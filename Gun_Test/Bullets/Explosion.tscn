@@ -7,6 +7,7 @@
 script = ExtResource("1_whed1")
 
 [node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,6 +16,7 @@ texture = ExtResource("1_praog")
 
 [node name="GetEnemies" type="Timer" parent="."]
 wait_time = 0.02
+one_shot = true
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
 [connection signal="timeout" from="GetEnemies" to="." method="_on_get_enemies_timeout"]
