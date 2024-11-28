@@ -30,14 +30,19 @@ func draw_card_onto_conveyor():
 	card.draw_trigger()
 
 func shuffle_discard_into_draw():
-	var cards: Array[Node]
+	print("Shuffling discard pile into draw pile")
+	var i: int = discard_pile.read_count()
+	print("Counted ", str(i), " in discard pile")
 
-	var i: int = 0
-	while i < discard_pile.read_count():
+	var cards: Array[Node2D]
+
+	while i > 0:
 		cards.push_back(discard_pile.draw_a_card())
-		i = i + 1
+		i = i - 1
 
 	cards.shuffle()
 
-	for card in cards:
-		draw_pile.add_ontop(card)
+	cards.all(draw_pile.add_ontop)
+
+	# for card in cards:
+	# 	draw_pile.add_ontop(card)
