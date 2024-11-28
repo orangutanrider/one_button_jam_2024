@@ -29,7 +29,6 @@ script = ExtResource("3_jdc7x")
 params = ExtResource("4_cjmdr")
 
 [node name="Shape" type="CollisionShape2D" parent="TriggerBang"]
-scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_2qx4r")
 
 [node name="Bumper" type="Area2D" parent="."]
@@ -40,11 +39,9 @@ params = ExtResource("2_w7t8g")
 collision_shape = ExtResource("2_hu7op")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bumper"]
-scale = Vector2(2.4, 3.6)
 shape = ExtResource("2_hu7op")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-scale = Vector2(2, 3)
 shape = SubResource("RectangleShape2D_i48fr")
 script = ExtResource("3_us1pb")
 
