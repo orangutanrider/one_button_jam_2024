@@ -5,10 +5,14 @@
 
 [node name="ExampleCard" type="Node"]
 
-[node name="CardRoot" parent="." instance=ExtResource("1_7rjmd")]
+[node name="CardRoot" parent="." node_paths=PackedStringArray("bang", "collision", "mover") instance=ExtResource("1_7rjmd")]
+discard_pile = NodePath("")
+bang = NodePath("CardPhysical/TriggerBang")
+collision = NodePath("CardPhysical/Collider")
+mover = NodePath("CardPhysical")
 
 [node name="CardPhysical" parent="CardRoot" instance=ExtResource("2_cvakc")]
 
 [node name="CardSpecificSprite" type="Sprite2D" parent="CardRoot/CardPhysical"]
 
-[node name="CardSpecificLogic" type="Node" parent="."]
+[node name="CardSpecificLogic" type="Node" parent="CardRoot"]

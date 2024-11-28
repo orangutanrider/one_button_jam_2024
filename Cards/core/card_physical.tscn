@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c8hcsxjvnjful"]
 
-[ext_resource type="Script" path="res://Cards/core/scripts/card_mover.gd" id="1_1iqkl"]
+[ext_resource type="Script" path="res://Cards/core/scripts/card_physical.gd" id="1_1iqkl"]
 [ext_resource type="Shape2D" uid="uid://bdme5lq538l1t" path="res://Cards/core/card_bumper_shape.tres" id="2_hu7op"]
 [ext_resource type="Resource" uid="uid://csxgd12pll64l" path="res://Cards/core/card_movement_params.tres" id="2_w7t8g"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bumper.gd" id="3_gwcx1"]

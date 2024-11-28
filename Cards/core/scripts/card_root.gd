@@ -8,7 +8,7 @@ extends Node2D
 # Internal reference
 @export var bang: Node
 @export var collision: Node
-@export var mover: Node
+@export var physical: Node
 
 func draw_trigger():
 	# todo: animation
@@ -40,12 +40,12 @@ func add_to_discard_and_ghost():
 func ghost():
 	visible = false
 	bang.ghost()
-	mover.ghost()
+	physical.ghost()
 	pass
 
 func un_ghost():
 	visible = true
 	bang.un_ghost()
 	collision.un_ghost()
-	mover.un_ghost()
+	physical.un_ghost()
 	pass
