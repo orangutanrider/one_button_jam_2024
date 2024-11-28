@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 @export var params: CardMovementRes
-
+@export var bumper: Area2D
 @export var conveyor_movement: Node
 
 func _physics_process(delta: float) -> void:
@@ -30,4 +30,9 @@ func jettison_trigger():
 	lock_rotation = false
 	angular_velocity = params.jettison_angular
 	gravity_scale = params.jettison_grav
+	pass
+
+func bump_trigger(motion: float):
+	move_and_collide(Vector2.LEFT * motion)
+	bumper.cascade()
 	pass

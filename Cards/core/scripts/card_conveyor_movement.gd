@@ -19,6 +19,9 @@ func _physics_process(_delta: float) -> void:
 	
 	speed = detection.read_belt_speed()
 	
+func read_speed():
+	return speed
+
 func ghost():
 	enabled = false
 
