@@ -130,7 +130,7 @@ shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="StaticCollision" type="StaticBody2D" parent="."]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 128
 
 [node name="bump" type="CollisionShape2D" parent="StaticCollision"]
 position = Vector2(133, -7)

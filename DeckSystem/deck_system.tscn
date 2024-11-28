@@ -21,16 +21,14 @@ size = Vector2(25.25, 20)
 
 [node name="DeckSystem" type="Node2D"]
 
-[node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
+[node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("discard_pile")]
 position = Vector2(527, 43)
 script = ExtResource("1_uug5s")
 params = ExtResource("2_6xdhb")
-draw_pile = NodePath("")
 discard_pile = NodePath("../DiscardPile")
 
-[node name="DrawPile" type="Node" parent="." node_paths=PackedStringArray("init")]
+[node name="DrawPile" type="Node" parent="."]
 script = ExtResource("2_uhb1w")
-init = NodePath("Initializer")
 
 [node name="Initializer" type="Node" parent="DrawPile"]
 
@@ -85,7 +83,7 @@ shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="StaticCollision" type="StaticBody2D" parent="."]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 128
 
 [node name="bump" type="CollisionShape2D" parent="StaticCollision"]
 position = Vector2(133, -7)

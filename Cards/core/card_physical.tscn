@@ -14,7 +14,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i48fr"]
 
 [node name="CardPhysical" type="RigidBody2D" node_paths=PackedStringArray("bang", "bumper", "conveyor_movement")]
-collision_layer = 8
+collision_layer = 128
 collision_mask = 8
 script = ExtResource("1_1iqkl")
 params = ExtResource("2_w7t8g")
