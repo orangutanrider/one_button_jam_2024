@@ -5,9 +5,6 @@ var collideSpeedMultiplier = 1
 
 var jettisoned: bool = false
 
-# -1 represents belonging to no block
-var block_id: int = -1
-
 func _physics_process(delta: float) -> void:
 	if !enabled:
 		return

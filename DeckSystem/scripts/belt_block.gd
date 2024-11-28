@@ -21,5 +21,23 @@ extends Node
 # Well it can know when it has been depleted. That is how.
 # And then we only create new ones when none are depleted.
 
-var id: int = 0
+var block_id: int = 0
 var cards: Array[Area2D]
+
+# The entry of index of card at the front of the block
+# Will be reset when the block becomes empty
+var front_index: int = 0
+# The entry of index of card at the back of the block
+# Will be reset when the block becomes empty
+var back_index: int = 0
+
+func initialize_block(id: int):
+	block_id = id
+
+func bump(dist: float):
+	pass # todo
+
+func reset_block():
+	front_index = 0
+	back_index = 0
+	
