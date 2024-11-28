@@ -39,4 +39,4 @@ func un_ghost():
 	monitorable = true
 	monitoring = true
 
-# todo: animate card to dissapear before it is played
+# todo: animate card to disappear before it is played
