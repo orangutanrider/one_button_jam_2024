@@ -1,8 +1,17 @@
 extends RigidBody2D
 
+# Params
 @export var params: CardMovementRes
+
+# Internal node reference
+@export var bang: Node
 @export var bumper: Area2D
 @export var conveyor_movement: Node
+
+func _ready() -> void:
+	bang.jettisoned.connect(jettison_trigger)
+	bumper.bump.connect(bump_trigger)
+	pass
 
 func _physics_process(delta: float) -> void:
 	var motion: Vector2 = Vector2.LEFT * conveyor_movement.read_speed()

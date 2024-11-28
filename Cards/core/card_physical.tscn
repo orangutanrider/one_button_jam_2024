@@ -1,25 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8hcsxjvnjful"]
+[gd_scene load_steps=11 format=3 uid="uid://c8hcsxjvnjful"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_mover.gd" id="1_1iqkl"]
 [ext_resource type="Shape2D" uid="uid://bdme5lq538l1t" path="res://Cards/core/card_bumper_shape.tres" id="2_hu7op"]
+[ext_resource type="Resource" uid="uid://csxgd12pll64l" path="res://Cards/core/card_movement_params.tres" id="2_w7t8g"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bumper.gd" id="3_gwcx1"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bang.gd" id="3_jdc7x"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_collision.gd" id="3_us1pb"]
+[ext_resource type="Resource" uid="uid://4ygpod2eyteb" path="res://Cards/core/card_bang_params.tres" id="4_cjmdr"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_conveyor_movement.gd" id="4_s2lsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qx4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i48fr"]
 
-[node name="CardPhysical" type="RigidBody2D"]
+[node name="CardPhysical" type="RigidBody2D" node_paths=PackedStringArray("bang", "bumper", "conveyor_movement")]
 collision_layer = 8
 collision_mask = 8
 script = ExtResource("1_1iqkl")
+params = ExtResource("2_w7t8g")
+bang = NodePath("TriggerBang")
+bumper = NodePath("Bumper")
+conveyor_movement = NodePath("ConveyorMovement")
 
 [node name="TriggerBang" type="Area2D" parent="."]
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("3_jdc7x")
+params = ExtResource("4_cjmdr")
 
 [node name="Shape" type="CollisionShape2D" parent="TriggerBang"]
 shape = SubResource("RectangleShape2D_2qx4r")

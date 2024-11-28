@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CardMovementRes" load_steps=2 format=3 uid="uid://csxgd12pll64l"]
+
+[ext_resource type="Script" path="res://Cards/core/scripts/card_movement_res.gd" id="1_3eidn"]
+
+[resource]
+script = ExtResource("1_3eidn")
+jettison_grav = -3.0
+jettison_angular = 1.0
+bumper_push = 1.0

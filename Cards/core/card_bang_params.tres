@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CardBangRes" load_steps=2 format=3 uid="uid://4ygpod2eyteb"]
+
+[ext_resource type="Script" path="res://Cards/core/scripts/card_bang_res.gd" id="1_kkqog"]
+
+[resource]
+script = ExtResource("1_kkqog")
+execution_delay = 0.66
