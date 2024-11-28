@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn7kpytcc8vb6"]
+[gd_scene load_steps=9 format=3 uid="uid://cn7kpytcc8vb6"]
 
 [ext_resource type="Script" path="res://Tank/scripts/tank_rigidbody.gd" id="1_amvpl"]
 [ext_resource type="Script" path="res://Tank/scripts/tank_suspension.gd" id="2_45dcj"]
+[ext_resource type="PackedScene" uid="uid://d0n1mrhpljpa7" path="res://Gun_Test/Gun/Gun.tscn" id="2_ebmt3"]
 [ext_resource type="Resource" uid="uid://d3qtdos2pom6t" path="res://Tank/suspension_params.tres" id="3_no2mk"]
 [ext_resource type="PackedScene" uid="uid://cu2yufsq3wm2e" path="res://Tank/roller_pivot.tscn" id="4_r5jje"]
 [ext_resource type="Script" path="res://Tank/scripts/tank_down_force.gd" id="5_ccc8s"]
@@ -21,6 +22,9 @@ script = ExtResource("1_amvpl")
 POSITIONED_UP_FORCES = [NodePath("Suspension1"), NodePath("Suspension2"), NodePath("Suspension3")]
 DOWN_FORCES = [NodePath("Traction")]
 FORWARD_FORCES = [NodePath("ForwardMovement")]
+
+[node name="Gun" parent="." instance=ExtResource("2_ebmt3")]
+position = Vector2(197, -21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -17.5)

@@ -1,6 +1,6 @@
 extends MasterBullet
 
-const Speed = 300
+
 var Fired : bool = 0
 var ExplosionRef = load("res://Gun_Test/Bullets/Explosion.tscn")
 var mainscene

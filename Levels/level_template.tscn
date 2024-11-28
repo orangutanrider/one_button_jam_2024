@@ -15,7 +15,7 @@ position = Vector2(283, 635)
 gravity_scale = 0.01
 
 [node name="Camera2D" type="Camera2D" parent="TankBody"]
-position = Vector2(1497, -280)
+position = Vector2(814, -216)
 zoom = Vector2(0.3, 0.3)
 
 [node name="Ground" type="Node2D" parent="."]
