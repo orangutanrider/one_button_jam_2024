@@ -1,0 +1,93 @@
+[gd_scene load_steps=17 format=3 uid="uid://epub6fc8kipt"]
+
+[ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_4vuiw"]
+[ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_sbsdg"]
+[ext_resource type="PackedScene" uid="uid://bbf0iwq528edl" path="res://DeckSystem/deck.tscn" id="3_aq3qk"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="4_rb3j5"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="5_ntbt8"]
+[ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="6_dis8b"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure_res.gd" id="7_l46wj"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="8_7is2o"]
+[ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="9_2icce"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt.gd" id="10_j5hwx"]
+[ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/res/conveyor_res.tres" id="11_drrkw"]
+[ext_resource type="Shape2D" uid="uid://ddwm33113h1iw" path="res://DeckSystem/res/conveyor_shape.tres" id="12_i34ol"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/jettison_trigger.gd" id="13_4dbr7"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="14_s8dc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dki"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebdv"]
+size = Vector2(25.25, 20)
+
+[node name="DeckSystem" type="Node2D"]
+
+[node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
+position = Vector2(527, 43)
+script = ExtResource("1_4vuiw")
+params = ExtResource("2_sbsdg")
+draw_pile = NodePath("../DrawPile")
+discard_pile = NodePath("../DiscardPile")
+
+[node name="DrawPile" parent="." instance=ExtResource("3_aq3qk")]
+
+[node name="DiscardPile" type="Node" parent="."]
+script = ExtResource("4_rb3j5")
+
+[node name="ConveyorBelt" type="Node2D" parent="."]
+
+[node name="Input" type="Node" parent="ConveyorBelt"]
+script = ExtResource("5_ntbt8")
+params = ExtResource("6_dis8b")
+
+[node name="EnginePressure" type="Node" parent="ConveyorBelt"]
+script = ExtResource("7_l46wj")
+
+[node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]
+position = Vector2(133, 5)
+collision_mask = 64
+script = ExtResource("8_7is2o")
+params = ExtResource("9_2icce")
+
+[node name="Conveyor" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(316, 44)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("10_j5hwx")
+params = ExtResource("11_drrkw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/Conveyor"]
+shape = ExtResource("12_i34ol")
+
+[node name="JettisonTrigger" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(57, 44)
+scale = Vector2(-1.62359, 4.29162)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("13_4dbr7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
+shape = SubResource("RectangleShape2D_w7dki")
+
+[node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(-32, -131)
+scale = Vector2(36.8114, 6.74649)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("14_s8dc6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/DiscardTrigger"]
+shape = SubResource("RectangleShape2D_w7dki")
+
+[node name="StaticCollision" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="bump" type="CollisionShape2D" parent="StaticCollision"]
+position = Vector2(133, -7)
+shape = SubResource("RectangleShape2D_7ebdv")
+
+[node name="right" type="CollisionShape2D" parent="StaticCollision"]
+position = Vector2(574, 42)
+shape = SubResource("RectangleShape2D_7ebdv")

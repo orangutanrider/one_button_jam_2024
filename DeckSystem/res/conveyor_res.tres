@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ConveyorBeltRes" load_steps=2 format=3 uid="uid://hl3ytboesg3u"]
+
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt_res.gd" id="1_goy1m"]
+
+[resource]
+script = ExtResource("1_goy1m")
+base_speed = 20.0
+accel = 20.0
+deccel = 20.0
+churn_bonus = 180.0

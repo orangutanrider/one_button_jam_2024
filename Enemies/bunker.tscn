@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmadsdug41qt5"]
+
+[ext_resource type="Script" path="res://Enemies/bunker.gd" id="1_8c28m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6kww"]
+size = Vector2(20, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjdw4"]
+size = Vector2(120, 120)
+
+[node name="Bunker" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_8c28m")
+hp = 10
+attack = 3
+attackCooldown = 4
+attackDistance = 3000
+scanPeriod = 10
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.477336, 0.26112, 0.539681, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 58.5)
+shape = SubResource("RectangleShape2D_f6kww")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_hjdw4")

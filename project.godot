@@ -17,6 +17,8 @@ config/icon="res://icon.svg"
 [global_group]
 
 cards=""
+enemy=""
+enemy_projectiles=""
 
 [input]
 
@@ -31,3 +33,7 @@ BUTTON1={
 2d_physics/layer_1="Static world"
 2d_physics/layer_2="Tank rollers"
 2d_physics/layer_3="Tank body"
+2d_physics/layer_4="Deck system collisions"
+2d_physics/layer_5="Conveyor belt"
+2d_physics/layer_6="Card bumpers"
+2d_physics/layer_7="Card triggers"
