@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b77ufvx0kverl"]
+[gd_scene load_steps=17 format=3 uid="uid://b77ufvx0kverl"]
 
 [ext_resource type="PackedScene" uid="uid://bbf0iwq528edl" path="res://DeckSystem/deck.tscn" id="1_dtueu"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_uug5s"]
@@ -12,12 +12,18 @@
 [ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="9_7pk0c"]
 [ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/cursor_params.tres" id="9_hbfni"]
 [ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/conveyor_res.tres" id="11_ikrmt"]
+[ext_resource type="Shape2D" uid="uid://ddwm33113h1iw" path="res://DeckSystem/conveyor_shape.tres" id="12_8jy8x"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/jettison_trigger.gd" id="13_tcl74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dki"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebdv"]
+size = Vector2(25.25, 20)
+
 [node name="DeckSystem" type="Node2D"]
 
-[node name="DrawMachine" type="Node" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
+[node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
+position = Vector2(527, 43)
 script = ExtResource("1_uug5s")
 params = ExtResource("2_6xdhb")
 draw_pile = NodePath("../DrawPile")
@@ -38,11 +44,13 @@ params = ExtResource("6_l0rdh")
 script = ExtResource("6_thw3v")
 
 [node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]
+position = Vector2(133, 5)
 collision_mask = 64
 script = ExtResource("5_5ehfm")
 params = ExtResource("9_hbfni")
 
 [node name="Conveyor" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(316, 44)
 collision_layer = 16
 collision_mask = 0
 monitoring = false
@@ -50,12 +58,36 @@ script = ExtResource("5_2yeou")
 params = ExtResource("11_ikrmt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/Conveyor"]
+shape = ExtResource("12_8jy8x")
+
+[node name="JettisonTrigger" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(57, 44)
+scale = Vector2(-1.62359, 4.29162)
+collision_layer = 0
+collision_mask = 64
+script = ExtResource("13_tcl74")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
 shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(-32, -131)
+scale = Vector2(36.8114, 6.74649)
 collision_layer = 0
 collision_mask = 64
 script = ExtResource("9_7pk0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/DiscardTrigger"]
 shape = SubResource("RectangleShape2D_w7dki")
+
+[node name="StaticCollision" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="bump" type="CollisionShape2D" parent="StaticCollision"]
+position = Vector2(133, -7)
+shape = SubResource("RectangleShape2D_7ebdv")
+
+[node name="right" type="CollisionShape2D" parent="StaticCollision"]
+position = Vector2(574, 42)
+shape = SubResource("RectangleShape2D_7ebdv")
