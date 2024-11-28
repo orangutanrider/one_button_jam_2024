@@ -24,6 +24,57 @@ size = Vector2(25.25, 20)
 
 [node name="DeckSystem" type="Node2D"]
 
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="ColorRect4" type="ColorRect" parent="Visual"]
+offset_left = -402.0
+offset_top = -199.0
+offset_right = 339.0
+offset_bottom = -62.0
+color = Color(2.02149e-06, 0.794962, 0.507322, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Visual"]
+offset_left = 120.0
+offset_top = -17.0
+offset_right = 146.0
+offset_bottom = 3.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Visual"]
+offset_left = 122.0
+offset_top = -19.0
+offset_right = 146.0
+offset_bottom = 100.0
+color = Color(0.42, 0.42, 0.42, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Visual"]
+offset_left = 515.0
+offset_top = -18.0
+offset_right = 539.0
+offset_bottom = 101.0
+color = Color(0.42, 0.42, 0.42, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Visual"]
+offset_left = 41.0
+offset_top = 1.0
+offset_right = 71.0
+offset_bottom = 88.0
+color = Color(3.85046e-07, 0.290617, 0.41297, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Visual"]
+offset_left = 73.0
+offset_top = 8.0
+offset_right = 559.0
+offset_bottom = 81.0
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Visual"]
+offset_left = 562.0
+offset_top = 32.0
+offset_right = 586.0
+offset_bottom = 52.0
+color = Color(0, 0, 0, 1)
+
 [node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
 position = Vector2(527, 43)
 script = ExtResource("1_4vuiw")
