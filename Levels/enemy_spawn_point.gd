@@ -9,22 +9,22 @@ var crawler_scene: PackedScene = preload("res://Enemies/crawler.tscn")
 var flyer_scene: PackedScene = preload("res://Enemies/flyer.tscn")
 var bunker_scene: PackedScene = preload("res://Enemies/bunker.tscn")
 var bomber_scene: PackedScene = preload("res://Enemies/bomber.tscn")
-var enemies = [ 
-	{"count": crawlerN, "scene": crawler_scene},
-	{"count": flyerN, "scene": flyer_scene}, 
-	{"count": bunkerN, "scene": bunker_scene}, 
-	{"count": bomberN, "scene": bomber_scene} 
-	]
+var enemies: Array
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("enemy")
+	enemies = [ 
+	{"count": crawlerN, "scene": crawler_scene},
+	{"count": flyerN, "scene": flyer_scene}, 
+	{"count": bunkerN, "scene": bunker_scene}, 
+	{"count": bomberN, "scene": bomber_scene} 
+	]
 	area.connect("area_shape_entered",_on_area2d_area_shape_entered)
 
 func _on_area2d_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if !area.get_parent().is_in_group("enemy"):
-		print("spawn")
 		call_deferred("_spawn_enemies")
 		self.queue_free()
 

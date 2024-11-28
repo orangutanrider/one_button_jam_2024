@@ -54,3 +54,14 @@ attackDistance = 10000
 
 [node name="enemySpawnPoint" parent="." instance=ExtResource("7_jg2t3")]
 position = Vector2(2953, 690)
+crawlerN = 100
+flyerN = 100
+bunkerN = 3
+bomberN = 10
+
+[node name="enemySpawnPoint2" parent="." instance=ExtResource("7_jg2t3")]
+position = Vector2(7227, -439)
+crawlerN = 300
+flyerN = 300
+bunkerN = 5
+bomberN = 15
