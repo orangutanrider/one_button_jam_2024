@@ -1,11 +1,8 @@
 extends Node
 
-## Optional initialization cards
-@export var init: Node
-
 var count: int = 0
 
-func _ready() -> void:
+func initialize(init: Node) -> void:
 	if init == null: return
 
 	var stack = init.get_children()
@@ -28,12 +25,20 @@ func is_empty() -> bool:
 ## It is also expected that the caller will be the one to ghost or un-ghost the card
 func draw_a_card() -> Node2D:
 	# you might be able to use get_child here instead
-	var card: Node2D = find_child("card-" + str(count), false, true) 
+	var card_name: String = "card-" + str(count)
+	var card: Node2D = find_child(card_name, false, false) 
+
+	if card == null: 
+		push_warning("Attempted to find child with name: \"", card_name, "\" but recieved null")
+		return 
+
+	remove_child(card)
 	count = count - 1
 	return card
 
 func add_ontop(card: Node):
 	count = count + 1
-	card.make_ghost()
+	card.ghost()
 	card.name = "card-" + str(count)
-	add_child(card)
+	card.get_parent().remove_child(card)
+	add_child.call_deferred(card)

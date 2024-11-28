@@ -18,27 +18,27 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(motion * delta)
 
 func ghost():
-	sleeping = true
-	freeze = true
+	set_deferred("sleeping", true)
+	set_deferred("freeze", true)
 
-	lock_rotation = true
-	rotation = 0.0
-	gravity_scale = 0.0
+	set_deferred("lock_rotation", true)
+	set_deferred("rotation", 0.0)
+	set_deferred("gravity_scale", 0.0)
 	pass
 
 func un_ghost():
-	sleeping = false
-	freeze = false
+	set_deferred("sleeping", false)
+	set_deferred("freeze", false)
 
-	lock_rotation = true
-	rotation = 0.0
-	gravity_scale = 0.0
+	set_deferred("lock_rotation", true)
+	set_deferred("rotation", 0.0)
+	set_deferred("gravity_scale", 0.0)
 	pass
 
 func jettison_trigger():
-	lock_rotation = false
-	angular_velocity = params.jettison_angular
-	gravity_scale = params.jettison_grav
+	set_deferred("lock_rotation", false)
+	set_deferred("angular_velocity", params.jettison_angular)
+	set_deferred("gravity_scale", params.jettison_grav)
 	pass
 
 func bump_trigger(motion: float):

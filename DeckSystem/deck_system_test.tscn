@@ -1,14 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://epub6fc8kipt"]
+[gd_scene load_steps=20 format=3 uid="uid://epub6fc8kipt"]
 
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_4vuiw"]
 [ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_sbsdg"]
-[ext_resource type="PackedScene" uid="uid://bbf0iwq528edl" path="res://DeckSystem/deck.tscn" id="3_aq3qk"]
+[ext_resource type="PackedScene" uid="uid://djuk0ats3jaev" path="res://Cards/core/test_card.tscn" id="4_34fny"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/initializer.gd" id="4_et6el"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="4_rb3j5"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="5_ntbt8"]
 [ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="6_dis8b"]
-[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure_res.gd" id="7_l46wj"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="8_7is2o"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="8_7n1sw"]
 [ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="9_2icce"]
+[ext_resource type="Resource" uid="uid://bot4oo3bc224u" path="res://DeckSystem/res/conveyor_engine_pressure_params.tres" id="9_rodb0"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt.gd" id="10_j5hwx"]
 [ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/res/conveyor_res.tres" id="11_drrkw"]
 [ext_resource type="Shape2D" uid="uid://ddwm33113h1iw" path="res://DeckSystem/res/conveyor_shape.tres" id="12_i34ol"]
@@ -16,11 +18,65 @@
 [ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="14_s8dc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dki"]
+size = Vector2(89.4536, 22.3692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyjqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebdv"]
 size = Vector2(25.25, 20)
 
 [node name="DeckSystem" type="Node2D"]
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="ColorRect4" type="ColorRect" parent="Visual"]
+offset_left = -402.0
+offset_top = -199.0
+offset_right = 339.0
+offset_bottom = -62.0
+color = Color(2.02149e-06, 0.794962, 0.507322, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="Visual"]
+offset_left = 120.0
+offset_top = -17.0
+offset_right = 146.0
+offset_bottom = 3.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Visual"]
+offset_left = 122.0
+offset_top = -19.0
+offset_right = 146.0
+offset_bottom = 100.0
+color = Color(0.42, 0.42, 0.42, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="Visual"]
+offset_left = 515.0
+offset_top = -18.0
+offset_right = 539.0
+offset_bottom = 101.0
+color = Color(0.42, 0.42, 0.42, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Visual"]
+offset_left = 41.0
+offset_top = 1.0
+offset_right = 71.0
+offset_bottom = 88.0
+color = Color(3.85046e-07, 0.290617, 0.41297, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Visual"]
+offset_left = 73.0
+offset_top = 8.0
+offset_right = 559.0
+offset_bottom = 81.0
+color = Color(0.17, 0.17, 0.17, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Visual"]
+offset_left = 562.0
+offset_top = 32.0
+offset_right = 586.0
+offset_bottom = 52.0
+color = Color(0, 0, 0, 1)
 
 [node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
 position = Vector2(527, 43)
@@ -29,7 +85,51 @@ params = ExtResource("2_sbsdg")
 draw_pile = NodePath("../DrawPile")
 discard_pile = NodePath("../DiscardPile")
 
-[node name="DrawPile" parent="." instance=ExtResource("3_aq3qk")]
+[node name="DrawPile" type="Node" parent="."]
+script = ExtResource("4_rb3j5")
+
+[node name="Initializer" type="Node" parent="DrawPile" node_paths=PackedStringArray("card_pile", "discard_pile")]
+script = ExtResource("4_et6el")
+card_pile = NodePath("..")
+discard_pile = NodePath("../../DiscardPile")
+
+[node name="TestCard" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard2" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard3" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard4" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard5" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard6" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard7" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard8" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard9" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard10" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard11" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard12" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard13" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard14" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard15" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard16" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard17" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard18" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
+
+[node name="TestCard19" parent="DrawPile/Initializer" instance=ExtResource("4_34fny")]
 
 [node name="DiscardPile" type="Node" parent="."]
 script = ExtResource("4_rb3j5")
@@ -40,8 +140,10 @@ script = ExtResource("4_rb3j5")
 script = ExtResource("5_ntbt8")
 params = ExtResource("6_dis8b")
 
-[node name="EnginePressure" type="Node" parent="ConveyorBelt"]
-script = ExtResource("7_l46wj")
+[node name="EnginePressure" type="Node" parent="ConveyorBelt" node_paths=PackedStringArray("conveyor_belt")]
+script = ExtResource("8_7n1sw")
+params = ExtResource("9_rodb0")
+conveyor_belt = NodePath("../Conveyor")
 
 [node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]
 position = Vector2(133, 5)
@@ -63,26 +165,27 @@ shape = ExtResource("12_i34ol")
 [node name="JettisonTrigger" type="Area2D" parent="ConveyorBelt"]
 position = Vector2(57, 44)
 scale = Vector2(-1.62359, 4.29162)
-collision_layer = 0
+collision_layer = 64
 collision_mask = 64
 script = ExtResource("13_4dbr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
+position = Vector2(-34.7268, 0.233014)
 shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
 position = Vector2(-32, -131)
 scale = Vector2(36.8114, 6.74649)
-collision_layer = 0
+collision_layer = 64
 collision_mask = 64
 script = ExtResource("14_s8dc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/DiscardTrigger"]
-shape = SubResource("RectangleShape2D_w7dki")
+shape = SubResource("RectangleShape2D_gyjqx")
 
 [node name="StaticCollision" type="StaticBody2D" parent="."]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 128
 
 [node name="bump" type="CollisionShape2D" parent="StaticCollision"]
 position = Vector2(133, -7)
@@ -91,3 +194,6 @@ shape = SubResource("RectangleShape2D_7ebdv")
 [node name="right" type="CollisionShape2D" parent="StaticCollision"]
 position = Vector2(574, 42)
 shape = SubResource("RectangleShape2D_7ebdv")
+
+[connection signal="area_entered" from="ConveyorBelt/JettisonTrigger" to="ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
+[connection signal="area_entered" from="ConveyorBelt/DiscardTrigger" to="ConveyorBelt/DiscardTrigger" method="_on_area_entered"]

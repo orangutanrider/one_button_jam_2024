@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ConveyorEnginePressureRes" load_steps=2 format=3 uid="uid://bot4oo3bc224u"]
+
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure_res.gd" id="1_lg6d0"]
+
+[resource]
+script = ExtResource("1_lg6d0")
+SCALAR = 1.0

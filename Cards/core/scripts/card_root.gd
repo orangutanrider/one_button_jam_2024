@@ -10,6 +10,9 @@ extends Node2D
 @export var collision: Node
 @export var physical: Node
 
+func flash_discard_pile(flash: Node):
+	discard_pile = flash
+	
 func draw_trigger():
 	# todo: animation
 	un_ghost()
@@ -19,22 +22,18 @@ func _ready() -> void:
 	bang.played.connect(played)
 	bang.armed.connect(armed)
 	bang.discarded.connect(discarded)
+	ghost()
 
 func armed():
 	collision.ghost()
 	pass
 
 func discarded():
-	add_to_discard_and_ghost()
+	discard_pile.add_ontop(self)
 	pass
 
 func played():
-	add_to_discard_and_ghost()
-	pass
-
-func add_to_discard_and_ghost():
 	discard_pile.add_ontop(self)
-	ghost()
 	pass
 
 func ghost():
