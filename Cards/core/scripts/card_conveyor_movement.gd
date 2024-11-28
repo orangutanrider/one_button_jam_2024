@@ -1,33 +1,35 @@
-# Handles the movement of the card along the belt and up the discard-duct
+extends RayCast2D
 
-extends Node2D
-
-var active: bool = false
 var velocity = Vector2.ZERO
 var collideSpeedMultiplier = 1
 
-var discarding = false
+var jettisoned: bool = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if !active:
+# -1 represents belonging to no block
+var block_id: int = -1
+
+func _physics_process(delta: float) -> void:
+	if !enabled:
 		return
-
-	if active:
-		var motion = velocity * delta * collideSpeedMultiplier
-		#var collision = move_and_collide(motion) 
-		#if collision: 
-		#	var other = collision.get_collider() 
-		#	if other.is_in_group("cards") && other.position.x > position.x: 
-		#		collideSpeedMultiplier += 1
-		#else:
-		#	collideSpeedMultiplier = 1
-		if !discarding:
-			#position.y = beltLineY
-			rotation = 0 
-
-func updateVelocity(v: int) -> void: 
-	velocity = Vector2(-v, 0)
 	
-func updateOnBelt(state : bool) -> void:
-	active = state
+	if !is_colliding():
+		return
+    
+	var detection: Object = get_collider()
+	if detection == null:
+		push_warning("Unexpected null detection")
+		return
+	
+	var conveyor_speed: float = detection.read_belt_speed()
+
+
+func jettison_trigger():
+	jettisoned = true
+	
+func ghost():
+	enabled = false
+	jettisoned = false
+
+func un_ghost():
+	enabled = true
+	jettisoned = false
