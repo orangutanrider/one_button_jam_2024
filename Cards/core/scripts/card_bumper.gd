@@ -7,7 +7,7 @@ extends Area2D
 
 signal bump(movement: float)
 
-func area_entered(area: Area2D):
+func _on_area_entered(area: Area2D):
 	if area.position.x < position.x: # If the intersecting area is further to the left than this area is (then do nothing)
 		return
 	print("E")
