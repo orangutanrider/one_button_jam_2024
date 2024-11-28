@@ -1,5 +1,16 @@
 extends Area2D
 
-# -1 represents belonging to no block
-var block_id: int = -1
-var index_in_block = 0
+func area_entered(area: Area2D):
+	pass
+
+func jettison_trigger():
+	monitorable = false
+	monitoring = false
+
+func un_ghost():
+	monitorable = true
+	monitoring = true
+
+func ghost():
+	monitorable = false
+	monitoring = false
