@@ -1,11 +1,8 @@
 extends Node
 
-## Optional initialization cards
-@export var init: Node
-
 var count: int = 0
 
-func _ready() -> void:
+func initialize(init: Node) -> void:
 	if init == null: return
 
 	var stack = init.get_children()
