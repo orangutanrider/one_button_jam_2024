@@ -25,7 +25,7 @@ func is_empty() -> bool:
 ## It is also expected that the caller will be the one to ghost or un-ghost the card
 func draw_a_card() -> Node2D:
 	# you might be able to use get_child here instead
-	var card_name: String = "card-" + str(count)
+	var card_name: String = "card-" + str(count - 1)
 	var card: Node2D = get_node(card_name) 
 
 	if card == null: 
@@ -37,8 +37,8 @@ func draw_a_card() -> Node2D:
 	return card
 
 func add_ontop(card: Node):
-	count = count + 1
-	card.name = "card-" + str(count)
 	if card.get_parent():
 		card.get_parent().remove_child(card)
+	card.name = "card-" + str(count)
+	count = count + 1
 	add_child.call_deferred(card)
