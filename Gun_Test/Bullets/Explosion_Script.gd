@@ -7,7 +7,6 @@ func _ready() -> void:
 
 
 func _on_despawn_timer_timeout() -> void:
-	print(self.transform)
 	queue_free()
 
 func _on_get_enemies_timeout() -> void:
@@ -33,10 +32,9 @@ func _on_get_enemies_timeout() -> void:
 	#Process Circle Cast (Deal explosion damage)
 	print(result)
 	const Damage = 300
-
+	
 	for item in result:
 		var hitobj = item.collider
 		if hitobj.collision_layer & (1<<1):
 			hitobj.get_parent()._take_damage(Damage)
-
 	$DespawnTimer.start() # start Despawn Timer
