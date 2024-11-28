@@ -1,10 +1,10 @@
 extends Node2D
-## var TestBullet1 = load("res://Gun_Test/Bullets/RegularBullet.tscn") #Debug
-## var TestBullet2 = load("res://Gun_Test/Bullets/ExplosiveBullet.tscn") #Debug
-##var flipflop : bool = false #Debug
+var TestBullet1 = load("res://Gun_Test/Bullets/BulletTypes/AP-Shell.tscn") #Debug
+var TestBullet2 = load("res://Gun_Test/Bullets/BulletTypes/HE-Shell.tscn") #Debug
+var flipflop : bool = false #Debug
 var mainscene
-var LoadedBullets = []
-
+var BulletsToLoad = []
+var BulletToFire
 
 func _ready() -> void:
 	mainscene = get_tree().root.get_child(0)
@@ -15,29 +15,32 @@ func AddNewBullets(New_Bullets:Array) -> void:
 		for New_Bullet in New_Bullets: ##Load/Spawn All Bullets (but don't fire)
 			var loopholding
 			loopholding = New_Bullet.instantiate()
-			LoadedBullets.append(loopholding)
+			BulletsToLoad.append(loopholding)
 			mainscene.add_child(loopholding)
 		
 		if ($Shoottimer.is_stopped()): ## If the timer is currently going start it to start firing the new bullets
-			$Shoottimer.start(LoadedBullets.back().CoolDown) 
-	
+			_startFiring()
+
+func _startFiring() -> void:
+	$Shoottimer.start(BulletsToLoad.back().CoolDown)
+	BulletToFire=BulletsToLoad.back() 
 
 func _on_shoottimer_timeout() -> void:
 	##Set rotation and position of new bullet
-	LoadedBullets.pop_back()._fire($BulletEmitLocation.global_position, self.rotation_degrees)
-	
+	BulletToFire._fire($BulletEmitLocation.global_position, self.rotation_degrees)
+	BulletsToLoad.remove_at(BulletsToLoad.find(BulletToFire))
 	## Set another timer if there's more bullets or stop the timer if there's none
-	if !(LoadedBullets.is_empty()):
-		$Shoottimer.wait_time = LoadedBullets.back().CoolDown
+	if !(BulletsToLoad.is_empty()):
+		_startFiring()
 	else:
 		$Shoottimer.stop()
-
+		BulletToFire = null
 #Debug
-## func _process(delta: float) -> void:
-## 	if Input.is_action_just_pressed("BUTTON1"):
-## 		if flipflop:
-##			AddNewBullets([TestBullet1])
-##			flipflop = 0
-##		else:
-##			AddNewBullets([TestBullet2])
-##			flipflop = 1
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("BUTTON1"):
+		if flipflop:
+			AddNewBullets([TestBullet1])
+			flipflop = 0
+		else:
+			AddNewBullets([TestBullet2])
+			flipflop = 1
