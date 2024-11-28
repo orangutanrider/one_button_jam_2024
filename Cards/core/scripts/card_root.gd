@@ -29,16 +29,11 @@ func armed():
 	pass
 
 func discarded():
-	add_to_discard_and_ghost()
+	discard_pile.add_ontop(self)
 	pass
 
 func played():
-	add_to_discard_and_ghost()
-	pass
-
-func add_to_discard_and_ghost():
 	discard_pile.add_ontop(self)
-	ghost()
 	pass
 
 func ghost():

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var engine_pressure: Node
 

@@ -31,6 +31,6 @@ func draw_a_card() -> Node2D:
 
 func add_ontop(card: Node):
 	count = count + 1
-	card.make_ghost()
+	card.ghost()
 	card.name = "card-" + str(count)
 	add_child(card)

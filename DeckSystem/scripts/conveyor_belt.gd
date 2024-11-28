@@ -5,7 +5,10 @@ extends Area2D
 var engine_pressure_bonus: float = 0.0
 var churning: bool = false
 
-var belt_speed = params.base_speed
+var belt_speed = 0.0
+
+func _ready() -> void:
+	belt_speed = params.base_speed
 
 func set_pressure_bonus(val: float):
 	engine_pressure_bonus = val
