@@ -25,7 +25,14 @@ func is_empty() -> bool:
 ## It is also expected that the caller will be the one to ghost or un-ghost the card
 func draw_a_card() -> Node2D:
 	# you might be able to use get_child here instead
-	var card: Node2D = find_child("card-" + str(count), false, true) 
+	var card_name: String = "card-" + str(count)
+	var card: Node2D = find_child(card_name, false, true) 
+
+	if card == null: 
+		push_warning("Attempted to find child with name: \"", card_name, "\" but recieved null")
+		return 
+
+	remove_child(card)
 	count = count - 1
 	return card
 
