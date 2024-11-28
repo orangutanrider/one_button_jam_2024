@@ -26,7 +26,7 @@ func is_empty() -> bool:
 func draw_a_card() -> Node2D:
 	# you might be able to use get_child here instead
 	var card_name: String = "card-" + str(count)
-	var card: Node2D = find_child(card_name, false, true) 
+	var card: Node2D = find_child(card_name, false, false) 
 
 	if card == null: 
 		push_warning("Attempted to find child with name: \"", card_name, "\" but recieved null")
