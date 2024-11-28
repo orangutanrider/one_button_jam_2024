@@ -2,7 +2,7 @@
 
 extends Area2D
 
-@export var params: CardBangRes
+@export var params: CardMovementRes
 @export var collision_shape: RectangleShape2D
 
 signal bump(movement: float)
@@ -10,7 +10,7 @@ signal bump(movement: float)
 func area_entered(area: Area2D):
 	if area.position.x < position.x: # If the intersecting area is further to the left than this area is (then do nothing)
 		return
-	
+	print("E")
 	shuffle(area)
 
 # The actor pushes the subject

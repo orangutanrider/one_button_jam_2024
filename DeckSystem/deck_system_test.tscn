@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://epub6fc8kipt"]
+[gd_scene load_steps=20 format=3 uid="uid://epub6fc8kipt"]
 
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_4vuiw"]
 [ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_sbsdg"]
@@ -18,6 +18,9 @@
 [ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="14_s8dc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dki"]
+size = Vector2(89.4536, 22.3692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyjqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7ebdv"]
 size = Vector2(25.25, 20)
@@ -162,22 +165,24 @@ shape = ExtResource("12_i34ol")
 [node name="JettisonTrigger" type="Area2D" parent="ConveyorBelt"]
 position = Vector2(57, 44)
 scale = Vector2(-1.62359, 4.29162)
-collision_layer = 0
+collision_layer = 64
 collision_mask = 64
 script = ExtResource("13_4dbr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
+position = Vector2(-34.7268, 0.233014)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
 position = Vector2(-32, -131)
 scale = Vector2(36.8114, 6.74649)
-collision_layer = 0
+collision_layer = 64
 collision_mask = 64
 script = ExtResource("14_s8dc6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/DiscardTrigger"]
-shape = SubResource("RectangleShape2D_w7dki")
+shape = SubResource("RectangleShape2D_gyjqx")
 
 [node name="StaticCollision" type="StaticBody2D" parent="."]
 collision_layer = 8
