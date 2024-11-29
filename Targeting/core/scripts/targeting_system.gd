@@ -9,13 +9,26 @@ enum HardConstraint { NONE, AIR_ONLY, GROUND_ONLY }
 var hard_constraint: HardConstraint = HardConstraint.NONE
 
 var target: Area2D = null
-var detection: Array[Area2D]
+var detection: Dictionary
 
 func clear():
-	pass
+	detection.clear()
+	target = null
 
-func area_entered():
-	pass
+# Detection
+func area_entered(area: Area2D):
+	if hard_constraint == HardConstraint.NONE:
+		detection.get_or_add(area, null)
+		return
+	
+	if hard_constraint == HardConstraint.AIR_ONLY && area.is_airborne_type():
+		detection.get_or_add(area, null)
+		return
+	
+	if hard_constraint == HardConstraint.GROUND_ONLY && !area.is_airborne_type():
+		detection.get_or_add(area, null)
+		return
 
-func area_exited():
-	pass
+func area_exited(area: Area2D):
+	detection.erase(area)
+
