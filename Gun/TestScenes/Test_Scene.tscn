@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmruf4045dc1s"]
 
-[ext_resource type="PackedScene" uid="uid://d0n1mrhpljpa7" path="res://Gun_Test/Gun/Gun.tscn" id="1_huu4y"]
+[ext_resource type="PackedScene" uid="uid://d0n1mrhpljpa7" path="res://Gun/Gun/Gun.tscn" id="1_huu4y"]
 [ext_resource type="PackedScene" uid="uid://bj2cy4m2860g7" path="res://Enemies/crawler.tscn" id="3_a3ry6"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="4_o8gwk"]
 

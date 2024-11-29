@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://wukljnnicdwi"]
 
-[ext_resource type="PackedScene" uid="uid://de2xd5kk32rma" path="res://Gun_Test/Bullets/MasterBullet.tscn" id="1_uqshf"]
-[ext_resource type="Script" path="res://Gun_Test/Bullets/BulletTypes/HE-Shell_Script.gd" id="2_4hul2"]
+[ext_resource type="PackedScene" uid="uid://de2xd5kk32rma" path="res://Gun/Bullets/MasterBullet.tscn" id="1_uqshf"]
+[ext_resource type="Script" path="res://Gun/Bullets/BulletTypes/HE-Shell_Script.gd" id="2_4hul2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_faf4b"]
 

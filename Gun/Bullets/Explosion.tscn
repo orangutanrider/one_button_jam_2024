@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://2yujubb0fpdy"]
 
-[ext_resource type="Texture2D" uid="uid://bggr1eqytj1f5" path="res://Gun_Test/Bullets/explosiob.png" id="1_praog"]
-[ext_resource type="Script" path="res://Gun_Test/Bullets/Explosion_Script.gd" id="1_whed1"]
+[ext_resource type="Texture2D" uid="uid://bggr1eqytj1f5" path="res://Gun/Bullets/explosiob.png" id="1_praog"]
+[ext_resource type="Script" path="res://Gun/Bullets/Explosion_Script.gd" id="1_whed1"]
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_whed1")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bggr1eqytj1f5"
-path="res://.godot/imported/explosiob.png-72a65214b336fb9e9af789d5b5b66144.ctex"
+path="res://.godot/imported/explosiob.png-6a27966686ed677ee399458c62fc6fc0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Gun_Test/Bullets/explosiob.png"
-dest_files=["res://.godot/imported/explosiob.png-72a65214b336fb9e9af789d5b5b66144.ctex"]
+source_file="res://Gun/Bullets/explosiob.png"
+dest_files=["res://.godot/imported/explosiob.png-6a27966686ed677ee399458c62fc6fc0.ctex"]
 
 [params]
 
