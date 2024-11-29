@@ -2,11 +2,8 @@
 
 extends Node
 
-# Internal reference
-@export var root: Node
-
 func _ready() -> void:
-	root.played.connect(discard_root)
+	get_parent().played.connect(played)
 
-func discard_root():
-	root.discarded()
+func played():
+	get_parent().discarded()

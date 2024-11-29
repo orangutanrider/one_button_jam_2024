@@ -3,14 +3,13 @@ extends Node
 # params
 @export var range_band: Shape2D
 
-# Internal reference
-@export var root: Node
+# External reference
 @export var range_band_man: Node
 
 func _ready() -> void:
-	root.played.connect(played)
+	get_parent().played.connect(played)
 
 func played():
-	root.ghost()
+	get_parent().ghost()
 	range_band_man.flash_shape(range_band)
 	range_band_man.attach(self)

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="CardRootRes" load_steps=2 format=3 uid="uid://gibqlnb0yg7g"]
+
+[ext_resource type="Script" path="res://Cards/core/scripts/card_root_res.gd" id="1_802px"]
+
+[resource]
+script = ExtResource("1_802px")
+execution_delay = 0.66

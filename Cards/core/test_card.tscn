@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://djuk0ats3jaev"]
+[gd_scene load_steps=5 format=3 uid="uid://djuk0ats3jaev"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_ndjmx"]
+[ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_s58hb"]
 [ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="2_wvwug"]
+[ext_resource type="Script" path="res://Cards/core/scripts/played/p_discard.gd" id="3_8ar6q"]
 
 [node name="TestCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical")]
 position = Vector2(2, 0)
 script = ExtResource("1_ndjmx")
+params = ExtResource("2_s58hb")
 bang = NodePath("CardPhysical/TriggerBang")
 collision = NodePath("CardPhysical/Collider")
 physical = NodePath("CardPhysical")
@@ -17,3 +20,6 @@ offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("3_8ar6q")

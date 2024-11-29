@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu1expwdkv3p8"]
+[gd_scene load_steps=3 format=3 uid="uid://bu1expwdkv3p8"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_6xdxh"]
+[ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_vihyy"]
 
 [node name="CardRoot" type="Node2D"]
 script = ExtResource("1_6xdxh")
+params = ExtResource("2_vihyy")

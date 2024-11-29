@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8hcsxjvnjful"]
+[gd_scene load_steps=10 format=3 uid="uid://c8hcsxjvnjful"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_physical.gd" id="1_1iqkl"]
 [ext_resource type="Shape2D" uid="uid://bdme5lq538l1t" path="res://Cards/core/res/card_bumper_shape.tres" id="2_hu7op"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bumper.gd" id="3_gwcx1"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bang.gd" id="3_jdc7x"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_collision.gd" id="3_us1pb"]
-[ext_resource type="Resource" uid="uid://4ygpod2eyteb" path="res://Cards/core/res/card_bang_params.tres" id="4_cjmdr"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_conveyor_movement.gd" id="4_s2lsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qx4r"]
@@ -28,7 +27,6 @@ collision_mask = 64
 monitoring = false
 monitorable = false
 script = ExtResource("3_jdc7x")
-params = ExtResource("4_cjmdr")
 
 [node name="Shape" type="CollisionShape2D" parent="TriggerBang"]
 shape = SubResource("RectangleShape2D_2qx4r")

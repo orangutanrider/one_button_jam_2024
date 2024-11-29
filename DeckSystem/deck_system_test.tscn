@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="14_s8dc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w7dki"]
-size = Vector2(89.4536, 22.3692)
+size = Vector2(18.6229, 22.3692)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gyjqx"]
 
@@ -136,9 +136,11 @@ script = ExtResource("4_rb3j5")
 
 [node name="ConveyorBelt" type="Node2D" parent="."]
 
-[node name="Input" type="Node" parent="ConveyorBelt"]
+[node name="Input" type="Node" parent="ConveyorBelt" node_paths=PackedStringArray("conveyor_cursor", "conveyor")]
 script = ExtResource("5_ntbt8")
 params = ExtResource("6_dis8b")
+conveyor_cursor = NodePath("../PlayCursor")
+conveyor = NodePath("../Conveyor")
 
 [node name="EnginePressure" type="Node" parent="ConveyorBelt" node_paths=PackedStringArray("conveyor_belt")]
 script = ExtResource("8_7n1sw")
@@ -147,7 +149,11 @@ conveyor_belt = NodePath("../Conveyor")
 
 [node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt"]
 position = Vector2(133, 5)
+exclude_parent = false
 collision_mask = 64
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
 script = ExtResource("8_7is2o")
 params = ExtResource("9_2icce")
 
@@ -170,7 +176,8 @@ collision_mask = 64
 script = ExtResource("13_4dbr7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
-position = Vector2(-34.7268, 0.233014)
+position = Vector2(0.688568, 0.233014)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_w7dki")
 
 [node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]

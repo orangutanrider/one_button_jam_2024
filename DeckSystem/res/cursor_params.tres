@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_0qrcn")
-active_time = 0.1
+active_time = 0.24
