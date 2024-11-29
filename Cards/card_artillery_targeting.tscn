@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_hbmig"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_utl18"]
 [ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="3_rsaf7"]
-[ext_resource type="Script" path="res://Cards/core/scripts/played/p_range_band.gd" id="4_tnc6o"]
+[ext_resource type="Script" path="res://Cards/scripts/p_range_band.gd" id="4_tnc6o"]
 [ext_resource type="PackedScene" uid="uid://cqqmuvcsiroxc" path="res://Targeting/artillery_targeting_shape.tscn" id="5_v8uyj"]
 
 [node name="ArtilleryTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]

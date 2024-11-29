@@ -4,7 +4,12 @@ signal armed
 signal jettisoned
 signal discarded
 
+@export var grease_cost: int = 0
+
 var armed_latch: bool = false
+
+func read_grease_cost() -> int:
+	return grease_cost
 
 func arm():
 	if armed_latch: return
