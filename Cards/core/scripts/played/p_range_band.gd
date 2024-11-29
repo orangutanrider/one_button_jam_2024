@@ -1,7 +1,7 @@
 extends Node
 
 # params
-@export var range_band: Shape2D
+@export var range_band: PackedScene
 
 # External reference
 @export var range_band_man: Node

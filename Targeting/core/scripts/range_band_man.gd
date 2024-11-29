@@ -1,12 +1,16 @@
 extends Node
 
-@export var shape_node: CollisionShape2D
 @export var discard_pile: Node
+
+var shape_node: Node2D
 
 const attachment_name: String = "RangeBandCard"
 
-func flash_shape(val: Shape2D):
-	shape_node.shape = val
+func flash_shape(scene: PackedScene):
+	shape_node = scene.instantiate()
+	var pos: Vector2 = shape_node.position
+	add_child(shape_node)
+	shape_node.position = pos
 
 func attach(card: Node):
 	dettach_existing()
@@ -28,4 +32,5 @@ func clear():
 	clear_targeting()
 
 func clear_targeting():
-	shape_node.shape = null
+	shape_node.queue_free()
+	
