@@ -13,6 +13,9 @@ var detection: Dictionary
 
 var clock: float = 0.0
 
+func read() -> Area2D:
+	return target
+
 func clear():
 	detection.clear()
 	target = null
