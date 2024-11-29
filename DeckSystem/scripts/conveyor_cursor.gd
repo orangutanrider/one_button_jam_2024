@@ -20,7 +20,7 @@ func _physics_process(delta: float) -> void:
     play_detected_card(detection)
 
 func play_detected_card(card: Object):
-    card.play()
+    card.arm()
     active_timer = 0.0
     pass
 
