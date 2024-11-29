@@ -38,3 +38,4 @@ BUTTON1={
 2d_physics/layer_6="Card bumpers"
 2d_physics/layer_7="Card triggers"
 2d_physics/layer_8="Card collider"
+2d_physics/layer_9="Targetable"

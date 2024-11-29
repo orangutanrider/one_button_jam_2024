@@ -44,6 +44,9 @@ discard_pile = NodePath("../../../Camera2D/DeckSystem/DiscardPile")
 targeting_system = NodePath("../Targeting")
 
 [node name="Targeting" type="Area2D" parent="TankBody/Cannon"]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
 script = ExtResource("5_q0d5c")
 params = ExtResource("6_2h460")
 
