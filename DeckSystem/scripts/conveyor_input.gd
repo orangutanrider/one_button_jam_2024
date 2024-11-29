@@ -31,9 +31,9 @@ func _process(delta: float) -> void:
 		conveyor.set_churning(false)
 
 	if Input.is_action_just_released(action_name): 
-		input_timer = 0.0
 		if input_timer <= params.held_input_threshold:
 			play_a_card()
+		input_timer = 0.0
 
 	if !Input.is_action_pressed(action_name):
 		input_timer = 0.0

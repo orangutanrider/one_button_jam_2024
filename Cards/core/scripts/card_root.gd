@@ -12,6 +12,7 @@ extends Node2D
 @export var bang: Node
 @export var collision: Node
 @export var physical: RigidBody2D
+@export var conveyor_movement: Node
 
 # internal
 var execution_delay_timer: float = 0.0
@@ -52,12 +53,11 @@ func armed():
 	execution_delay_timer = params.execution_delay
 	armed_bang = true
 	collision.ghost()
-	pass
+	conveyor_movement.ghost()
 
 func discarded():
 	ghost()
 	discard_pile.add_ontop(self)
-	pass
 
 # Ghosting
 func ghost():
@@ -65,7 +65,6 @@ func ghost():
 	visible = false
 	bang.ghost()
 	physical.ghost()
-	pass
 
 func un_ghost():
 	armed_bang = false
@@ -73,4 +72,4 @@ func un_ghost():
 	bang.un_ghost()
 	collision.un_ghost()
 	physical.un_ghost()
-	pass
+	conveyor_movement.un_ghost()

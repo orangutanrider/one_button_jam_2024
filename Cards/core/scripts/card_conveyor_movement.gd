@@ -23,6 +23,7 @@ func read_speed():
 	return speed
 
 func ghost():
+	speed = 0.0
 	enabled = false
 
 func un_ghost():
