@@ -36,7 +36,7 @@ offset_right = 84.0
 offset_bottom = 9.0
 
 [node name="Enemy" type="Area2D" parent="."]
-position = Vector2(495, -83)
+position = Vector2(409, 58)
 script = ExtResource("5_a853d")
 params = ExtResource("6_hcmsi")
 

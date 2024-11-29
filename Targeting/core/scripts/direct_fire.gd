@@ -19,11 +19,12 @@ func return_to_neutral(delta: float):
 
 func aim_at_target(delta: float, target: Area2D):
 	# pythag
-	var relative: Vector2 = target.global_position - global_position
-	var hypo: float = relative.distance_to(target.global_position)
-	var angle: float = sin(relative.y/hypo)
+	var relative: Vector2 = global_position - target.global_position 
+	var hypo: float = Vector2.ZERO.distance_to(target.global_position)
+	var angle: float = -relative.y / hypo
+	
 
 	# rotation
-	var diff: float = rotation - angle
+	var diff: float = angle - rotation
 	var turn_power = clampf(diff, (-params.turn_rate * delta), (params.turn_rate * delta))
 	rotate(turn_power)
