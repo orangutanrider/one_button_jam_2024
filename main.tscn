@@ -16,7 +16,8 @@
 position = Vector2(-676, 364)
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
-polygon = PackedVector2Array(-190, -19, 206, -38, 529, -2, 1153, 431, 1708, 1046, 2393, 1560, 2784, 1561, 3071, 1425, 3388, 1531, 3464, 1395, 3693, 1387, 3826, 1425, 4038, 1470, 4098, 1365, 4249, 1319, 4400, 1123, 4582, 1078, 4823, 955, 5397, 911, 5775, 670, 6973, -869, 7655, -1084, 8643, -1030, 11735, -452, 12542, 2207, 9075, 3203, 4031, 3445, 708, 3385, 105, 381, -306, 149, -461, 86, -456, -11)
+position = Vector2(45, -2369)
+polygon = PackedVector2Array(647, 2479, 1466, 2517, 2702, 2346, 3521, 2517, 4446.87, 2490.57, 4493, 2669, 4572, 2658, 4764, 2511, 5518, 2460, 6281, 2426, 7092, 2454, 7975, 2159, 8244, 2003, 8531, 1928, 8773, 1943, 9286, 2079, 10404, 2275, 12542, 2207, 25606, 10014, -11207, 11137, -856, 2403, -342, 2498, 178.994, 2487.99, 253, 2615, 349, 2607, 341, 2479)
 script = ExtResource("1_jfiiu")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground/Polygon2D"]
@@ -24,12 +25,12 @@ script = ExtResource("1_jfiiu")
 [node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
 monitoring = false
 
+[node name="DeckSystem" parent="." instance=ExtResource("1_00j02")]
+position = Vector2(-1330, -439)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(407, 522)
-zoom = Vector2(0.33, 0.33)
-
-[node name="DeckSystem" parent="Camera2D" instance=ExtResource("1_00j02")]
-position = Vector2(-1737, -961)
+zoom = Vector2(0.3, 0.3)
 
 [node name="TankBody" parent="." instance=ExtResource("2_ratli")]
 position = Vector2(-871, 136)
@@ -40,7 +41,7 @@ position = Vector2(171, -86)
 
 [node name="RangeBandMan" type="Node2D" parent="TankBody/Cannon" node_paths=PackedStringArray("discard_pile", "targeting_system")]
 script = ExtResource("4_0x5lf")
-discard_pile = NodePath("../../../Camera2D/DeckSystem/DiscardPile")
+discard_pile = NodePath("../../../DeckSystem/DiscardPile")
 targeting_system = NodePath("../Targeting")
 
 [node name="Targeting" type="Area2D" parent="TankBody/Cannon"]
@@ -58,4 +59,4 @@ targeting = NodePath("../Targeting")
 
 [node name="Gun" parent="TankBody/Cannon/Swivel" instance=ExtResource("4_7yh0l")]
 
-[editable path="Camera2D/DeckSystem"]
+[editable path="DeckSystem"]

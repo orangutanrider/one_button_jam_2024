@@ -1,6 +1,6 @@
 extends Node2D
-var TestBullet1 = load("res://Gun_Test/Bullets/BulletTypes/AP-Shell.tscn") #Debug
-var TestBullet2 = load("res://Gun_Test/Bullets/BulletTypes/HE-Shell.tscn") #Debug
+# var TestBullet1 = load("res://Gun_Test/Bullets/BulletTypes/AP-Shell.tscn") #Debug
+# var TestBullet2 = load("res://Gun_Test/Bullets/BulletTypes/HE-Shell.tscn") #Debug
 var flipflop : bool = false #Debug
 var mainscene
 var BulletsToLoad = []
@@ -35,12 +35,12 @@ func _on_shoottimer_timeout() -> void:
 	else:
 		$Shoottimer.stop()
 		BulletToFire = null
-#Debug
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("BUTTON1"):
-		if flipflop:
-			AddNewBullets([TestBullet1])
-			flipflop = 0
-		else:
-			AddNewBullets([TestBullet2])
-			flipflop = 1
+# Debug
+# func _process(delta: float) -> void:
+# 	if Input.is_action_just_pressed("BUTTON1"):
+# 		if flipflop:
+# 			AddNewBullets([TestBullet1])
+# 			flipflop = 0
+# 		else:
+# 			AddNewBullets([TestBullet2])
+# 			flipflop = 1
