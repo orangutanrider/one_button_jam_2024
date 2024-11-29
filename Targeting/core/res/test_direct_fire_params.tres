@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DirectFireRes" load_steps=2 format=3 uid="uid://bbg57716vnuto"]
+
+[ext_resource type="Script" path="res://Targeting/core/scripts/direct_fire_res.gd" id="1_s1s40"]
+
+[resource]
+script = ExtResource("1_s1s40")
+turn_rate = 1.0
+neutral_angle = 0.0

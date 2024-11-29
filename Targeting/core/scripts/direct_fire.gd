@@ -13,8 +13,8 @@ func _process(delta: float) -> void:
 		aim_at_target(delta, target)
 
 func return_to_neutral(delta: float):
-	var diff: float = rotation - params.neutral_angle
-	var turn_power = clampf(diff, -params.turn_rate, params.turn_rate)
+	var diff: float = params.neutral_angle - rotation 
+	var turn_power = clampf(diff, (-params.turn_rate * delta), (params.turn_rate * delta))
 	rotate(turn_power)
 
 func aim_at_target(delta: float, target: Area2D):
@@ -25,5 +25,5 @@ func aim_at_target(delta: float, target: Area2D):
 
 	# rotation
 	var diff: float = rotation - angle
-	var turn_power = clampf(diff, -params.turn_rate, params.turn_rate)
+	var turn_power = clampf(diff, (-params.turn_rate * delta), (params.turn_rate * delta))
 	rotate(turn_power)

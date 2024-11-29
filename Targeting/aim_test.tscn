@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://pxc3wg8ko6tr"]
+
+[ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system.gd" id="1_4ybhk"]
+[ext_resource type="Resource" uid="uid://os5juiyfbgh0" path="res://Targeting/core/res/test_targeting_system_params.tres" id="2_i6ra5"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/direct_fire.gd" id="3_1he30"]
+[ext_resource type="Resource" uid="uid://bbg57716vnuto" path="res://Targeting/core/res/test_direct_fire_params.tres" id="4_y5qra"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="5_a853d"]
+[ext_resource type="Resource" uid="uid://bhf4hnnimgrxd" path="res://Targeting/core/res/test_detectable_body_params.tres" id="6_hcmsi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r221n"]
+size = Vector2(331, 253)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0k2t"]
+
+[node name="RangeBandTest" type="Node2D"]
+
+[node name="FiringStation" type="Node2D" parent="."]
+
+[node name="Targeting" type="Area2D" parent="FiringStation"]
+script = ExtResource("1_4ybhk")
+params = ExtResource("2_i6ra5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FiringStation/Targeting"]
+position = Vector2(280, 0)
+shape = SubResource("RectangleShape2D_r221n")
+
+[node name="Swivel" type="Node2D" parent="FiringStation" node_paths=PackedStringArray("targeting")]
+rotation = 0.929234
+script = ExtResource("3_1he30")
+params = ExtResource("4_y5qra")
+targeting = NodePath("../Targeting")
+
+[node name="Cannon" type="ColorRect" parent="FiringStation/Swivel"]
+offset_top = -9.0
+offset_right = 84.0
+offset_bottom = 9.0
+
+[node name="Enemy" type="Area2D" parent="."]
+position = Vector2(495, -83)
+script = ExtResource("5_a853d")
+params = ExtResource("6_hcmsi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CircleShape2D_y0k2t")
+
+[node name="ColorRect" type="ColorRect" parent="Enemy"]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(281, 0)
+zoom = Vector2(1.83, 1.83)

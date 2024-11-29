@@ -3,7 +3,7 @@
 
 extends Area2D
 
-var params: TargetingSystemRes
+@export var params: TargetingSystemRes
 
 enum HardConstraint { NONE, AIR_ONLY, GROUND_ONLY }
 var hard_constraint: HardConstraint = HardConstraint.NONE
@@ -21,7 +21,7 @@ func clear():
 	target = null
 
 # Detection
-func area_entered(area: Area2D):
+func _area_entered(area: Area2D):
 	if hard_constraint == HardConstraint.NONE:
 		detection.get_or_add(area, null)
 		return
@@ -34,8 +34,14 @@ func area_entered(area: Area2D):
 		detection.get_or_add(area, null)
 		return
 
-func area_exited(area: Area2D):
+func _area_exited(area: Area2D):
 	detection.erase(area)
+
+# Node
+func _ready() -> void:
+	area_entered.connect(_area_entered)
+	area_exited.connect(_area_exited)
+	pass
 
 func _process(delta: float) -> void:
 	if clock < params.clock_time:
