@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://de2xd5kk32rma"]
 
-[ext_resource type="Script" path="res://Gun/Bullets/MasterBullet_Script.gd" id="1_tpd0u"]
+[ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/master_bullet.gd" id="1_tpd0u"]
 
 [node name="MasterBullet" type="CharacterBody2D"]
 script = ExtResource("1_tpd0u")

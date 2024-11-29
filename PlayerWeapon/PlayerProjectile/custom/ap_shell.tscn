@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dahwfkakp8b4x"]
 
-[ext_resource type="Script" path="res://Gun/Bullets/BulletTypes/AP-Shell_Script.gd" id="1_2uai0"]
+[ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/custom/scripts/ap_shell_script.gd" id="1_2uai0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eedn6"]
 
