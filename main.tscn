@@ -36,7 +36,7 @@ position = Vector2(-871, 136)
 gravity_scale = 0.01
 
 [node name="Cannon" type="Node2D" parent="TankBody"]
-position = Vector2(181, -86)
+position = Vector2(171, -86)
 
 [node name="RangeBandMan" type="Node2D" parent="TankBody/Cannon" node_paths=PackedStringArray("discard_pile", "targeting_system")]
 script = ExtResource("4_0x5lf")

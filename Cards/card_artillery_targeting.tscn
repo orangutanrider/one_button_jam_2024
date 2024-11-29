@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxepdy5igvcaj"]
+[gd_scene load_steps=7 format=3 uid="uid://dxepdy5igvcaj"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_hbmig"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_utl18"]
 [ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="3_rsaf7"]
+[ext_resource type="Texture2D" uid="uid://yqh8qwyg25gu" path="res://Cards/art/artillery_targeting.png" id="4_2e7ot"]
 [ext_resource type="Script" path="res://Cards/scripts/p_range_band.gd" id="4_tnc6o"]
 [ext_resource type="PackedScene" uid="uid://cqqmuvcsiroxc" path="res://Targeting/artillery_targeting_shape.tscn" id="5_v8uyj"]
 
@@ -17,11 +18,8 @@ conveyor_movement = NodePath("CardPhysical/ConveyorMovement")
 
 [node name="CardPhysical" parent="." instance=ExtResource("3_rsaf7")]
 
-[node name="ColorRect" type="ColorRect" parent="CardPhysical"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
+[node name="Sprite2D" type="Sprite2D" parent="CardPhysical"]
+texture = ExtResource("4_2e7ot")
 
 [node name="TargetingCard" type="Node" parent="."]
 script = ExtResource("4_tnc6o")
