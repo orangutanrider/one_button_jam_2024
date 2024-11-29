@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="EnginePressureScriptRes" load_steps=2 format=3 uid="uid://dq8p2jvcwjecm"]
+
+[ext_resource type="Script" path="res://PlayerResources/engine_pressure_script_res.gd" id="1_yf8q6"]
+
+[resource]
+script = ExtResource("1_yf8q6")
+exponent_decay_strength = 2.0
+linear_decay_strength = 0.1

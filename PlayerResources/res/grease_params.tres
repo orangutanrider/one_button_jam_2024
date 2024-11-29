@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="GreaseScriptRes" load_steps=2 format=3 uid="uid://drx1xa7c7sg03"]
+
+[ext_resource type="Script" path="res://PlayerResources/grease_script_res.gd" id="1_plac5"]
+
+[resource]
+script = ExtResource("1_plac5")
+max_grease = 6
+grease_income_rate = 0.34

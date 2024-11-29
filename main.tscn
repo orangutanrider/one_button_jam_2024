@@ -1,3 +1,58 @@
-[gd_scene format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=10 format=3 uid="uid://bjd5mc6am3ew2"]
+
+[ext_resource type="PackedScene" uid="uid://b77ufvx0kverl" path="res://DeckSystem/deck_system.tscn" id="1_00j02"]
+[ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
+[ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="2_ratli"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/range_band_man.gd" id="4_0x5lf"]
+[ext_resource type="PackedScene" uid="uid://d0n1mrhpljpa7" path="res://PlayerWeapon/gun.tscn" id="4_7yh0l"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system.gd" id="5_q0d5c"]
+[ext_resource type="Resource" uid="uid://os5juiyfbgh0" path="res://Targeting/core/res/test_targeting_system_params.tres" id="6_2h460"]
+[ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="7_3kj6s"]
+[ext_resource type="Resource" uid="uid://hojpql6i2ocg" path="res://cannon_swivel.tres" id="8_rynsc"]
 
 [node name="main" type="Node2D"]
+
+[node name="Ground" type="Node2D" parent="."]
+position = Vector2(-676, 364)
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+polygon = PackedVector2Array(-190, -19, 206, -38, 529, -2, 1153, 431, 1708, 1046, 2393, 1560, 2784, 1561, 3071, 1425, 3388, 1531, 3464, 1395, 3693, 1387, 3826, 1425, 4038, 1470, 4098, 1365, 4249, 1319, 4400, 1123, 4582, 1078, 4823, 955, 5397, 911, 5775, 670, 6973, -869, 7655, -1084, 8643, -1030, 11735, -452, 12542, 2207, 9075, 3203, 4031, 3445, 708, 3385, 105, 381, -306, 149, -461, 86, -456, -11)
+script = ExtResource("1_jfiiu")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground/Polygon2D"]
+
+[node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
+monitoring = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(407, 522)
+zoom = Vector2(0.33, 0.33)
+
+[node name="DeckSystem" parent="Camera2D" instance=ExtResource("1_00j02")]
+position = Vector2(-1737, -961)
+
+[node name="TankBody" parent="." instance=ExtResource("2_ratli")]
+position = Vector2(-871, 136)
+gravity_scale = 0.01
+
+[node name="Cannon" type="Node2D" parent="TankBody"]
+position = Vector2(181, -86)
+
+[node name="RangeBandMan" type="Node2D" parent="TankBody/Cannon" node_paths=PackedStringArray("discard_pile", "targeting_system")]
+script = ExtResource("4_0x5lf")
+discard_pile = NodePath("../../../Camera2D/DeckSystem/DiscardPile")
+targeting_system = NodePath("../Targeting")
+
+[node name="Targeting" type="Area2D" parent="TankBody/Cannon"]
+script = ExtResource("5_q0d5c")
+params = ExtResource("6_2h460")
+
+[node name="Swivel" type="Node2D" parent="TankBody/Cannon" node_paths=PackedStringArray("targeting")]
+rotation = -0.654498
+script = ExtResource("7_3kj6s")
+params = ExtResource("8_rynsc")
+targeting = NodePath("../Targeting")
+
+[node name="Gun" parent="TankBody/Cannon/Swivel" instance=ExtResource("4_7yh0l")]
+
+[editable path="Camera2D/DeckSystem"]

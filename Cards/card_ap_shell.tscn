@@ -23,6 +23,7 @@ offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
+metadata/_edit_use_anchors_ = true
 
 [node name="DiscardOnPlay" type="Node" parent="."]
 script = ExtResource("4_jk5l8")

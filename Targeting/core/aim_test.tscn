@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system.gd" id="1_4ybhk"]
 [ext_resource type="Resource" uid="uid://os5juiyfbgh0" path="res://Targeting/core/res/test_targeting_system_params.tres" id="2_i6ra5"]
-[ext_resource type="Script" path="res://Targeting/core/scripts/direct_fire.gd" id="3_1he30"]
+[ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="3_1he30"]
 [ext_resource type="Resource" uid="uid://bbg57716vnuto" path="res://Targeting/core/res/test_direct_fire_params.tres" id="4_y5qra"]
 [ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="5_a853d"]
 [ext_resource type="Resource" uid="uid://bhf4hnnimgrxd" path="res://Targeting/core/res/test_detectable_body_params.tres" id="6_hcmsi"]

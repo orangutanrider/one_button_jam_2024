@@ -1,6 +1,7 @@
 extends Node
 
 @export var discard_pile: Node
+@export var targeting_system: Area2D
 
 var shape_node: Node2D
 
@@ -9,7 +10,7 @@ const attachment_name: String = "RangeBandCard"
 func flash_shape(scene: PackedScene):
 	shape_node = scene.instantiate()
 	var pos: Vector2 = shape_node.position
-	add_child(shape_node)
+	targeting_system.add_child(shape_node)
 	shape_node.position = pos
 
 func attach(card: Node):

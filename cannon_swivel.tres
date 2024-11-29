@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="DirectFireRes" load_steps=2 format=3 uid="uid://hojpql6i2ocg"]
+
+[ext_resource type="Script" path="res://Targeting/core/scripts/direct_fire_res.gd" id="1_mqdrv"]
+
+[resource]
+script = ExtResource("1_mqdrv")
+turn_rate = 0.5
+neutral_angle = 0.0
