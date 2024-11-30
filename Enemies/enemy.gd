@@ -11,7 +11,7 @@ extends CharacterBody2D
 var attackTimer = 0
 var coolDown = false
 var coolDownDeviation: float
-@export var scanCoolDownDeviationRange = 1
+@export var CoolDownDeviationRange = 0.1
 var projectile_scene: PackedScene = preload("res://Enemies/enemy_projectile.tscn")
 
 @onready var targetBody = get_node_or_null("../TankBody")
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 	elif targetDistance < attackDistance:
 		_fire_attack()
 		coolDown = true
-	if attackTimer >= (attackCooldown):
+	if attackTimer >= (attackCooldown + coolDownDeviation):
 		coolDown = false
 		attackTimer = 0
 	
@@ -81,7 +81,7 @@ func _fire_attack() -> void:
 			audioManager.play_sound(sfx)
 
 func _deviate_scan_cooldown() -> void:
-	coolDownDeviation =randf_range(-scanCoolDownDeviationRange,scanCoolDownDeviationRange)
+	coolDownDeviation =randf_range(-CoolDownDeviationRange,CoolDownDeviationRange)
 
 
 func _take_damage(damage: int) -> void :

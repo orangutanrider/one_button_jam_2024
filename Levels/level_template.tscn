@@ -29,10 +29,6 @@ monitoring = false
 
 [node name="enemySpawnPoint" parent="." instance=ExtResource("7_jg2t3")]
 position = Vector2(2684, 86)
-crawlerN = 100
-flyerN = 100
-bunkerN = 4
-bomberN = 10
 
 [node name="enemySpawnPoint2" parent="." instance=ExtResource("7_jg2t3")]
 position = Vector2(7227, -439)

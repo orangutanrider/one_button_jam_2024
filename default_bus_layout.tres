@@ -6,16 +6,13 @@ ceiling_db = -10.0
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_5puah"]
 resource_name = "Compressor"
-threshold = -11.9
-ratio = 24.0
+threshold = -12.4
+ratio = 28.1
 gain = 20.0
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_47a37"]
 resource_name = "Limiter"
-ceiling_db = -6.0
-threshold_db = -11.9
-soft_clip_db = 6.0
-soft_clip_ratio = 20.0
+ceiling_db = -10.5
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_mhaoh"]
 resource_name = "Compressor"
@@ -25,6 +22,7 @@ gain = 20.0
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_5a4pr"]
 resource_name = "Limiter"
+ceiling_db = -6.0
 
 [resource]
 bus/0/volume_db = 0.0672607

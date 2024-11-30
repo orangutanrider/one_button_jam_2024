@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmadsdug41qt5"]
 
 [ext_resource type="Script" path="res://Enemies/bunker.gd" id="1_8c28m"]
-[ext_resource type="AudioStream" uid="uid://d4de88aps7u0l" path="res://SFX/Gun.ogg" id="2_1nhar"]
+[ext_resource type="AudioStream" uid="uid://cex757d434h8h" path="res://SFX/Big_Splatter.ogg" id="2_ts8kx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6kww"]
 size = Vector2(20, 3)
@@ -15,7 +15,7 @@ script = ExtResource("1_8c28m")
 hp = 10
 attack = 3
 attackCooldown = 4
-attackDistance = 3000
+attackDistance = 2500
 scanPeriod = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -44,5 +44,5 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_hjdw4")
 
 [node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_1nhar")
+stream = ExtResource("2_ts8kx")
 bus = &"Bug Sounds"

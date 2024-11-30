@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0prbrdhqlas1"]
+[gd_scene load_steps=5 format=3 uid="uid://b0prbrdhqlas1"]
 
 [ext_resource type="AudioStream" uid="uid://c8dsprdaqess8" path="res://SFX/Bug_Splatter.ogg" id="1_o1gtp"]
+[ext_resource type="AudioStream" uid="uid://bdl44up6w38di" path="res://SFX/Bug_Splatter2.ogg" id="2_hm74r"]
+[ext_resource type="AudioStream" uid="uid://c8sh08ouu4bkv" path="res://SFX/Big_Splatter2.ogg" id="4_bkj6p"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1nxak"]
+streams_count = 3
+stream_0/stream = ExtResource("1_o1gtp")
+stream_1/stream = ExtResource("2_hm74r")
+stream_2/stream = ExtResource("4_bkj6p")
 
 [node name="DeathSoundPlayer" type="AudioStreamPlayer2D"]
-stream = ExtResource("1_o1gtp")
+stream = SubResource("AudioStreamRandomizer_1nxak")
 volume_db = 24.0
 bus = &"Bug Deaths"
