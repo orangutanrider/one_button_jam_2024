@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="7_3kj6s"]
 [ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="7_lwbna"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="8_om5io"]
-[ext_resource type="Resource" uid="uid://hojpql6i2ocg" path="res://cannon_swivel.tres" id="8_rynsc"]
+[ext_resource type="Resource" path="res://cannon_swivel.tres" id="8_rynsc"]
 [ext_resource type="Resource" uid="uid://bot4oo3bc224u" path="res://DeckSystem/res/conveyor_engine_pressure_params.tres" id="9_22oty"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="10_da7bb"]
 [ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="11_b38iv"]

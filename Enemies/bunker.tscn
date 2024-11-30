@@ -1,12 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmadsdug41qt5"]
+[gd_scene load_steps=9 format=3 uid="uid://dmadsdug41qt5"]
 
 [ext_resource type="Script" path="res://Enemies/bunker.gd" id="1_8c28m"]
+[ext_resource type="Texture2D" uid="uid://o5rnd8raasxx" path="res://Enemies/Sprites/ArtyBeetle_SpriteSheet.png" id="2_aacyc"]
+[ext_resource type="AudioStream" uid="uid://cex757d434h8h" path="res://SFX/Big_Splatter.ogg" id="2_ts8kx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l174w"]
+atlas = ExtResource("2_aacyc")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdy6s"]
+atlas = ExtResource("2_aacyc")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nwxff"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l174w")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdy6s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6kww"]
 size = Vector2(20, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hjdw4"]
-size = Vector2(120, 120)
+size = Vector2(120, 104)
 
 [node name="Bunker" type="CharacterBody2D"]
 collision_layer = 0
@@ -14,25 +43,17 @@ script = ExtResource("1_8c28m")
 hp = 10
 attack = 3
 attackCooldown = 4
-attackDistance = 3000
+attackDistance = 2500
+weaponOffset = Vector2(-75, -75)
 scanPeriod = 10
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -60.0
-offset_right = 60.0
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.477336, 0.26112, 0.539681, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_nwxff")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 58.5)
+position = Vector2(0, 42)
 shape = SubResource("RectangleShape2D_f6kww")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -40,4 +61,9 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_hjdw4")
+
+[node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ts8kx")
+bus = &"Bug Sounds"

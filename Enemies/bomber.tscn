@@ -1,41 +1,60 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2vuwquytkym8"]
+[gd_scene load_steps=8 format=3 uid="uid://d2vuwquytkym8"]
 
 [ext_resource type="Script" path="res://Enemies/bomber.gd" id="1_dsg7c"]
+[ext_resource type="Texture2D" uid="uid://dyp2kqxds73lw" path="res://Enemies/Sprites/GrassHopperEnemy_SpriteSheet.png" id="2_i0uyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogbd8"]
+atlas = ExtResource("2_i0uyt")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxsvw"]
+atlas = ExtResource("2_i0uyt")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybx2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogbd8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxsvw")
+}],
+"loop": true,
+"name": &"hop",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jfqt"]
 size = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ta5l"]
-size = Vector2(45, 30)
+size = Vector2(65, 43)
 
 [node name="Bomber" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_dsg7c")
+attackCooldown = 4
 attackDistance = 3000
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -22.5
-offset_top = -15.0
-offset_right = 22.5
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.575326, 0.20686, 1, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -7)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_ybx2p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1jfqt")
 
 [node name="Hitbox" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.5, 0)
+position = Vector2(3.5, -6.5)
 shape = SubResource("RectangleShape2D_1ta5l")

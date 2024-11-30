@@ -1,34 +1,72 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj2cy4m2860g7"]
+[gd_scene load_steps=11 format=3 uid="uid://bj2cy4m2860g7"]
 
 [ext_resource type="Script" path="res://Enemies/crawler.gd" id="1_jonwt"]
+[ext_resource type="AudioStream" uid="uid://c2m0t1htxvnrc" path="res://SFX/Small_Gun.ogg" id="2_biqof"]
+[ext_resource type="Texture2D" uid="uid://cmemdtv1dgbyb" path="res://Enemies/Sprites/AntCrawlerEnemy_SpirteSheet.png" id="2_ogxkk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkb6v"]
+atlas = ExtResource("2_ogxkk")
+region = Rect2(2048, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkvyh"]
+atlas = ExtResource("2_ogxkk")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pclf"]
+atlas = ExtResource("2_ogxkk")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w62wx"]
+atlas = ExtResource("2_ogxkk")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30tqx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkb6v")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkvyh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w62wx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mch8a"]
 size = Vector2(2.5, 2.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7msu4"]
-size = Vector2(66, 68)
+size = Vector2(76, 53)
 
 [node name="Crawler" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_jonwt")
 attackDistance = 1500
 
-[node name="ColorRect" type="ColorRect" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.635294, 0.180392, 0.109804, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_30tqx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 29)
+position = Vector2(0, 22)
 shape = SubResource("RectangleShape2D_mch8a")
 
 [node name="Hitbox" type="Area2D" parent="."]
@@ -36,4 +74,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-5, -0.5)
 shape = SubResource("RectangleShape2D_7msu4")
+
+[node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_biqof")
+bus = &"Bug Sounds"
