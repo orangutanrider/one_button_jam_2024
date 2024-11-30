@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://d1awo0vew81i8"]
+
+[ext_resource type="FontFile" uid="uid://cexfspx4y0ena" path="res://Fonts/Jaro-Regular-VariableFont_opsz.ttf" id="1_akgmu"]
+
+[resource]
+default_font = ExtResource("1_akgmu")
+default_font_size = 69

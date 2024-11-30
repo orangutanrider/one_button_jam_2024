@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxepdy5igvcaj"]
+[gd_scene load_steps=9 format=3 uid="uid://dxepdy5igvcaj"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_hbmig"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_utl18"]
 [ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="3_rsaf7"]
 [ext_resource type="Texture2D" uid="uid://clr6qljhxgxur" path="res://Cards/art/artillery_targeting.png" id="4_2e7ot"]
 [ext_resource type="Script" path="res://Cards/scripts/p_range_band.gd" id="4_tnc6o"]
-[ext_resource type="FontFile" uid="uid://cexfspx4y0ena" path="res://Fonts/Jaro-Regular-VariableFont_opsz.ttf" id="5_u56jb"]
+[ext_resource type="Theme" uid="uid://d1awo0vew81i8" path="res://TextTheme/targeting_header.tres" id="5_2gr2r"]
 [ext_resource type="PackedScene" uid="uid://cqqmuvcsiroxc" path="res://Targeting/artillery_targeting_shape.tscn" id="5_v8uyj"]
+[ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="6_o7ors"]
 
 [node name="ArtilleryTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
 position = Vector2(2, 0)
@@ -20,10 +21,10 @@ conveyor_movement = NodePath("CardPhysical/ConveyorMovement")
 [node name="CardPhysical" parent="." instance=ExtResource("3_rsaf7")]
 
 [node name="Sprite2D" type="Sprite2D" parent="CardPhysical"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.55, 0.55)
 texture = ExtResource("4_2e7ot")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+[node name="Header" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
 custom_minimum_size = Vector2(30, 30)
 anchors_preset = 14
 anchor_top = 0.5
@@ -35,12 +36,31 @@ offset_right = -489.0
 offset_bottom = -942.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_2gr2r")
 theme_override_colors/default_color = Color(0.501961, 1, 0, 1)
-theme_override_fonts/normal_font = ExtResource("5_u56jb")
-theme_override_font_sizes/normal_font_size = 69
 text = "Artillery Targeting"
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Body" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -431.0
+offset_right = -508.0
+offset_bottom = -129.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("6_o7ors")
+theme_override_colors/default_color = Color(0.301999, 0.3107, 0.293308, 1)
+text = "Attach to the main cannon for long range targeting that has a blind-range."
+scroll_active = false
+autowrap_mode = 2
 
 [node name="TargetingCard" type="Node" parent="."]
 script = ExtResource("4_tnc6o")
