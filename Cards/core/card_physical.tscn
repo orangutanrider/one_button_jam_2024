@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8hcsxjvnjful"]
+[gd_scene load_steps=9 format=3 uid="uid://c8hcsxjvnjful"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_physical.gd" id="1_1iqkl"]
 [ext_resource type="Shape2D" uid="uid://bdme5lq538l1t" path="res://Cards/core/res/card_bumper_shape.tres" id="2_hu7op"]
@@ -7,10 +7,7 @@
 [ext_resource type="Script" path="res://Cards/core/scripts/card_bang.gd" id="3_jdc7x"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_collision.gd" id="3_us1pb"]
 [ext_resource type="Script" path="res://Cards/core/scripts/card_conveyor_movement.gd" id="4_s2lsr"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qx4r"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i48fr"]
+[ext_resource type="Shape2D" uid="uid://bdhhria0s0ox5" path="res://Cards/core/res/card_body_shape.tres" id="6_k6d71"]
 
 [node name="CardPhysical" type="RigidBody2D" node_paths=PackedStringArray("bang", "bumper", "conveyor_movement")]
 collision_layer = 128
@@ -29,7 +26,7 @@ monitorable = false
 script = ExtResource("3_jdc7x")
 
 [node name="Shape" type="CollisionShape2D" parent="TriggerBang"]
-shape = SubResource("RectangleShape2D_2qx4r")
+shape = ExtResource("6_k6d71")
 
 [node name="Bumper" type="Area2D" parent="."]
 collision_layer = 32
@@ -44,7 +41,7 @@ collision_shape = ExtResource("2_hu7op")
 shape = ExtResource("2_hu7op")
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_i48fr")
+shape = ExtResource("6_k6d71")
 script = ExtResource("3_us1pb")
 
 [node name="ConveyorMovement" type="RayCast2D" parent="."]

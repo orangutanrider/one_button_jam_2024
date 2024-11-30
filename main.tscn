@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=31 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="2_64nos"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system.gd" id="5_q0d5c"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="6_0nco4"]
 [ext_resource type="Resource" uid="uid://os5juiyfbgh0" path="res://Targeting/core/res/test_targeting_system_params.tres" id="6_2h460"]
+[ext_resource type="PackedScene" uid="uid://dxepdy5igvcaj" path="res://Cards/card_artillery_targeting.tscn" id="6_6f2vl"]
 [ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="7_3kj6s"]
 [ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="7_lwbna"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="8_om5io"]
@@ -66,6 +67,9 @@ script = ExtResource("4_q3nlh")
 script = ExtResource("5_8preq")
 card_pile = NodePath("..")
 discard_pile = NodePath("../../DiscardPile")
+
+[node name="ArtilleryTargetingCard" parent="DeckSystem/DrawPile/Initializer" instance=ExtResource("6_6f2vl")]
+position = Vector2(0, 0)
 
 [node name="DiscardPile" type="Node" parent="DeckSystem"]
 script = ExtResource("4_q3nlh")
