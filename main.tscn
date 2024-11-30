@@ -1,5 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=38 format=3 uid="uid://bjd5mc6am3ew2"]
 
+[ext_resource type="PackedScene" uid="uid://dmmmdnc8ncew3" path="res://Levels/enemy_spawn_point.tscn" id="1_hniko"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="2_64nos"]
 [ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="2_ratli"]
@@ -15,7 +16,7 @@
 [ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="7_3kj6s"]
 [ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="7_lwbna"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="8_om5io"]
-[ext_resource type="Resource" uid="uid://hojpql6i2ocg" path="res://cannon_swivel.tres" id="8_rynsc"]
+[ext_resource type="Resource" path="res://cannon_swivel.tres" id="8_rynsc"]
 [ext_resource type="Resource" uid="uid://bot4oo3bc224u" path="res://DeckSystem/res/conveyor_engine_pressure_params.tres" id="9_22oty"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="10_da7bb"]
 [ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="11_b38iv"]
@@ -32,6 +33,8 @@
 [ext_resource type="Script" path="res://Camera/camera_swivel.gd" id="29_jvnny"]
 [ext_resource type="Resource" uid="uid://dl8at50jg6f2n" path="res://Camera/camera_res.tres" id="30_8vekv"]
 [ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
+[ext_resource type="PackedScene" uid="uid://cltvcq41a4h8o" path="res://SFX/audio_manager.tscn" id="34_ji0kl"]
+[ext_resource type="AudioStream" uid="uid://blcj0aaknsajw" path="res://SoundTracks/tanker.ogg" id="35_wku1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
 size = Vector2(382.486, 165.439)
@@ -39,6 +42,9 @@ size = Vector2(382.486, 165.439)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_171kb"]
 
 [node name="main" type="Node2D"]
+
+[node name="enemySpawnPoint" parent="." instance=ExtResource("1_hniko")]
+position = Vector2(1596, 57)
 
 [node name="Ground" type="Node2D" parent="."]
 position = Vector2(-676, 364)
@@ -202,7 +208,6 @@ script = ExtResource("16_euwjv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger"]
 position = Vector2(4.87621, -86.3042)
 rotation = 3.14159
-scale = Vector2(1, 1)
 shape = SubResource("WorldBoundaryShape2D_171kb")
 
 [node name="EnginePressure" type="Node" parent="ScreenBody/DeckSystem"]
@@ -212,6 +217,13 @@ params = ExtResource("18_i714n")
 [node name="GreaseTank" type="Node" parent="ScreenBody/DeckSystem"]
 script = ExtResource("19_axreu")
 params = ExtResource("20_u8qqm")
+
+[node name="AudioManager" parent="." instance=ExtResource("34_ji0kl")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_wku1d")
+autoplay = true
+bus = &"Music"
 
 [connection signal="area_entered" from="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger" to="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
 [connection signal="area_entered" from="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger" to="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger" method="_on_area_entered"]

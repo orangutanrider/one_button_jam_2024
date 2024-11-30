@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://c6pw4l6obwiel"]
+[gd_resource type="AudioBusLayout" load_steps=11 format=3 uid="uid://c6pw4l6obwiel"]
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_nyvyd"]
 resource_name = "Limiter"
@@ -7,8 +7,12 @@ ceiling_db = -10.0
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_5puah"]
 resource_name = "Compressor"
 threshold = -12.4
-ratio = 28.1
+ratio = 48.0
 gain = 20.0
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_psvl5"]
+resource_name = "Amplify"
+volume_db = 5.0
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_47a37"]
 resource_name = "Limiter"
@@ -19,6 +23,10 @@ resource_name = "Compressor"
 threshold = -10.8
 ratio = 48.0
 gain = 20.0
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_hv0do"]
+resource_name = "Amplify"
+volume_db = 10.0
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_5a4pr"]
 resource_name = "Limiter"
@@ -33,6 +41,10 @@ sidechain = &"Tank Sounds"
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_78e81"]
 resource_name = "Limiter"
 
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_o34mm"]
+resource_name = "Limiter"
+ceiling_db = -7.9
+
 [resource]
 bus/0/volume_db = 0.0672607
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_nyvyd")
@@ -45,8 +57,10 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectCompressor_5puah")
 bus/1/effect/0/enabled = true
-bus/1/effect/1/effect = SubResource("AudioEffectLimiter_47a37")
+bus/1/effect/1/effect = SubResource("AudioEffectAmplify_psvl5")
 bus/1/effect/1/enabled = true
+bus/1/effect/2/effect = SubResource("AudioEffectLimiter_47a37")
+bus/1/effect/2/enabled = true
 bus/2/name = &"Bug Deaths"
 bus/2/solo = false
 bus/2/mute = false
@@ -55,8 +69,10 @@ bus/2/volume_db = 0.0
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectCompressor_mhaoh")
 bus/2/effect/0/enabled = true
-bus/2/effect/1/effect = SubResource("AudioEffectLimiter_5a4pr")
+bus/2/effect/1/effect = SubResource("AudioEffectAmplify_hv0do")
 bus/2/effect/1/enabled = true
+bus/2/effect/2/effect = SubResource("AudioEffectLimiter_5a4pr")
+bus/2/effect/2/enabled = true
 bus/3/name = &"Tank Sounds"
 bus/3/solo = false
 bus/3/mute = false
@@ -73,3 +89,11 @@ bus/4/effect/0/effect = SubResource("AudioEffectCompressor_3u411")
 bus/4/effect/0/enabled = true
 bus/4/effect/1/effect = SubResource("AudioEffectLimiter_78e81")
 bus/4/effect/1/enabled = true
+bus/5/name = &"Music"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = &"Master"
+bus/5/effect/0/effect = SubResource("AudioEffectLimiter_o34mm")
+bus/5/effect/0/enabled = true
