@@ -30,7 +30,7 @@
 [ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="20_u8qqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
-size = Vector2(37.2631, 22.3692)
+size = Vector2(382.486, 165.439)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_171kb"]
 
@@ -51,10 +51,9 @@ monitoring = false
 
 [node name="DeckSystem" type="Node2D" parent="."]
 position = Vector2(-1168, 1065)
-scale = Vector2(4, 4)
 
 [node name="DrawMachine" type="Node2D" parent="DeckSystem" node_paths=PackedStringArray("draw_pile", "discard_pile")]
-position = Vector2(1085.75, 40.25)
+position = Vector2(3766, 214)
 script = ExtResource("2_64nos")
 params = ExtResource("3_ecclo")
 draw_pile = NodePath("../DrawPile")
@@ -89,8 +88,9 @@ params = ExtResource("9_22oty")
 conveyor_belt = NodePath("../Conveyor")
 
 [node name="PlayCursor" type="RayCast2D" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
-position = Vector2(127.25, 5)
+position = Vector2(711, 5)
 exclude_parent = false
+target_position = Vector2(0, 1000)
 collision_mask = 64
 hit_from_inside = true
 collide_with_areas = true
@@ -108,7 +108,7 @@ script = ExtResource("12_cfnii")
 params = ExtResource("13_4qym4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/Conveyor"]
-position = Vector2(238.25, 0)
+position = Vector2(1395, 253)
 shape = ExtResource("14_ab8fw")
 
 [node name="JettisonTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
@@ -119,12 +119,13 @@ collision_mask = 64
 script = ExtResource("15_ssd4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/JettisonTrigger"]
-position = Vector2(58.5123, 0.233047)
-scale = Vector2(1, 1)
+position = Vector2(324.743, 56.855)
+scale = Vector2(0.999999, 1)
 shape = SubResource("RectangleShape2D_tinjm")
 
 [node name="DiscardTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(-13.25, -288.25)
+position = Vector2(-1416, -624)
+rotation = -0.518312
 scale = Vector2(36.8114, 6.74649)
 collision_layer = 64
 collision_mask = 64
