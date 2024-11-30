@@ -14,6 +14,9 @@ func _physics_process(delta: float) -> void:
 
 	apply_central_force(target_dir * pull_formula(dist) * delta)
 
+	# orbital movement is minimal due to the slow movement of the tank
+	# drag is enough to counteract it
+
 	#var clockwise: Vector2 = target_dir.orthogonal()
 	#var clockwise_mag: float = (clockwise - target_dir).length()
 	#var anti_clockwise_mag: float = (-clockwise - target_dir).length()

@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_802px")
-execution_delay = 0.66
+execution_delay = 0.9

@@ -9,21 +9,24 @@ extends RigidBody2D
 @export var conveyor_movement: Node
 
 var is_ghost: bool = true
+var armed: bool = false
 
 func _ready() -> void:
 	bang.jettisoned.connect(jettison_trigger)
+	bang.armed.connect(armed_trigger)
 	bumper.bump.connect(bump_trigger)
 	pass
 
 func _physics_process(delta: float) -> void:
-	if is_ghost: return
-	
+	if is_ghost || armed: return
+
 	var motion: Vector2 = Vector2.LEFT * conveyor_movement.read_speed()
 	move_and_collide(motion * delta)
 	position.y = 0.0
 
 func ghost():
 	is_ghost = true
+	armed = false
 
 	set_deferred("sleeping", true)
 	set_deferred("freeze", true)
@@ -35,6 +38,7 @@ func ghost():
 
 func un_ghost():
 	is_ghost = false
+	armed = false
 
 	set_deferred("sleeping", false)
 	set_deferred("freeze", false)
@@ -51,6 +55,10 @@ func jettison_trigger():
 	set_deferred("gravity_scale", params.jettison_grav)
 	apply_central_impulse(params.jettison_force)
 	pass
+
+func armed_trigger():
+	armed = true
+	set_deferred("gravity_scale", params.armed_grav)
 
 func bump_trigger(motion: float):
 	move_and_collide(Vector2.LEFT * motion)
