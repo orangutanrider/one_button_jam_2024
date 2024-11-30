@@ -202,7 +202,6 @@ script = ExtResource("16_euwjv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger"]
 position = Vector2(4.87621, -86.3042)
 rotation = 3.14159
-scale = Vector2(1, 1)
 shape = SubResource("WorldBoundaryShape2D_171kb")
 
 [node name="EnginePressure" type="Node" parent="ScreenBody/DeckSystem"]
