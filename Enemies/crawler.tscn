@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj2cy4m2860g7"]
+[gd_scene load_steps=5 format=3 uid="uid://bj2cy4m2860g7"]
 
 [ext_resource type="Script" path="res://Enemies/crawler.gd" id="1_jonwt"]
+[ext_resource type="AudioStream" uid="uid://de3pglp2256ct" path="res://SFX/Bug_Death_1.ogg" id="2_k546h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mch8a"]
 size = Vector2(2.5, 2.25)
@@ -37,3 +38,7 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_7msu4")
+
+[node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_k546h")
+bus = &"Bug Sounds"

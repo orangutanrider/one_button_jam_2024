@@ -1,11 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b14l78odu6bed"]
+[gd_scene load_steps=5 format=3 uid="uid://b14l78odu6bed"]
 
 [ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="1_fqyh1"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="2_hgvcl"]
-[ext_resource type="PackedScene" uid="uid://bj2cy4m2860g7" path="res://Enemies/crawler.tscn" id="3_fyosg"]
-[ext_resource type="PackedScene" uid="uid://ishejxjgc7e2" path="res://Enemies/flyer.tscn" id="4_t2geb"]
-[ext_resource type="PackedScene" uid="uid://dmadsdug41qt5" path="res://Enemies/bunker.tscn" id="5_esfoy"]
-[ext_resource type="PackedScene" uid="uid://d2vuwquytkym8" path="res://Enemies/bomber.tscn" id="6_n6i7i"]
+[ext_resource type="PackedScene" uid="uid://cltvcq41a4h8o" path="res://SFX/audio_manager.tscn" id="5_qvq07"]
 [ext_resource type="PackedScene" uid="uid://dmmmdnc8ncew3" path="res://Levels/enemy_spawn_point.tscn" id="7_jg2t3"]
 
 [node name="Node2D" type="Node2D"]
@@ -15,8 +12,8 @@ position = Vector2(283, 635)
 gravity_scale = 0.01
 
 [node name="Camera2D" type="Camera2D" parent="TankBody"]
-position = Vector2(1497, -280)
-zoom = Vector2(0.3, 0.3)
+position = Vector2(895, -253)
+zoom = Vector2(0.5, 0.5)
 
 [node name="Ground" type="Node2D" parent="."]
 
@@ -30,33 +27,11 @@ script = ExtResource("2_hgvcl")
 [node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
 monitoring = false
 
-[node name="Crawler" parent="." instance=ExtResource("3_fyosg")]
-position = Vector2(793, 920)
-
-[node name="Flyer" parent="." instance=ExtResource("4_t2geb")]
-position = Vector2(3387, 213)
-
-[node name="Flyer2" parent="." instance=ExtResource("4_t2geb")]
-position = Vector2(3496, 320)
-
-[node name="Flyer3" parent="." instance=ExtResource("4_t2geb")]
-position = Vector2(3272, 289)
-
-[node name="Flyer4" parent="." instance=ExtResource("4_t2geb")]
-position = Vector2(1234, 407)
-
-[node name="Bunker" parent="." instance=ExtResource("5_esfoy")]
-position = Vector2(3119, 1021)
-
-[node name="Bomber" parent="." instance=ExtResource("6_n6i7i")]
-position = Vector2(3380, 1064)
-attackDistance = 10000
-
 [node name="enemySpawnPoint" parent="." instance=ExtResource("7_jg2t3")]
-position = Vector2(2953, 690)
+position = Vector2(2684, 86)
 crawlerN = 100
 flyerN = 100
-bunkerN = 3
+bunkerN = 4
 bomberN = 10
 
 [node name="enemySpawnPoint2" parent="." instance=ExtResource("7_jg2t3")]
@@ -65,3 +40,5 @@ crawlerN = 300
 flyerN = 300
 bunkerN = 5
 bomberN = 15
+
+[node name="AudioManager" parent="." instance=ExtResource("5_qvq07")]

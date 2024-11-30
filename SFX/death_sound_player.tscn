@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0prbrdhqlas1"]
+
+[ext_resource type="AudioStream" uid="uid://c8dsprdaqess8" path="res://SFX/Bug_Splatter.ogg" id="1_o1gtp"]
+
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_o1gtp")
+volume_db = 24.0
+bus = &"Bug Deaths"

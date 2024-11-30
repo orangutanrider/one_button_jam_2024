@@ -34,4 +34,4 @@ func _spawn_enemies():
 		for i in range(enemy["count"]): 
 			var instance = enemy["scene"].instantiate() 
 			instance.position = global_position + Vector2(randf() * 1024, -randf() * 768)
-			get_parent().add_child(instance)
+			get_tree().root.get_child(0).add_child(instance)

@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 var attackTimer = 0
 var coolDown = false
+var coolDownDeviation: float
+@export var scanCoolDownDeviationRange = 1
 var projectile_scene: PackedScene = preload("res://Enemies/enemy_projectile.tscn")
 
 @onready var targetBody = get_node_or_null("../TankBody")
@@ -20,12 +22,21 @@ var scanTimer = 0
 
 @onready var hitBox = $Hitbox
 
+var sfx: AudioStreamPlayer2D
+@onready var audioManager = get_node_or_null("../AudioManager")
+var deathSoundScene: PackedScene = preload("res://SFX/death_sound_player.tscn")
+
+var main
+
 func _prep() -> void:
 	push_error("_prep() needs to be overridden in derived class")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hitBox.connect("area_shape_entered", _on_hitbox_area_shape_entered)
+	if has_node("GunSFX") : 
+		sfx = $GunSFX
 	add_to_group("enemy")
+	main = get_tree().root.get_child(0)
 	_prep()
 
 
@@ -45,14 +56,15 @@ func _process(delta: float) -> void:
 	elif targetDistance < attackDistance:
 		_fire_attack()
 		coolDown = true
-	if attackTimer >= attackCooldown:
+	if attackTimer >= (attackCooldown):
 		coolDown = false
 		attackTimer = 0
 	
 	scanTimer += delta
-	if scanTimer >= scanPeriod:
+	if scanTimer >= scanPeriod + coolDownDeviation:
 		scanTimer = 0
 		update_target_distance()
+		_deviate_scan_cooldown()
 	
 	_action_updates(delta)
 
@@ -64,14 +76,30 @@ func _fire_attack() -> void:
 		var projectile = projectile_scene.instantiate()
 		projectile.position = global_position 
 		projectile.targetBody = targetBody 
-		get_parent().add_child(projectile)
+		main.add_child(projectile)
+		if audioManager != null:
+			audioManager.play_sound(sfx)
+
+func _deviate_scan_cooldown() -> void:
+	coolDownDeviation =randf_range(-scanCoolDownDeviationRange,scanCoolDownDeviationRange)
 
 
 func _take_damage(damage: int) -> void :
 	hp -= damage
 	
 func _die():
+	_play_death_sound()
 	self.queue_free()
+
+func _play_death_sound() -> void:
+	var deathSound
+	if main.has_node("DeathSoundPlayer"):
+		deathSound = main.get_node("DeathSoundPlayer")
+	else:
+		deathSound = deathSoundScene.instantiate()
+		main.add_child(deathSound)
+	deathSound.global_position = global_position
+	deathSound.play()
 
 func _on_hitbox_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if !area.get_parent().is_in_group("enemy"):
