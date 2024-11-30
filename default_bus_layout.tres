@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://c6pw4l6obwiel"]
+[gd_resource type="AudioBusLayout" load_steps=8 format=3 uid="uid://c6pw4l6obwiel"]
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_nyvyd"]
 resource_name = "Limiter"
@@ -24,6 +24,15 @@ gain = 20.0
 resource_name = "Limiter"
 ceiling_db = -6.0
 
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_3u411"]
+resource_name = "Compressor"
+ratio = 48.0
+gain = 20.0
+sidechain = &"Tank Sounds"
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_78e81"]
+resource_name = "Limiter"
+
 [resource]
 bus/0/volume_db = 0.0672607
 bus/0/effect/0/effect = SubResource("AudioEffectLimiter_nyvyd")
@@ -48,3 +57,19 @@ bus/2/effect/0/effect = SubResource("AudioEffectCompressor_mhaoh")
 bus/2/effect/0/enabled = true
 bus/2/effect/1/effect = SubResource("AudioEffectLimiter_5a4pr")
 bus/2/effect/1/enabled = true
+bus/3/name = &"Tank Sounds"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/4/name = &"Ambience"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -0.130497
+bus/4/send = &"Master"
+bus/4/effect/0/effect = SubResource("AudioEffectCompressor_3u411")
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource("AudioEffectLimiter_78e81")
+bus/4/effect/1/enabled = true

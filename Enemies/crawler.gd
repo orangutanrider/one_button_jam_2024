@@ -33,4 +33,4 @@ func _kite_away(delta: float) -> void:
 			spriteAnimator.play("walk")
 		else:
 			velocity.x = 0
-			spriteAnimator.play("idle")
+			spriteAnimator.play("default")

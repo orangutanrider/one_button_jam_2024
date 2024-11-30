@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var attackCooldown = 2
 @export var attackDistance = 100
 @export var crushDamage = 100
+@export var weaponOffset: Vector2 = Vector2(0,0)
 
 var attackTimer = 0
 var coolDown = false
@@ -74,7 +75,7 @@ func _action_updates(delta) -> void:
 func _fire_attack() -> void:
 	if targetBody != null:
 		var projectile = projectile_scene.instantiate()
-		projectile.position = global_position 
+		projectile.position = global_position + weaponOffset
 		projectile.targetBody = targetBody 
 		main.add_child(projectile)
 		if audioManager != null:

@@ -13,4 +13,5 @@ stream_2/stream = ExtResource("4_bkj6p")
 [node name="DeathSoundPlayer" type="AudioStreamPlayer2D"]
 stream = SubResource("AudioStreamRandomizer_1nxak")
 volume_db = 24.0
+max_polyphony = 20
 bus = &"Bug Deaths"
