@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 		var force_position: Vector2 = node.read_positioned_up_force_position()
 		var force: float = node.read_positioned_up_force_strength()
 
-		apply_force(up * FORCE_SCALAR * force, force_position)
+		apply_impulse(up * FORCE_SCALAR * force, force_position)
 
 	var down: Vector2 = (down_point.global_position - global_position).normalized()
 	for node in DOWN_FORCES: 

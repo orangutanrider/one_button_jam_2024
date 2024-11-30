@@ -1,14 +1,37 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=30 format=3 uid="uid://bjd5mc6am3ew2"]
 
-[ext_resource type="PackedScene" uid="uid://b77ufvx0kverl" path="res://DeckSystem/deck_system.tscn" id="1_00j02"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="2_64nos"]
 [ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="2_ratli"]
+[ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="3_ecclo"]
 [ext_resource type="Script" path="res://Targeting/core/scripts/range_band_man.gd" id="4_0x5lf"]
 [ext_resource type="PackedScene" uid="uid://d0n1mrhpljpa7" path="res://PlayerWeapon/gun.tscn" id="4_7yh0l"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="4_q3nlh"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/initializer.gd" id="5_8preq"]
 [ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system.gd" id="5_q0d5c"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="6_0nco4"]
 [ext_resource type="Resource" uid="uid://os5juiyfbgh0" path="res://Targeting/core/res/test_targeting_system_params.tres" id="6_2h460"]
 [ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="7_3kj6s"]
+[ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="7_lwbna"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="8_om5io"]
 [ext_resource type="Resource" uid="uid://hojpql6i2ocg" path="res://cannon_swivel.tres" id="8_rynsc"]
+[ext_resource type="Resource" uid="uid://bot4oo3bc224u" path="res://DeckSystem/res/conveyor_engine_pressure_params.tres" id="9_22oty"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="10_da7bb"]
+[ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="11_b38iv"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt.gd" id="12_cfnii"]
+[ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/res/conveyor_res.tres" id="13_4qym4"]
+[ext_resource type="Shape2D" uid="uid://ddwm33113h1iw" path="res://DeckSystem/res/conveyor_shape.tres" id="14_ab8fw"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/jettison_trigger.gd" id="15_ssd4j"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="16_euwjv"]
+[ext_resource type="Script" path="res://PlayerResources/engine_pressure_script.gd" id="17_ck7oh"]
+[ext_resource type="Resource" uid="uid://dq8p2jvcwjecm" path="res://PlayerResources/res/engine_pressure_params.tres" id="18_i714n"]
+[ext_resource type="Script" path="res://PlayerResources/grease_script.gd" id="19_axreu"]
+[ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="20_u8qqm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
+size = Vector2(18.6229, 22.3692)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oarr"]
 
 [node name="main" type="Node2D"]
 
@@ -25,8 +48,92 @@ script = ExtResource("1_jfiiu")
 [node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
 monitoring = false
 
-[node name="DeckSystem" parent="." instance=ExtResource("1_00j02")]
+[node name="DeckSystem" type="Node2D" parent="."]
 position = Vector2(-1330, -439)
+scale = Vector2(4, 4)
+
+[node name="DrawMachine" type="Node2D" parent="DeckSystem" node_paths=PackedStringArray("draw_pile", "discard_pile")]
+position = Vector2(527, 43)
+script = ExtResource("2_64nos")
+params = ExtResource("3_ecclo")
+draw_pile = NodePath("../DrawPile")
+discard_pile = NodePath("../DiscardPile")
+
+[node name="DrawPile" type="Node" parent="DeckSystem"]
+script = ExtResource("4_q3nlh")
+
+[node name="Initializer" type="Node" parent="DeckSystem/DrawPile" node_paths=PackedStringArray("card_pile", "discard_pile")]
+script = ExtResource("5_8preq")
+card_pile = NodePath("..")
+discard_pile = NodePath("../../DiscardPile")
+
+[node name="DiscardPile" type="Node" parent="DeckSystem"]
+script = ExtResource("4_q3nlh")
+
+[node name="ConveyorBelt" type="Node2D" parent="DeckSystem"]
+
+[node name="Input" type="Node" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("conveyor_cursor", "conveyor")]
+script = ExtResource("6_0nco4")
+params = ExtResource("7_lwbna")
+conveyor_cursor = NodePath("../PlayCursor")
+conveyor = NodePath("../Conveyor")
+
+[node name="EnginePressure" type="Node" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("engine_pressure", "conveyor_belt")]
+script = ExtResource("8_om5io")
+engine_pressure = NodePath("../../EnginePressure")
+params = ExtResource("9_22oty")
+conveyor_belt = NodePath("../Conveyor")
+
+[node name="PlayCursor" type="RayCast2D" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
+position = Vector2(133, 5)
+exclude_parent = false
+collision_mask = 64
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("10_da7bb")
+params = ExtResource("11_b38iv")
+grease_tank = NodePath("../../GreaseTank")
+
+[node name="Conveyor" type="Area2D" parent="DeckSystem/ConveyorBelt"]
+position = Vector2(316, 44)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("12_cfnii")
+params = ExtResource("13_4qym4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/Conveyor"]
+shape = ExtResource("14_ab8fw")
+
+[node name="JettisonTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
+position = Vector2(57, 44)
+scale = Vector2(-1.62359, 4.29162)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("15_ssd4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/JettisonTrigger"]
+position = Vector2(0.688568, 0.233014)
+shape = SubResource("RectangleShape2D_tinjm")
+
+[node name="DiscardTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
+position = Vector2(-32, -131)
+scale = Vector2(36.8114, 6.74649)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("16_euwjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/DiscardTrigger"]
+shape = SubResource("RectangleShape2D_5oarr")
+
+[node name="EnginePressure" type="Node" parent="DeckSystem"]
+script = ExtResource("17_ck7oh")
+params = ExtResource("18_i714n")
+
+[node name="GreaseTank" type="Node" parent="DeckSystem"]
+script = ExtResource("19_axreu")
+params = ExtResource("20_u8qqm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(407, 522)
@@ -59,4 +166,5 @@ targeting = NodePath("../Targeting")
 
 [node name="Gun" parent="TankBody/Cannon/Swivel" instance=ExtResource("4_7yh0l")]
 
-[editable path="DeckSystem"]
+[connection signal="area_entered" from="DeckSystem/ConveyorBelt/JettisonTrigger" to="DeckSystem/ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
+[connection signal="area_entered" from="DeckSystem/ConveyorBelt/DiscardTrigger" to="DeckSystem/ConveyorBelt/DiscardTrigger" method="_on_area_entered"]
