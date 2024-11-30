@@ -8,16 +8,23 @@ extends RigidBody2D
 @export var bumper: Area2D
 @export var conveyor_movement: Node
 
+var is_ghost: bool = true
+
 func _ready() -> void:
 	bang.jettisoned.connect(jettison_trigger)
 	bumper.bump.connect(bump_trigger)
 	pass
 
 func _physics_process(delta: float) -> void:
+	if is_ghost: return
+	
 	var motion: Vector2 = Vector2.LEFT * conveyor_movement.read_speed()
 	move_and_collide(motion * delta)
+	position.y = 0.0
 
 func ghost():
+	is_ghost = true
+
 	set_deferred("sleeping", true)
 	set_deferred("freeze", true)
 
@@ -27,6 +34,8 @@ func ghost():
 	pass
 
 func un_ghost():
+	is_ghost = false
+
 	set_deferred("sleeping", false)
 	set_deferred("freeze", false)
 

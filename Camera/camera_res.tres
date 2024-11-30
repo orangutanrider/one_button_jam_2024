@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CameraRes" load_steps=2 format=3 uid="uid://dl8at50jg6f2n"]
+
+[ext_resource type="Script" path="res://Camera/camera_res.gd" id="1_s541f"]
+
+[resource]
+script = ExtResource("1_s541f")
+swivel_y_range_max = 100.0
+swivel_y_range_min = -100.0
+pull_strength = 10.0

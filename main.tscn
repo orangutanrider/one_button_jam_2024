@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=34 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="2_64nos"]
@@ -28,6 +28,9 @@
 [ext_resource type="Resource" uid="uid://dq8p2jvcwjecm" path="res://PlayerResources/res/engine_pressure_params.tres" id="18_i714n"]
 [ext_resource type="Script" path="res://PlayerResources/grease_script.gd" id="19_axreu"]
 [ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="20_u8qqm"]
+[ext_resource type="Script" path="res://Camera/camera_swivel.gd" id="29_jvnny"]
+[ext_resource type="Resource" uid="uid://dl8at50jg6f2n" path="res://Camera/camera_res.tres" id="30_8vekv"]
+[ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
 size = Vector2(382.486, 165.439)
@@ -49,106 +52,6 @@ script = ExtResource("1_jfiiu")
 [node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
 monitoring = false
 
-[node name="DeckSystem" type="Node2D" parent="."]
-position = Vector2(-1168, 1065)
-
-[node name="DrawMachine" type="Node2D" parent="DeckSystem" node_paths=PackedStringArray("draw_pile", "discard_pile")]
-position = Vector2(3766, 214)
-script = ExtResource("2_64nos")
-params = ExtResource("3_ecclo")
-draw_pile = NodePath("../DrawPile")
-discard_pile = NodePath("../DiscardPile")
-
-[node name="DrawPile" type="Node" parent="DeckSystem"]
-script = ExtResource("4_q3nlh")
-
-[node name="Initializer" type="Node" parent="DeckSystem/DrawPile" node_paths=PackedStringArray("card_pile", "discard_pile")]
-script = ExtResource("5_8preq")
-card_pile = NodePath("..")
-discard_pile = NodePath("../../DiscardPile")
-
-[node name="ArtilleryTargetingCard" parent="DeckSystem/DrawPile/Initializer" instance=ExtResource("6_6f2vl")]
-position = Vector2(0, 0)
-
-[node name="DiscardPile" type="Node" parent="DeckSystem"]
-script = ExtResource("4_q3nlh")
-
-[node name="ConveyorBelt" type="Node2D" parent="DeckSystem"]
-
-[node name="Input" type="Node" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("conveyor_cursor", "conveyor")]
-script = ExtResource("6_0nco4")
-params = ExtResource("7_lwbna")
-conveyor_cursor = NodePath("../PlayCursor")
-conveyor = NodePath("../Conveyor")
-
-[node name="EnginePressure" type="Node" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("engine_pressure", "conveyor_belt")]
-script = ExtResource("8_om5io")
-engine_pressure = NodePath("../../EnginePressure")
-params = ExtResource("9_22oty")
-conveyor_belt = NodePath("../Conveyor")
-
-[node name="PlayCursor" type="RayCast2D" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
-position = Vector2(712, -244)
-exclude_parent = false
-target_position = Vector2(0, 1000)
-collision_mask = 64
-hit_from_inside = true
-collide_with_areas = true
-collide_with_bodies = false
-script = ExtResource("10_da7bb")
-params = ExtResource("11_b38iv")
-grease_tank = NodePath("../../GreaseTank")
-
-[node name="Conveyor" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(316, 44)
-collision_layer = 16
-collision_mask = 0
-monitoring = false
-script = ExtResource("12_cfnii")
-params = ExtResource("13_4qym4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/Conveyor"]
-position = Vector2(1395, 253)
-shape = ExtResource("14_ab8fw")
-
-[node name="JettisonTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(-173, 57)
-scale = Vector2(-1.62359, 4.29162)
-collision_layer = 64
-collision_mask = 64
-script = ExtResource("15_ssd4j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/JettisonTrigger"]
-position = Vector2(324.743, 56.855)
-scale = Vector2(0.999999, 1)
-shape = SubResource("RectangleShape2D_tinjm")
-
-[node name="DiscardTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(-1416, -624)
-rotation = -0.518312
-scale = Vector2(36.8114, 6.74649)
-collision_layer = 64
-collision_mask = 64
-script = ExtResource("16_euwjv")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/DiscardTrigger"]
-position = Vector2(4.87621, -86.3042)
-rotation = 3.14159
-scale = Vector2(1, 1)
-shape = SubResource("WorldBoundaryShape2D_171kb")
-
-[node name="EnginePressure" type="Node" parent="DeckSystem"]
-script = ExtResource("17_ck7oh")
-params = ExtResource("18_i714n")
-
-[node name="GreaseTank" type="Node" parent="DeckSystem"]
-script = ExtResource("19_axreu")
-params = ExtResource("20_u8qqm")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(407, 522)
-zoom = Vector2(0.3, 0.3)
-
 [node name="TankBody" parent="." instance=ExtResource("2_ratli")]
 position = Vector2(-879, 302)
 gravity_scale = 0.01
@@ -158,7 +61,7 @@ position = Vector2(171, -86)
 
 [node name="RangeBandMan" type="Node2D" parent="TankBody/Cannon" node_paths=PackedStringArray("discard_pile", "targeting_system")]
 script = ExtResource("4_0x5lf")
-discard_pile = NodePath("../../../DeckSystem/DiscardPile")
+discard_pile = NodePath("../../../ScreenBody/DeckSystem/DiscardPile")
 targeting_system = NodePath("../Targeting")
 
 [node name="Targeting" type="Area2D" parent="TankBody/Cannon"]
@@ -176,5 +79,131 @@ targeting = NodePath("../Targeting")
 
 [node name="Gun" parent="TankBody/Cannon/Swivel" instance=ExtResource("4_7yh0l")]
 
-[connection signal="area_entered" from="DeckSystem/ConveyorBelt/JettisonTrigger" to="DeckSystem/ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
-[connection signal="area_entered" from="DeckSystem/ConveyorBelt/DiscardTrigger" to="DeckSystem/ConveyorBelt/DiscardTrigger" method="_on_area_entered"]
+[node name="CameraStick" type="Node2D" parent="TankBody"]
+position = Vector2(1421, 0)
+
+[node name="CameraSwivel" type="Node2D" parent="." node_paths=PackedStringArray("tank", "camera_stick")]
+position = Vector2(542, 302)
+script = ExtResource("29_jvnny")
+params = ExtResource("30_8vekv")
+tank = NodePath("../TankBody")
+camera_stick = NodePath("../TankBody/CameraStick")
+
+[node name="ColorRect" type="ColorRect" parent="CameraSwivel"]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 1, 0.0666666, 1)
+
+[node name="ScreenBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("swivel")]
+position = Vector2(129, 302)
+collision_layer = 0
+collision_mask = 0
+gravity_scale = 0.0
+can_sleep = false
+lock_rotation = true
+linear_damp = 1.0
+script = ExtResource("31_hlrvo")
+params = ExtResource("30_8vekv")
+swivel = NodePath("../CameraSwivel")
+
+[node name="Camera2D" type="Camera2D" parent="ScreenBody"]
+zoom = Vector2(0.3, 0.3)
+
+[node name="DeckSystem" type="Node2D" parent="ScreenBody"]
+position = Vector2(-1561, 535)
+
+[node name="DrawMachine" type="Node2D" parent="ScreenBody/DeckSystem" node_paths=PackedStringArray("draw_pile", "discard_pile")]
+position = Vector2(3800, 200)
+script = ExtResource("2_64nos")
+params = ExtResource("3_ecclo")
+draw_pile = NodePath("../DrawPile")
+discard_pile = NodePath("../DiscardPile")
+
+[node name="DrawPile" type="Node" parent="ScreenBody/DeckSystem"]
+script = ExtResource("4_q3nlh")
+
+[node name="Initializer" type="Node" parent="ScreenBody/DeckSystem/DrawPile" node_paths=PackedStringArray("card_pile", "discard_pile")]
+script = ExtResource("5_8preq")
+card_pile = NodePath("..")
+discard_pile = NodePath("../../DiscardPile")
+
+[node name="ArtilleryTargetingCard" parent="ScreenBody/DeckSystem/DrawPile/Initializer" instance=ExtResource("6_6f2vl")]
+position = Vector2(0, 0)
+
+[node name="DiscardPile" type="Node" parent="ScreenBody/DeckSystem"]
+script = ExtResource("4_q3nlh")
+
+[node name="ConveyorBelt" type="Node2D" parent="ScreenBody/DeckSystem"]
+
+[node name="Input" type="Node" parent="ScreenBody/DeckSystem/ConveyorBelt" node_paths=PackedStringArray("conveyor_cursor", "conveyor")]
+script = ExtResource("6_0nco4")
+params = ExtResource("7_lwbna")
+conveyor_cursor = NodePath("../PlayCursor")
+conveyor = NodePath("../Conveyor")
+
+[node name="EnginePressure" type="Node" parent="ScreenBody/DeckSystem/ConveyorBelt" node_paths=PackedStringArray("engine_pressure", "conveyor_belt")]
+script = ExtResource("8_om5io")
+engine_pressure = NodePath("../../EnginePressure")
+params = ExtResource("9_22oty")
+conveyor_belt = NodePath("../Conveyor")
+
+[node name="PlayCursor" type="RayCast2D" parent="ScreenBody/DeckSystem/ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
+position = Vector2(712, -244)
+exclude_parent = false
+target_position = Vector2(0, 1000)
+collision_mask = 64
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("10_da7bb")
+params = ExtResource("11_b38iv")
+grease_tank = NodePath("../../GreaseTank")
+
+[node name="Conveyor" type="Area2D" parent="ScreenBody/DeckSystem/ConveyorBelt"]
+position = Vector2(316, 44)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("12_cfnii")
+params = ExtResource("13_4qym4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBody/DeckSystem/ConveyorBelt/Conveyor"]
+position = Vector2(1395, 253)
+shape = ExtResource("14_ab8fw")
+
+[node name="JettisonTrigger" type="Area2D" parent="ScreenBody/DeckSystem/ConveyorBelt"]
+position = Vector2(-173, 57)
+scale = Vector2(-1.62359, 4.29162)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("15_ssd4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger"]
+position = Vector2(324.743, 56.855)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_tinjm")
+
+[node name="DiscardTrigger" type="Area2D" parent="ScreenBody/DeckSystem/ConveyorBelt"]
+position = Vector2(-1416, -624)
+rotation = -0.518312
+scale = Vector2(36.8114, 6.74649)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("16_euwjv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger"]
+position = Vector2(4.87621, -86.3042)
+rotation = 3.14159
+scale = Vector2(1, 1)
+shape = SubResource("WorldBoundaryShape2D_171kb")
+
+[node name="EnginePressure" type="Node" parent="ScreenBody/DeckSystem"]
+script = ExtResource("17_ck7oh")
+params = ExtResource("18_i714n")
+
+[node name="GreaseTank" type="Node" parent="ScreenBody/DeckSystem"]
+script = ExtResource("19_axreu")
+params = ExtResource("20_u8qqm")
+
+[connection signal="area_entered" from="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger" to="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
+[connection signal="area_entered" from="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger" to="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger" method="_on_area_entered"]
