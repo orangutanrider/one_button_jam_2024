@@ -88,7 +88,7 @@ params = ExtResource("9_22oty")
 conveyor_belt = NodePath("../Conveyor")
 
 [node name="PlayCursor" type="RayCast2D" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
-position = Vector2(711, 5)
+position = Vector2(712, -244)
 exclude_parent = false
 target_position = Vector2(0, 1000)
 collision_mask = 64
@@ -112,7 +112,7 @@ position = Vector2(1395, 253)
 shape = ExtResource("14_ab8fw")
 
 [node name="JettisonTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(-20.25, 44)
+position = Vector2(-173, 57)
 scale = Vector2(-1.62359, 4.29162)
 collision_layer = 64
 collision_mask = 64
