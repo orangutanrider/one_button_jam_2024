@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmadsdug41qt5"]
+[gd_scene load_steps=11 format=3 uid="uid://dmadsdug41qt5"]
 
 [ext_resource type="Script" path="res://Enemies/bunker.gd" id="1_8c28m"]
 [ext_resource type="Texture2D" uid="uid://o5rnd8raasxx" path="res://Enemies/Sprites/ArtyBeetle_SpriteSheet.png" id="2_aacyc"]
 [ext_resource type="AudioStream" uid="uid://cex757d434h8h" path="res://SFX/Big_Splatter.ogg" id="2_ts8kx"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="4_jhkd5"]
+[ext_resource type="Resource" uid="uid://bm5kwsc7p2xw2" path="res://Targeting/grounded.tres" id="5_l3c3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l174w"]
 atlas = ExtResource("2_aacyc")
@@ -67,3 +69,13 @@ shape = SubResource("RectangleShape2D_hjdw4")
 [node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_ts8kx")
 bus = &"Bug Sounds"
+
+[node name="DetectableBody" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("4_jhkd5")
+params = ExtResource("5_l3c3p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableBody"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_hjdw4")

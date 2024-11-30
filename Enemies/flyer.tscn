@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ishejxjgc7e2"]
+[gd_scene load_steps=13 format=3 uid="uid://ishejxjgc7e2"]
 
 [ext_resource type="Script" path="res://Enemies/flyer.gd" id="1_bmu4m"]
 [ext_resource type="Texture2D" uid="uid://7iepv06svvkb" path="res://Enemies/Sprites/FlyEnemy2_SpriteSheet.png" id="2_0yb6b"]
 [ext_resource type="AudioStream" uid="uid://fjp0evguupik" path="res://SFX/Flying.ogg" id="3_eeb6q"]
 [ext_resource type="AudioStream" uid="uid://c2m0t1htxvnrc" path="res://SFX/Small_Gun.ogg" id="3_ppnjw"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="5_0b1jt"]
+[ext_resource type="Resource" uid="uid://di58epub75cqt" path="res://Targeting/airborne.tres" id="6_f3xmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p5pr"]
 atlas = ExtResource("2_0yb6b")
@@ -30,15 +32,15 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mch8a"]
 size = Vector2(1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7msu4"]
-size = Vector2(66, 68)
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_igjvw"]
 playback_mode = 1
 streams_count = 2
 stream_0/stream = ExtResource("3_ppnjw")
 stream_1/stream = ExtResource("3_eeb6q")
 stream_1/weight = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7msu4"]
+size = Vector2(66, 68)
 
 [node name="Flyer" type="CharacterBody2D"]
 collision_layer = 0
@@ -61,9 +63,15 @@ shape = SubResource("RectangleShape2D_mch8a")
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource("RectangleShape2D_7msu4")
-
 [node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_igjvw")
 bus = &"Bug Sounds"
+
+[node name="DetectableBody" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("5_0b1jt")
+params = ExtResource("6_f3xmp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableBody"]
+shape = SubResource("RectangleShape2D_7msu4")
