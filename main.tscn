@@ -1,5 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bjd5mc6am3ew2"]
-
+[gd_scene load_steps=40 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="PackedScene" uid="uid://dmmmdnc8ncew3" path="res://Levels/enemy_spawn_point.tscn" id="1_hniko"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
