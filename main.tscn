@@ -54,7 +54,7 @@ position = Vector2(-1168, 1065)
 scale = Vector2(4, 4)
 
 [node name="DrawMachine" type="Node2D" parent="DeckSystem" node_paths=PackedStringArray("draw_pile", "discard_pile")]
-position = Vector2(527, 43)
+position = Vector2(1085.75, 40.25)
 script = ExtResource("2_64nos")
 params = ExtResource("3_ecclo")
 draw_pile = NodePath("../DrawPile")
@@ -89,7 +89,7 @@ params = ExtResource("9_22oty")
 conveyor_belt = NodePath("../Conveyor")
 
 [node name="PlayCursor" type="RayCast2D" parent="DeckSystem/ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
-position = Vector2(133, 5)
+position = Vector2(127.25, 5)
 exclude_parent = false
 collision_mask = 64
 hit_from_inside = true
@@ -108,7 +108,7 @@ script = ExtResource("12_cfnii")
 params = ExtResource("13_4qym4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/Conveyor"]
-position = Vector2(-119.25, 0)
+position = Vector2(238.25, 0)
 shape = ExtResource("14_ab8fw")
 
 [node name="JettisonTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
