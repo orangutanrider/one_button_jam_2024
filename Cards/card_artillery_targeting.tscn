@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxepdy5igvcaj"]
+[gd_scene load_steps=10 format=3 uid="uid://dxepdy5igvcaj"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_hbmig"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_utl18"]
+[ext_resource type="Resource" uid="uid://bmvmblmbjcb6v" path="res://RefRelay/discard_relay.tres" id="3_7tv87"]
 [ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="3_rsaf7"]
 [ext_resource type="Texture2D" uid="uid://clr6qljhxgxur" path="res://Cards/art/artillery_targeting.png" id="4_2e7ot"]
-[ext_resource type="Script" path="res://Cards/scripts/p_range_band.gd" id="4_tnc6o"]
+[ext_resource type="Script" path="res://Cards/played/p_range_band.gd" id="4_tnc6o"]
 [ext_resource type="Theme" uid="uid://d1awo0vew81i8" path="res://TextTheme/targeting_header.tres" id="5_2gr2r"]
 [ext_resource type="PackedScene" uid="uid://cqqmuvcsiroxc" path="res://Targeting/artillery_targeting_shape.tscn" id="5_v8uyj"]
 [ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="6_o7ors"]
@@ -13,6 +14,7 @@
 position = Vector2(2, 0)
 script = ExtResource("1_hbmig")
 params = ExtResource("2_utl18")
+discard_pile = ExtResource("3_7tv87")
 bang = NodePath("CardPhysical/TriggerBang")
 collision = NodePath("CardPhysical/Collider")
 physical = NodePath("CardPhysical")

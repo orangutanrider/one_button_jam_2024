@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_s541f")
-swivel_y_range_max = 300.0
-swivel_y_range_min = -100.0
-pull_strength = 10.0
+swivel_y_range_max = 350.0
+swivel_y_range_min = -50.0
+swivel_y_offset = 300.0
+pull_strength = 100.0

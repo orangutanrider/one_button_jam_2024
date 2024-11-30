@@ -1,5 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://bjd5mc6am3ew2"]
 
+
 [ext_resource type="PackedScene" uid="uid://dmmmdnc8ncew3" path="res://Levels/enemy_spawn_point.tscn" id="1_hniko"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="2_64nos"]
@@ -27,7 +28,9 @@
 [ext_resource type="Script" path="res://DeckSystem/scripts/jettison_trigger.gd" id="15_ssd4j"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="16_euwjv"]
 [ext_resource type="Script" path="res://PlayerResources/engine_pressure_script.gd" id="17_ck7oh"]
+[ext_resource type="Script" path="res://RefRelay/node_reference_relay_res_gates.gd" id="18_i5i46"]
 [ext_resource type="Resource" uid="uid://dq8p2jvcwjecm" path="res://PlayerResources/res/engine_pressure_params.tres" id="18_i714n"]
+[ext_resource type="Resource" uid="uid://bmvmblmbjcb6v" path="res://RefRelay/discard_relay.tres" id="19_4vnf4"]
 [ext_resource type="Script" path="res://PlayerResources/grease_script.gd" id="19_axreu"]
 [ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="20_u8qqm"]
 [ext_resource type="Script" path="res://Camera/camera_swivel.gd" id="29_jvnny"]
@@ -91,7 +94,7 @@ targeting = NodePath("../Targeting")
 position = Vector2(1421, 0)
 
 [node name="CameraSwivel" type="Node2D" parent="." node_paths=PackedStringArray("tank", "camera_stick")]
-position = Vector2(542, 302)
+position = Vector2(627, 506)
 script = ExtResource("29_jvnny")
 params = ExtResource("30_8vekv")
 tank = NodePath("../TankBody")
@@ -103,7 +106,7 @@ offset_bottom = 40.0
 color = Color(0, 1, 0.0666666, 1)
 
 [node name="ScreenBody" type="RigidBody2D" parent="." node_paths=PackedStringArray("swivel")]
-position = Vector2(129, 302)
+position = Vector2(610, 477)
 collision_layer = 0
 collision_mask = 0
 gravity_scale = 0.0
@@ -136,16 +139,19 @@ discard_pile = NodePath("../DiscardPile")
 [node name="DrawPile" type="Node" parent="ScreenBody/DeckSystem"]
 script = ExtResource("4_q3nlh")
 
-[node name="Initializer" type="Node" parent="ScreenBody/DeckSystem/DrawPile" node_paths=PackedStringArray("card_pile", "discard_pile")]
+[node name="Initializer" type="Node" parent="ScreenBody/DeckSystem/DrawPile"]
 script = ExtResource("5_8preq")
-card_pile = NodePath("..")
-discard_pile = NodePath("../../DiscardPile")
 
 [node name="ArtilleryTargetingCard" parent="ScreenBody/DeckSystem/DrawPile/Initializer" instance=ExtResource("6_6f2vl")]
 position = Vector2(0, 0)
 
 [node name="DiscardPile" type="Node" parent="ScreenBody/DeckSystem"]
 script = ExtResource("4_q3nlh")
+
+[node name="DiscardPileRefGates" type="Node" parent="ScreenBody/DeckSystem" node_paths=PackedStringArray("target")]
+script = ExtResource("18_i5i46")
+target = NodePath("../DiscardPile")
+res = ExtResource("19_4vnf4")
 
 [node name="ConveyorBelt" type="Node2D" parent="ScreenBody/DeckSystem"]
 

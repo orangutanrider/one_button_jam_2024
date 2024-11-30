@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgs6pa4qru7qk"]
+
+[ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_0hvjj"]
+[ext_resource type="PackedScene" uid="uid://cqqmuvcsiroxc" path="res://Targeting/artillery_targeting_shape.tscn" id="1_0v1e3"]
+
+[node name="main" type="Node2D"]
+
+[node name="ScreenRef" type="ColorRect" parent="."]
+offset_left = -1314.0
+offset_top = -594.0
+offset_right = 2544.0
+offset_bottom = 1297.0
+color = Color(0, 0, 0, 0.341176)
+
+[node name="TankRef" type="ColorRect" parent="."]
+offset_left = -1102.0
+offset_top = 186.0
+offset_right = -651.0
+offset_bottom = 491.0
+color = Color(1, 1, 0, 1)
+
+[node name="Origin" type="Node2D" parent="TankRef"]
+position = Vector2(219, 147)
+
+[node name="ArtilleryTargetingShape" parent="TankRef/Origin" instance=ExtResource("1_0v1e3")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(610, 477)
+zoom = Vector2(0.3, 0.3)
+
+[node name="Ground" type="Node2D" parent="."]
+position = Vector2(-676, 364)
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+position = Vector2(47, -2358)
+color = Color(0.41, 0.205, 0, 1)
+polygon = PackedVector2Array(647, 2479, 844, 2502, 1082, 2513, 1280, 2519, 1466, 2517, 1625, 2502, 1834, 2464, 1975, 2417, 2089, 2400, 2241, 2400, 2451, 2378, 2575, 2349, 2702, 2346, 2786, 2366, 2903, 2419, 3015, 2457, 3154, 2484, 3297, 2506, 3521, 2517, 3829, 2521, 3990, 2517, 4230, 2504, 4344, 2490, 4425, 2487, 4441, 2492, 4451, 2499, 4459, 2517, 4469, 2596, 4478, 2643, 4493, 2669, 4517, 2674, 4544, 2670, 4572, 2658, 4635, 2620, 4707, 2561, 4744, 2520, 4764, 2511, 4792, 2507, 4816, 2507, 5110, 2493, 5404, 2471, 5518, 2460, 5609, 2463, 5898, 2450, 6173, 2425, 6281, 2426, 6506, 2440, 6823, 2461, 6958, 2470, 6982, 2475, 7026, 2479, 7062, 2472, 7119, 2451, 7926, 2188, 7986, 2165, 8018, 2135, 8058, 2087, 8098, 2053, 8130, 2042, 8170, 2034, 8207, 2021, 8244, 2003, 8277, 1987, 8334, 1968, 8395, 1955, 8491, 1932, 8531, 1928, 8585, 1928, 8661, 1932, 8773, 1943, 8866, 1958, 8982, 1980, 9109, 2017, 9208, 2057, 9286, 2079, 9441, 2114, 9745, 2178, 10055, 2232, 10296, 2267, 10404, 2275, 10549, 2257, 10707, 2244, 11380, 2219, 11927, 2200, 12542, 2207, 16312, 2240, 18445, 2189, 20832, 2189, 25353, 2088, 25606, 10014, -11207, 11137, -1712, 3135, -1418, 2808, -1299, 2641, -1132, 2470, -1018, 2399, -943, 2386, -856, 2403, -580, 2470, -342, 2498, -214, 2517, -73, 2502, 95, 2487, 168, 2485, 178, 2487, 188, 2491, 196, 2497, 200, 2506, 203, 2524, 225, 2578, 236, 2605, 253, 2615, 277, 2617, 313, 2616, 349, 2607, 354, 2595, 354, 2562, 347, 2514, 341, 2496, 341, 2479, 356, 2472, 374, 2471, 400, 2475, 484, 2471)
+script = ExtResource("1_0hvjj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground/Polygon2D"]
+
+[node name="Area2D" type="Area2D" parent="Ground/Polygon2D"]
+monitoring = false
