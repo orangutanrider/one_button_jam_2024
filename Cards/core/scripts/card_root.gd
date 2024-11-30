@@ -6,7 +6,7 @@ extends Node2D
 @export var params: CardRootRes
 
 # External reference
-@export var discard_pile: Node
+@export var discard_pile: NodeReferenceRelayRes
 
 # Internal reference
 @export var bang: Node
@@ -24,9 +24,6 @@ signal played
 func reset_physical():
 	physical.position = Vector2.ZERO
 
-func flash_discard_pile(flash: Node):
-	discard_pile = flash
-	
 func draw_trigger():
 	# todo: animation
 	un_ghost()
@@ -57,7 +54,7 @@ func armed():
 
 func discarded():
 	ghost()
-	discard_pile.add_ontop(self)
+	discard_pile.get_ref().add_ontop(self)
 
 # Ghosting
 func ghost():
