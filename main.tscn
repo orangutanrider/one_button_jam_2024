@@ -34,7 +34,7 @@
 [ext_resource type="Resource" uid="uid://dl8at50jg6f2n" path="res://Camera/camera_res.tres" id="30_8vekv"]
 [ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
 [ext_resource type="PackedScene" uid="uid://cltvcq41a4h8o" path="res://SFX/audio_manager.tscn" id="34_ji0kl"]
-[ext_resource type="AudioStream" uid="uid://blcj0aaknsajw" path="res://SoundTracks/tanker.ogg" id="35_wku1d"]
+[ext_resource type="PackedScene" uid="uid://cy8ppkr8jxswc" path="res://SoundTracks/MusicPlayer.tscn" id="35_y2nll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
 size = Vector2(382.486, 165.439)
@@ -220,10 +220,7 @@ params = ExtResource("20_u8qqm")
 
 [node name="AudioManager" parent="." instance=ExtResource("34_ji0kl")]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("35_wku1d")
-autoplay = true
-bus = &"Music"
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("35_y2nll")]
 
 [connection signal="area_entered" from="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger" to="ScreenBody/DeckSystem/ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
 [connection signal="area_entered" from="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger" to="ScreenBody/DeckSystem/ConveyorBelt/DiscardTrigger" method="_on_area_entered"]
