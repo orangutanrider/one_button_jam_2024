@@ -30,7 +30,7 @@
 [ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="20_u8qqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
-size = Vector2(18.6229, 22.3692)
+size = Vector2(37.2631, 22.3692)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_171kb"]
 
@@ -108,17 +108,19 @@ script = ExtResource("12_cfnii")
 params = ExtResource("13_4qym4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/Conveyor"]
+position = Vector2(-119.25, 0)
 shape = ExtResource("14_ab8fw")
 
 [node name="JettisonTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(57, 44)
+position = Vector2(-20.25, 44)
 scale = Vector2(-1.62359, 4.29162)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("15_ssd4j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/JettisonTrigger"]
-position = Vector2(0.688568, 0.233014)
+position = Vector2(58.5123, 0.233047)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tinjm")
 
 [node name="DiscardTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
@@ -129,7 +131,7 @@ collision_mask = 64
 script = ExtResource("16_euwjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/DiscardTrigger"]
-position = Vector2(4.8796, -58.1995)
+position = Vector2(4.87621, -86.3042)
 rotation = 3.14159
 scale = Vector2(1, 1)
 shape = SubResource("WorldBoundaryShape2D_171kb")

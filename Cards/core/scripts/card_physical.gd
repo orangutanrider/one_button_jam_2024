@@ -35,10 +35,12 @@ func un_ghost():
 	set_deferred("gravity_scale", 0.0)
 	pass
 
+# It would make more sense if these parameters were not local to the card but local to the deck system.
 func jettison_trigger():
 	set_deferred("lock_rotation", false)
 	set_deferred("angular_velocity", params.jettison_angular)
 	set_deferred("gravity_scale", params.jettison_grav)
+	apply_central_impulse(params.jettison_force)
 	pass
 
 func bump_trigger(motion: float):

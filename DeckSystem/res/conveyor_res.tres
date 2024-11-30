@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_goy1m")
-base_speed = 20.0
-accel = 20.0
+base_speed = 200.0
+accel = 40.0
 deccel = 20.0
-churn_bonus = 180.0
+churn_bonus = 300.0

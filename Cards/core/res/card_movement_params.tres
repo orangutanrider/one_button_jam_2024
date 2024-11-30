@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_3eidn")
-jettison_grav = -3.0
-jettison_angular = 1.0
+jettison_grav = -2.0
+jettison_angular = -1.5
+jettison_force = Vector2(-800, 0)
 bumper_push = 1.0
