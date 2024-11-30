@@ -32,7 +32,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
 size = Vector2(18.6229, 22.3692)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5oarr"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_171kb"]
 
 [node name="main" type="Node2D"]
 
@@ -50,7 +50,7 @@ script = ExtResource("1_jfiiu")
 monitoring = false
 
 [node name="DeckSystem" type="Node2D" parent="."]
-position = Vector2(-1330, -439)
+position = Vector2(-1168, 1065)
 scale = Vector2(4, 4)
 
 [node name="DrawMachine" type="Node2D" parent="DeckSystem" node_paths=PackedStringArray("draw_pile", "discard_pile")]
@@ -122,14 +122,17 @@ position = Vector2(0.688568, 0.233014)
 shape = SubResource("RectangleShape2D_tinjm")
 
 [node name="DiscardTrigger" type="Area2D" parent="DeckSystem/ConveyorBelt"]
-position = Vector2(-32, -131)
+position = Vector2(-13.25, -288.25)
 scale = Vector2(36.8114, 6.74649)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("16_euwjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeckSystem/ConveyorBelt/DiscardTrigger"]
-shape = SubResource("RectangleShape2D_5oarr")
+position = Vector2(4.8796, -58.1995)
+rotation = 3.14159
+scale = Vector2(1, 1)
+shape = SubResource("WorldBoundaryShape2D_171kb")
 
 [node name="EnginePressure" type="Node" parent="DeckSystem"]
 script = ExtResource("17_ck7oh")
