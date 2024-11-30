@@ -35,6 +35,8 @@ func _area_entered(area: Area2D):
 		return
 
 func _area_exited(area: Area2D):
+	if target == area:
+		target = null
 	detection.erase(area)
 
 # Node
