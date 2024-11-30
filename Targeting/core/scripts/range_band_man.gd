@@ -1,6 +1,6 @@
 extends Node
 
-@export var discard_pile: Node
+@export var discard_pile: NodeReferenceRelayRes
 @export var targeting_system: Area2D
 
 var shape_node: Node2D
@@ -26,7 +26,7 @@ func dettach_existing():
 	var existing: Node = get_node_or_null(attachment_name)
 	if existing != null:
 		remove_child(existing)
-		discard_pile.add_ontop(existing)
+		discard_pile.get_ref().add_ontop(existing)
 
 func clear():
 	dettach_existing()

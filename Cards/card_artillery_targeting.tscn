@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxepdy5igvcaj"]
+[gd_scene load_steps=11 format=3 uid="uid://dxepdy5igvcaj"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_hbmig"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_utl18"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://d1awo0vew81i8" path="res://TextTheme/targeting_header.tres" id="5_2gr2r"]
 [ext_resource type="PackedScene" uid="uid://cqqmuvcsiroxc" path="res://Targeting/artillery_targeting_shape.tscn" id="5_v8uyj"]
 [ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="6_o7ors"]
+[ext_resource type="Resource" uid="uid://y1ubfbuv6ucr" path="res://RefRelay/cannon_range_band_man_relay.tres" id="10_1s5jg"]
 
 [node name="ArtilleryTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
 position = Vector2(2, 0)
@@ -67,3 +68,4 @@ autowrap_mode = 2
 [node name="TargetingCard" type="Node" parent="."]
 script = ExtResource("4_tnc6o")
 range_band = ExtResource("5_v8uyj")
+range_band_man = ExtResource("10_1s5jg")

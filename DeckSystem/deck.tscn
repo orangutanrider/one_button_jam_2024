@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnkhrnwcculld"]
+
+[ext_resource type="Script" path="res://DeckSystem/scripts/initializer.gd" id="1_hnacy"]
+[ext_resource type="PackedScene" uid="uid://dxepdy5igvcaj" path="res://Cards/card_artillery_targeting.tscn" id="2_rjvob"]
+
+[node name="Deck" type="Node"]
+script = ExtResource("1_hnacy")
+
+[node name="ArtilleryTargetingCard" parent="." instance=ExtResource("2_rjvob")]
+position = Vector2(0, 0)

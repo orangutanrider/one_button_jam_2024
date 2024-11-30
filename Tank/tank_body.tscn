@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cn7kpytcc8vb6"]
+[gd_scene load_steps=17 format=3 uid="uid://cn7kpytcc8vb6"]
 
 [ext_resource type="Script" path="res://Tank/scripts/tank_rigidbody.gd" id="1_amvpl"]
 [ext_resource type="Script" path="res://Tank/scripts/tank_suspension.gd" id="2_45dcj"]
@@ -7,6 +7,14 @@
 [ext_resource type="Script" path="res://Tank/scripts/tank_down_force.gd" id="5_ccc8s"]
 [ext_resource type="Script" path="res://Tank/scripts/tank_forward_force.gd" id="6_7x6ft"]
 [ext_resource type="AudioStream" uid="uid://bpnktsswg5tl0" path="res://SFX/Tank_Engine.ogg" id="7_paeh6"]
+[ext_resource type="Script" path="res://RefRelay/node_reference_relay_res_gates.gd" id="8_2l583"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/range_band_man.gd" id="8_ysabx"]
+[ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system.gd" id="9_cjydh"]
+[ext_resource type="Resource" uid="uid://y1ubfbuv6ucr" path="res://RefRelay/cannon_range_band_man_relay.tres" id="9_kks8c"]
+[ext_resource type="Resource" uid="uid://os5juiyfbgh0" path="res://Targeting/core/res/test_targeting_system_params.tres" id="10_2rvlv"]
+[ext_resource type="Script" path="res://Targeting/core/res/direct_fire.gd" id="11_038fl"]
+[ext_resource type="Resource" uid="uid://hojpql6i2ocg" path="res://Tank/cannon_swivel.tres" id="12_qdech"]
+[ext_resource type="PackedScene" uid="uid://d0n1mrhpljpa7" path="res://PlayerWeapon/gun.tscn" id="13_vgjo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cha1t"]
 size = Vector2(411, 65)
@@ -80,3 +88,30 @@ offset_bottom = 7.0
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_paeh6")
 autoplay = true
+
+[node name="Cannon" type="Node2D" parent="."]
+position = Vector2(171, -86)
+
+[node name="RangeBandManGates" type="Node2D" parent="Cannon" node_paths=PackedStringArray("target")]
+script = ExtResource("8_2l583")
+target = NodePath("../RangeBandMan")
+res = ExtResource("9_kks8c")
+
+[node name="RangeBandMan" type="Node2D" parent="Cannon" node_paths=PackedStringArray("targeting_system")]
+script = ExtResource("8_ysabx")
+targeting_system = NodePath("../Targeting")
+
+[node name="Targeting" type="Area2D" parent="Cannon"]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+script = ExtResource("9_cjydh")
+params = ExtResource("10_2rvlv")
+
+[node name="Swivel" type="Node2D" parent="Cannon" node_paths=PackedStringArray("targeting")]
+rotation = -0.654498
+script = ExtResource("11_038fl")
+params = ExtResource("12_qdech")
+targeting = NodePath("../Targeting")
+
+[node name="Gun" parent="Cannon/Swivel" instance=ExtResource("13_vgjo6")]

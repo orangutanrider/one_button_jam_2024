@@ -1,0 +1,132 @@
+[gd_scene load_steps=25 format=3 uid="uid://bc850rdflbunr"]
+
+[ext_resource type="Texture2D" uid="uid://nv6loj7feksp" path="res://shade.png" id="1_8ybm2"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_prigx"]
+[ext_resource type="Resource" uid="uid://k3kkpsyl26go" path="res://DeckSystem/res/draw_machine_params.tres" id="2_g04qa"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/card_pile.gd" id="3_ny434"]
+[ext_resource type="PackedScene" uid="uid://cnkhrnwcculld" path="res://DeckSystem/deck.tscn" id="4_etf13"]
+[ext_resource type="Script" path="res://RefRelay/node_reference_relay_res_gates.gd" id="6_hu0mw"]
+[ext_resource type="Resource" uid="uid://bmvmblmbjcb6v" path="res://RefRelay/discard_relay.tres" id="7_ky0ri"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_input.gd" id="8_xuxek"]
+[ext_resource type="Resource" uid="uid://q66wqv5ap4h3" path="res://DeckSystem/res/input_params.tres" id="9_vms05"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_engine_pressure.gd" id="10_rm4ld"]
+[ext_resource type="Resource" uid="uid://bot4oo3bc224u" path="res://DeckSystem/res/conveyor_engine_pressure_params.tres" id="11_ocx8m"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_cursor.gd" id="12_c4fdp"]
+[ext_resource type="Resource" uid="uid://jl8xycbq1i3v" path="res://DeckSystem/res/cursor_params.tres" id="13_k7a1s"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/conveyor_belt.gd" id="14_37gma"]
+[ext_resource type="Resource" uid="uid://hl3ytboesg3u" path="res://DeckSystem/res/conveyor_res.tres" id="15_6phbg"]
+[ext_resource type="Shape2D" uid="uid://ddwm33113h1iw" path="res://DeckSystem/res/conveyor_shape.tres" id="16_axaos"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/jettison_trigger.gd" id="17_l062m"]
+[ext_resource type="Script" path="res://DeckSystem/scripts/discard_trigger.gd" id="18_ggiev"]
+[ext_resource type="Script" path="res://PlayerResources/engine_pressure_script.gd" id="19_w784l"]
+[ext_resource type="Resource" uid="uid://dq8p2jvcwjecm" path="res://PlayerResources/res/engine_pressure_params.tres" id="20_qnnul"]
+[ext_resource type="Script" path="res://PlayerResources/grease_script.gd" id="21_6rmj0"]
+[ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="22_0pt0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
+size = Vector2(382.486, 165.439)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_171kb"]
+
+[node name="DeckSystem" type="Node2D"]
+position = Vector2(-1561, 555)
+
+[node name="Shade" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(1568, 434)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("1_8ybm2")
+
+[node name="DrawMachine" type="Node2D" parent="." node_paths=PackedStringArray("draw_pile", "discard_pile")]
+position = Vector2(3800, 200)
+script = ExtResource("1_prigx")
+params = ExtResource("2_g04qa")
+draw_pile = NodePath("../DrawPile")
+discard_pile = NodePath("../DiscardPile")
+
+[node name="DrawPile" type="Node" parent="."]
+script = ExtResource("3_ny434")
+
+[node name="Deck" parent="DrawPile" instance=ExtResource("4_etf13")]
+
+[node name="DiscardPile" type="Node" parent="."]
+script = ExtResource("3_ny434")
+
+[node name="DiscardPileRefGates" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("6_hu0mw")
+target = NodePath("../DiscardPile")
+res = ExtResource("7_ky0ri")
+
+[node name="ConveyorBelt" type="Node2D" parent="."]
+
+[node name="Input" type="Node" parent="ConveyorBelt" node_paths=PackedStringArray("conveyor_cursor", "conveyor")]
+script = ExtResource("8_xuxek")
+params = ExtResource("9_vms05")
+conveyor_cursor = NodePath("../PlayCursor")
+conveyor = NodePath("../Conveyor")
+
+[node name="EnginePressure" type="Node" parent="ConveyorBelt" node_paths=PackedStringArray("engine_pressure", "conveyor_belt")]
+script = ExtResource("10_rm4ld")
+engine_pressure = NodePath("../../EnginePressure")
+params = ExtResource("11_ocx8m")
+conveyor_belt = NodePath("../Conveyor")
+
+[node name="PlayCursor" type="RayCast2D" parent="ConveyorBelt" node_paths=PackedStringArray("grease_tank")]
+position = Vector2(712, -244)
+exclude_parent = false
+target_position = Vector2(0, 1000)
+collision_mask = 64
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("12_c4fdp")
+params = ExtResource("13_k7a1s")
+grease_tank = NodePath("../../GreaseTank")
+
+[node name="Conveyor" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(316, 44)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("14_37gma")
+params = ExtResource("15_6phbg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/Conveyor"]
+position = Vector2(1395, 253)
+shape = ExtResource("16_axaos")
+
+[node name="JettisonTrigger" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(-173, 57)
+scale = Vector2(-1.62359, 4.29162)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("17_l062m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/JettisonTrigger"]
+position = Vector2(324.743, 56.855)
+scale = Vector2(0.999999, 1)
+shape = SubResource("RectangleShape2D_tinjm")
+
+[node name="DiscardTrigger" type="Area2D" parent="ConveyorBelt"]
+position = Vector2(-1416, -624)
+rotation = -0.518312
+scale = Vector2(36.8114, 6.74649)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("18_ggiev")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ConveyorBelt/DiscardTrigger"]
+position = Vector2(4.87621, -86.3042)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_171kb")
+
+[node name="EnginePressure" type="Node" parent="."]
+script = ExtResource("19_w784l")
+params = ExtResource("20_qnnul")
+
+[node name="GreaseTank" type="Node" parent="."]
+script = ExtResource("21_6rmj0")
+params = ExtResource("22_0pt0y")
+
+[connection signal="area_entered" from="ConveyorBelt/JettisonTrigger" to="ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
+[connection signal="area_entered" from="ConveyorBelt/DiscardTrigger" to="ConveyorBelt/DiscardTrigger" method="_on_area_entered"]
