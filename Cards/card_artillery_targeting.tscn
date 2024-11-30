@@ -61,7 +61,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("6_o7ors")
 theme_override_colors/default_color = Color(0.301999, 0.3107, 0.293308, 1)
-text = "Attach to the main cannon for long range targeting that has a blind-range."
+text = "Attach to the main cannon for long range targeting that has a blind-range"
 scroll_active = false
 autowrap_mode = 2
 

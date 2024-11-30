@@ -12,4 +12,4 @@ func _ready() -> void:
 func played():
 	get_parent().ghost()
 	range_band_man.get_ref().flash_shape(range_band)
-	range_band_man.get_ref().attach(self)
+	range_band_man.get_ref().attach(get_parent())
