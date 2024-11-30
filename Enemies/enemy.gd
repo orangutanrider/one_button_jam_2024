@@ -79,6 +79,9 @@ func _fire_attack() -> void:
 		main.add_child(projectile)
 		if audioManager != null:
 			audioManager.play_sound(sfx)
+	_attack_extention()
+
+func _attack_extention() -> void: return
 
 func _deviate_scan_cooldown() -> void:
 	coolDownDeviation =randf_range(-CoolDownDeviationRange,CoolDownDeviationRange)
