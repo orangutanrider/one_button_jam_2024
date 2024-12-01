@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="NodeReferenceRelayRes" load_steps=2 format=3 uid="uid://k21bakgq6o7m"]
+
+[ext_resource type="Script" path="res://RefRelay/node_reference_relay_res.gd" id="1_oqtc4"]
+
+[resource]
+script = ExtResource("1_oqtc4")

@@ -1,33 +1,75 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxepdy5igvcaj"]
+[gd_scene load_steps=12 format=3 uid="uid://c5pmh0cyi2tfm"]
 
-[ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_hbmig"]
-[ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_utl18"]
-[ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="3_rsaf7"]
-[ext_resource type="Script" path="res://Cards/scripts/p_discard.gd" id="4_jk5l8"]
-[ext_resource type="Script" path="res://Cards/scripts/p_load_shells.gd" id="5_1jnat"]
-[ext_resource type="PackedScene" uid="uid://dahwfkakp8b4x" path="res://PlayerWeapon/PlayerProjectile/custom/ap_shell.tscn" id="6_03oux"]
+[ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_f4uwi"]
+[ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_jt00y"]
+[ext_resource type="Resource" uid="uid://bmvmblmbjcb6v" path="res://RefRelay/discard_relay.tres" id="3_ltp74"]
+[ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="4_wb3sc"]
+[ext_resource type="Texture2D" uid="uid://byp16ikh8o6xs" path="res://Cards/art/ap_shell.png" id="5_yt83f"]
+[ext_resource type="Theme" uid="uid://dbdmf7uekjsso" path="res://TextTheme/attack_header.tres" id="6_kquxu"]
+[ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="7_qtnjw"]
+[ext_resource type="Script" path="res://Cards/played/p_discard.gd" id="8_f5rs2"]
+[ext_resource type="Script" path="res://Cards/played/p_load_shells.gd" id="9_rdmsc"]
+[ext_resource type="PackedScene" uid="uid://dahwfkakp8b4x" path="res://PlayerWeapon/PlayerProjectile/custom/ap_shell.tscn" id="10_yy661"]
+[ext_resource type="Resource" uid="uid://k21bakgq6o7m" path="res://RefRelay/main_cannon_relay.tres" id="11_p6duk"]
 
-[node name="ApShellCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
+[node name="ArtilleryTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
 position = Vector2(2, 0)
-script = ExtResource("1_hbmig")
-params = ExtResource("2_utl18")
+script = ExtResource("1_f4uwi")
+params = ExtResource("2_jt00y")
+discard_pile = ExtResource("3_ltp74")
 bang = NodePath("CardPhysical/TriggerBang")
 collision = NodePath("CardPhysical/Collider")
 physical = NodePath("CardPhysical")
 conveyor_movement = NodePath("CardPhysical/ConveyorMovement")
 
-[node name="CardPhysical" parent="." instance=ExtResource("3_rsaf7")]
+[node name="CardPhysical" parent="." instance=ExtResource("4_wb3sc")]
 
-[node name="ColorRect" type="ColorRect" parent="CardPhysical"]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="CardPhysical"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_yt83f")
 
-[node name="DiscardOnPlay" type="Node" parent="."]
-script = ExtResource("4_jk5l8")
+[node name="Header" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -336.364
+offset_top = -1050.09
+offset_right = -489.364
+offset_bottom = -930.091
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_kquxu")
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+text = "Ap Shell"
+scroll_active = false
+autowrap_mode = 0
 
-[node name="LoadShells" type="Node" parent="."]
-script = ExtResource("5_1jnat")
-shells = Array[PackedScene]([ExtResource("6_03oux")])
+[node name="Body" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -270.909
+offset_top = -402.818
+offset_right = -508.909
+offset_bottom = -100.818
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("7_qtnjw")
+theme_override_colors/default_color = Color(0.301999, 0.3107, 0.293308, 1)
+text = "Load an AP shell into the main cannon"
+scroll_active = false
+autowrap_mode = 2
+
+[node name="Discard" type="Node" parent="."]
+script = ExtResource("8_f5rs2")
+
+[node name="LoadShell" type="Node" parent="."]
+script = ExtResource("9_rdmsc")
+shells = Array[PackedScene]([ExtResource("10_yy661")])
+cannon = ExtResource("11_p6duk")
