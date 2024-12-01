@@ -152,11 +152,12 @@ offset_bottom = -43.0
 color = Color(0, 0, 0, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
-offset_left = 31.0
-offset_top = 6.0
-offset_right = 202.0
-offset_bottom = 194.0
+offset_left = 33.0
+offset_top = 2.0
+offset_right = 204.0
+offset_bottom = 190.0
 theme = ExtResource("25_3kcu2")
+theme_override_colors/default_color = Color(0.705, 0.41, 1, 1)
 text = "1"
 scroll_active = false
 script = ExtResource("26_5wc1n")
