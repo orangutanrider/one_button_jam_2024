@@ -39,6 +39,7 @@ size = Vector2(1, 1)
 size = Vector2(65, 43)
 
 [node name="Bomber" type="CharacterBody2D"]
+scale = Vector2(1.66, 1.66)
 collision_layer = 0
 script = ExtResource("1_dsg7c")
 attackCooldown = 4
