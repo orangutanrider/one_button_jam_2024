@@ -8,4 +8,5 @@ func _ready() -> void:
 	var area_collision_shape = CollisionPolygon2D.new()
 	area_collision_shape.polygon = polygon
 	$Area2D.add_child(area_collision_shape)
+	$Line2D.points = polygon
 	pass # Replace with function body.
