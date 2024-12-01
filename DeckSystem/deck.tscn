@@ -15,7 +15,10 @@ visible = false
 visible = false
 
 [node name="ArtilleryTargetingCard2" parent="." instance=ExtResource("4_38csy")]
+visible = false
 
 [node name="ArtilleryTargetingCard3" parent="." instance=ExtResource("4_38csy")]
+visible = false
 
 [node name="ArtilleryTargetingCard4" parent="." instance=ExtResource("4_38csy")]
+visible = false
