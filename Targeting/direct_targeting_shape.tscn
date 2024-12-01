@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://ghmj5k5daa1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1nm57"]
-size = Vector2(1972.5, 755)
+size = Vector2(1289.5, 755)
 
 [node name="DirectTargetingShape" type="CollisionShape2D"]
-position = Vector2(957.75, -1.5)
+position = Vector2(616.25, -1.5)
 shape = SubResource("RectangleShape2D_1nm57")

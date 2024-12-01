@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://y1ubfbuv6ucr" path="res://RefRelay/cannon_range_band_man_relay.tres" id="10_iau2f"]
 
 [node name="DirectTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
+z_index = 3050
 position = Vector2(2, 0)
 script = ExtResource("1_dmj6n")
 params = ExtResource("2_bn1t0")

@@ -27,6 +27,7 @@ conveyor_movement = NodePath("CardPhysical/ConveyorMovement")
 [node name="CardPhysical" parent="." instance=ExtResource("4_21r58")]
 
 [node name="Sprite2D" type="Sprite2D" parent="CardPhysical"]
+z_index = 3050
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("5_dkccn")
 
@@ -44,8 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_s04y3")
 theme_override_colors/default_color = Color(1, 1, 0, 1)
-text = "HE
- Shell"
+text = "HE Shell"
 scroll_active = false
 autowrap_mode = 0
 
