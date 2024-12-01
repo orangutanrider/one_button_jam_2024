@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=12 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="PackedScene" uid="uid://dmmmdnc8ncew3" path="res://Levels/enemy_spawn_point.tscn" id="1_hniko"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
 [ext_resource type="PackedScene" uid="uid://cltvcq41a4h8o" path="res://SFX/audio_manager.tscn" id="34_ji0kl"]
 [ext_resource type="PackedScene" uid="uid://cy8ppkr8jxswc" path="res://SoundTracks/MusicPlayer.tscn" id="35_y2nll"]
+
+[sub_resource type="Curve" id="Curve_fmywe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.243719, 0.50625), 0.0, 0.0, 0, 0, Vector2(0.494975, 1), 0.0, 0.0, 0, 0, Vector2(0.746231, 0.48125), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [node name="main" type="Node2D"]
 
@@ -35,6 +39,7 @@ monitoring = false
 [node name="Line2D" type="Line2D" parent="Ground/Polygon2D"]
 closed = true
 width = 60.0
+width_curve = SubResource("Curve_fmywe")
 default_color = Color(0.160395, 0.197283, 0.0689809, 1)
 
 [node name="TankBody" parent="." instance=ExtResource("2_ratli")]
@@ -52,6 +57,7 @@ tank = NodePath("../TankBody")
 camera_stick = NodePath("../TankBody/CameraStick")
 
 [node name="ColorRect" type="ColorRect" parent="CameraSwivel"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 color = Color(0, 1, 0.0666666, 1)

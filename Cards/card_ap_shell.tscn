@@ -44,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_kquxu")
 theme_override_colors/default_color = Color(1, 1, 0, 1)
-text = "Ap Shell"
+text = "AP Shell"
 scroll_active = false
 autowrap_mode = 0
 

@@ -41,13 +41,14 @@ position = Vector2(0.5, -17.5)
 shape = SubResource("RectangleShape2D_cha1t")
 
 [node name="Suspension1" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
-position = Vector2(160, 80)
+position = Vector2(200, 80)
 script = ExtResource("2_45dcj")
 PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot1")
 
 [node name="RollerPivot1" parent="." instance=ExtResource("4_r5jje")]
-position = Vector2(160, 80)
+z_index = 200
+position = Vector2(200, 80)
 
 [node name="Suspension2" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
 position = Vector2(0, 80)
@@ -56,16 +57,18 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot2")
 
 [node name="RollerPivot2" parent="." instance=ExtResource("4_r5jje")]
+z_index = 300
 position = Vector2(0, 80)
 
 [node name="Suspension3" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
-position = Vector2(-160, 78)
+position = Vector2(-200, 78)
 script = ExtResource("2_45dcj")
 PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot3")
 
 [node name="RollerPivot3" parent="." instance=ExtResource("4_r5jje")]
-position = Vector2(-160, 80)
+z_index = 200
+position = Vector2(-200, 80)
 
 [node name="UpPoint" type="Node2D" parent="."]
 position = Vector2(0, -1)
