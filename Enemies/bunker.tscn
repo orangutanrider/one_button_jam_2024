@@ -46,7 +46,7 @@ script = ExtResource("1_8c28m")
 hp = 10
 attack = 3
 attackCooldown = 4
-attackDistance = 2500
+attackDistance = 3200
 weaponOffset = Vector2(-75, -75)
 scanPeriod = 10
 
