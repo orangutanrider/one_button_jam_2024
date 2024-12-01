@@ -8,17 +8,23 @@ var grease_cost: int = 0
 
 var armed_latch: bool = false
 
+func can_play() -> bool:
+	if armed_latch == false:
+		return true
+	return false
+
 func set_grease_cost(val: int): 
 	grease_cost = val
 
 func read_grease_cost() -> int:
 	return grease_cost
 
-func arm():
-	if armed_latch: return
+func arm() -> bool:
+	if armed_latch: return false
 	
 	armed_latch = true
 	armed.emit()
+	return true
 
 func jettison():
 	jettisoned.emit()

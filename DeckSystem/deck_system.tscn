@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bc850rdflbunr"]
+[gd_scene load_steps=29 format=3 uid="uid://bc850rdflbunr"]
 
 [ext_resource type="Texture2D" uid="uid://nv6loj7feksp" path="res://shade.png" id="1_8ybm2"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_prigx"]
@@ -24,6 +24,8 @@
 [ext_resource type="Resource" uid="uid://dq8p2jvcwjecm" path="res://PlayerResources/res/engine_pressure_params.tres" id="20_qnnul"]
 [ext_resource type="Script" path="res://PlayerResources/grease_script.gd" id="21_6rmj0"]
 [ext_resource type="Resource" uid="uid://drx1xa7c7sg03" path="res://PlayerResources/res/grease_params.tres" id="22_0pt0y"]
+[ext_resource type="Theme" uid="uid://c4eryhngsfaq1" path="res://TextTheme/grease.tres" id="25_3kcu2"]
+[ext_resource type="Script" path="res://PlayerResources/relay_to_hud.gd" id="26_5wc1n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
 size = Vector2(382.486, 165.439)
@@ -141,6 +143,24 @@ params = ExtResource("22_0pt0y")
 script = ExtResource("6_hu0mw")
 target = NodePath("../GreaseTank")
 res = ExtResource("19_4lyvj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -330.0
+offset_top = -229.0
+offset_right = -156.0
+offset_bottom = -43.0
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+offset_left = 31.0
+offset_top = 6.0
+offset_right = 202.0
+offset_bottom = 194.0
+theme = ExtResource("25_3kcu2")
+text = "1"
+scroll_active = false
+script = ExtResource("26_5wc1n")
+relay = ExtResource("19_4lyvj")
 
 [connection signal="area_entered" from="ConveyorBelt/JettisonTrigger" to="ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
 [connection signal="area_entered" from="ConveyorBelt/DiscardTrigger" to="ConveyorBelt/DiscardTrigger" method="_on_area_entered"]

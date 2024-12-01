@@ -23,5 +23,13 @@ func try_spend_grease(amount: int) -> bool:
 	grease_tank = grease_tank - amount
 	return true
 
+func can_spend(amount: int) -> bool:
+	if amount > grease_tank:
+		return false
+	return true
+
+func read() -> int:
+	return grease_tank
+
 # Pre-loading shells causing your grease cap to become more limited?
 # I'm not sure about the mechanic so I think I will just leave it alone.

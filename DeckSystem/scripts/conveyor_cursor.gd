@@ -18,13 +18,22 @@ func _physics_process(delta: float) -> void:
 		push_warning("Unexpected null detection")
 		return
 
-	play_detected_card(detection)
+	try_play_detected_card(detection)
 
-func play_detected_card(card: Object):
+func try_play_detected_card(card: Object):
 	print("playing card")
-	if !grease_tank.get_ref().try_spend_grease(card.read_grease_cost()):
+
+	var grease_tank_r: Node = grease_tank.get_ref()
+	var cost: int = card.read_grease_cost()
+
+	if !grease_tank_r.can_spend(cost):
 		print("Not enough grease to play the card")
 		return
+	
+	if !card.can_play():
+		return
+
+	grease_tank_r.try_spend_grease(cost)
 	
 	card.arm()
 	active_timer = 0.0
