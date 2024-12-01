@@ -40,6 +40,7 @@ size = Vector2(20, 3)
 size = Vector2(120, 104)
 
 [node name="Bunker" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_8c28m")
 hp = 10
 attack = 3
