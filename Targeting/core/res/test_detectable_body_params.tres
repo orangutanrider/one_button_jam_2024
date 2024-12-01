@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="DetectableBodyRes" load_steps=2 format=3 uid="uid://bhf4hnnimgrxd"]
-
-[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body_res.gd" id="1_qcqhb"]
-
-[resource]
-script = ExtResource("1_qcqhb")
-traversal_type = 1

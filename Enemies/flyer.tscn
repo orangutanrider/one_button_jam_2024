@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://7iepv06svvkb" path="res://Enemies/Sprites/FlyEnemy2_SpriteSheet.png" id="2_0yb6b"]
 [ext_resource type="AudioStream" uid="uid://fjp0evguupik" path="res://SFX/Flying.ogg" id="3_eeb6q"]
 [ext_resource type="AudioStream" uid="uid://c2m0t1htxvnrc" path="res://SFX/Small_Gun.ogg" id="3_ppnjw"]
-[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="5_0b1jt"]
+[ext_resource type="Script" path="res://Targeting/scripts/detectable_body.gd" id="5_0b1jt"]
 [ext_resource type="Resource" uid="uid://di58epub75cqt" path="res://Targeting/airborne.tres" id="6_f3xmp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p5pr"]

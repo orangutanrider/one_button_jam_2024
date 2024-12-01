@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/crawler.gd" id="1_jonwt"]
 [ext_resource type="AudioStream" uid="uid://c2m0t1htxvnrc" path="res://SFX/Small_Gun.ogg" id="2_biqof"]
 [ext_resource type="Texture2D" uid="uid://cmemdtv1dgbyb" path="res://Enemies/Sprites/AntCrawlerEnemy_SpirteSheet.png" id="2_ogxkk"]
-[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="4_abosf"]
+[ext_resource type="Script" path="res://Targeting/scripts/detectable_body.gd" id="4_abosf"]
 [ext_resource type="Resource" uid="uid://bm5kwsc7p2xw2" path="res://Targeting/grounded.tres" id="5_0mi8a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rkb6v"]
@@ -67,13 +67,13 @@ attackDistance = 1500
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_30tqx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 22)
-shape = SubResource("RectangleShape2D_mch8a")
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_mch8a")
 
 [node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_biqof")
@@ -88,3 +88,7 @@ params = ExtResource("5_0mi8a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectableBody"]
 position = Vector2(-5, -0.5)
 shape = SubResource("RectangleShape2D_7msu4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_mch8a")

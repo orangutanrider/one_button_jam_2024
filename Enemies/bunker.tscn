@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Enemies/bunker.gd" id="1_8c28m"]
 [ext_resource type="Texture2D" uid="uid://o5rnd8raasxx" path="res://Enemies/Sprites/ArtyBeetle_SpriteSheet.png" id="2_aacyc"]
 [ext_resource type="AudioStream" uid="uid://cex757d434h8h" path="res://SFX/Big_Splatter.ogg" id="2_ts8kx"]
-[ext_resource type="Script" path="res://Targeting/core/scripts/detectable_body.gd" id="4_jhkd5"]
+[ext_resource type="Script" path="res://Targeting/scripts/detectable_body.gd" id="4_jhkd5"]
 [ext_resource type="Resource" uid="uid://bm5kwsc7p2xw2" path="res://Targeting/grounded.tres" id="5_l3c3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l174w"]

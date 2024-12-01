@@ -20,7 +20,7 @@ func return_to_neutral(delta: float):
 func aim_at_target(delta: float, target: Area2D):
 	# pythag
 	var relative: Vector2 = global_position - target.global_position 
-	var hypo: float = Vector2.ZERO.distance_to(target.global_position)
+	var hypo: float = Vector2.ZERO.distance_to(relative)
 	var angle: float = -relative.y / hypo
 	
 

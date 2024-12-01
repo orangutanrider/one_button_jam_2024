@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="TargetingSystemRes" load_steps=2 format=3 uid="uid://os5juiyfbgh0"]
 
-[ext_resource type="Script" path="res://Targeting/core/scripts/targeting_system_res.gd" id="1_3j1k6"]
+[ext_resource type="Script" path="res://Targeting/scripts/targeting_system_res.gd" id="1_3j1k6"]
 
 [resource]
 script = ExtResource("1_3j1k6")
