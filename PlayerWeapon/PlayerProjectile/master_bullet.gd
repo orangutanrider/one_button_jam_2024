@@ -13,7 +13,7 @@ func _enter_tree() -> void:
 func _fire(FireLocation:Vector2, FireRotation:float) -> void:
 	self.visible = 1
 	self.position = FireLocation
-	self.rotation_degrees = FireRotation
+	rotation = FireRotation
 	BulletFired.emit() 
 	## TP to location and make visible once fired 
 	

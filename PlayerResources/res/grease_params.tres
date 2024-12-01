@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_plac5")
 max_grease = 6
-grease_income_rate = 0.34
+grease_income_rate = 1.0
