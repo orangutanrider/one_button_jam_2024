@@ -6,12 +6,12 @@ var Fired : bool = 0
 
 func _on_bullet_fired() -> void:
 	Fired = 1
-	#var velocity = Vector2.RIGHT
+	#velocity = Vector2.RIGHT * params.speed
 
 func _physics_process(_delta: float) -> void:
 	# const Speed = 300
 	if Fired:
-		velocity = Vector2(params.speed,0).rotated(rotation)
+		velocity = Vector2(params.speed, 0).rotated(rotation)
 		move_and_slide()
 
 func _on_area_2d_area_entered(body: Area2D) -> void:

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name MasterBullet
 signal BulletFired
+
+#@export var speed: float = 10.0
 @export var CoolDown : float = 1
 
 ## Note: All childs of master bullet cannot use the _enter_tree or _fire function because it will overwrite the processes of the master bullet
