@@ -43,7 +43,6 @@ stream_1/weight = 0.1
 size = Vector2(66, 68)
 
 [node name="Flyer" type="CharacterBody2D"]
-collision_layer = 0
 script = ExtResource("1_bmu4m")
 kiteDistance = 800
 flyingHeight = 400
@@ -58,7 +57,7 @@ sprite_frames = SubResource("SpriteFrames_rhrqn")
 autoplay = "default"
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 1024
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

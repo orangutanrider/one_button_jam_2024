@@ -39,7 +39,6 @@ size = Vector2(1, 1)
 size = Vector2(65, 43)
 
 [node name="Bomber" type="CharacterBody2D"]
-collision_layer = 0
 script = ExtResource("1_dsg7c")
 attackCooldown = 4
 attackDistance = 3000
@@ -64,7 +63,7 @@ position = Vector2(3.5, -6.5)
 shape = SubResource("RectangleShape2D_1ta5l")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 1024
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

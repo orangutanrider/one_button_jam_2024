@@ -59,7 +59,6 @@ size = Vector2(2.5, 2.25)
 size = Vector2(76, 53)
 
 [node name="Crawler" type="CharacterBody2D"]
-collision_layer = 0
 script = ExtResource("1_jonwt")
 attackDistance = 1500
 
@@ -68,7 +67,7 @@ scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_30tqx")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 1024
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]

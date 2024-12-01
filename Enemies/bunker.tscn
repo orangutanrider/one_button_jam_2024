@@ -40,7 +40,6 @@ size = Vector2(20, 3)
 size = Vector2(120, 104)
 
 [node name="Bunker" type="CharacterBody2D"]
-collision_layer = 0
 script = ExtResource("1_8c28m")
 hp = 10
 attack = 3
@@ -59,7 +58,7 @@ position = Vector2(0, 42)
 shape = SubResource("RectangleShape2D_f6kww")
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 1024
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
