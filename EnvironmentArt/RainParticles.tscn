@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bujrrfts1830j"]
+
+[ext_resource type="Texture2D" uid="uid://coq656cg8w8gf" path="res://EnvironmentArt/T_RainDrop.png" id="1_8mk2j"]
+
+[node name="CPUParticles2D" type="CPUParticles2D"]
+z_index = -1
+position = Vector2(700, -800)
+rotation = 0.218166
+amount = 200
+lifetime = 4.0
+preprocess = 1.0
+speed_scale = 2.5
+local_coords = true
+texture = ExtResource("1_8mk2j")
+emission_shape = 3
+emission_rect_extents = Vector2(2200, 1)
+gravity = Vector2(0, 420)
+scale_amount_min = 0.5
+scale_amount_max = 0.7
+color = Color(0.0784314, 0.0862745, 0.109804, 0.615686)

@@ -4,10 +4,8 @@ extends Node2D
 
 func _ready() -> void:
 	$GetEnemies.start()
+	$AnimatedSprite2D.play("1", 1, false)
 	#The explosion has to be delayed by 1 frame as it thinks its at 0,0 if you do the explosion in _ready()
-
-func _on_despawn_timer_timeout() -> void:
-	queue_free()
 
 func _on_get_enemies_timeout() -> void:
 	var space_state = get_world_2d().direct_space_state
@@ -34,4 +32,7 @@ func _on_get_enemies_timeout() -> void:
 	for item in result:
 		var hitobj = item.collider
 		hitobj.get_parent()._take_damage(params.damage)
-	$DespawnTimer.start() # start Despawn Timer
+	
+	
+func _on_animated_sprite_2d_animation_finished() -> void:
+	queue_free()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bggr1eqytj1f5"
-path="res://.godot/imported/explosiob.png-4137b43809b3ce774fd5594c7471e791.ctex"
+uid="uid://bpankudsgbhfx"
+path="res://.godot/imported/T_SkyBackground_Stormy.png-d95087e55af4c50b9a8a2af5554519da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://PlayerWeapon/PlayerProjectile/custom/res/explosiob.png"
-dest_files=["res://.godot/imported/explosiob.png-4137b43809b3ce774fd5594c7471e791.ctex"]
+source_file="res://EnvironmentArt/T_SkyBackground_Stormy.png"
+dest_files=["res://.godot/imported/T_SkyBackground_Stormy.png-d95087e55af4c50b9a8a2af5554519da.ctex"]
 
 [params]
 

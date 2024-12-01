@@ -1,24 +1,93 @@
-[gd_scene load_steps=4 format=3 uid="uid://2yujubb0fpdy"]
+[gd_scene load_steps=14 format=3 uid="uid://2yujubb0fpdy"]
 
-[ext_resource type="Texture2D" uid="uid://bggr1eqytj1f5" path="res://PlayerWeapon/PlayerProjectile/custom/res/explosiob.png" id="1_praog"]
 [ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/custom/scripts/explosion_script.gd" id="1_whed1"]
 [ext_resource type="Resource" uid="uid://ce5r2dqciyjfm" path="res://PlayerWeapon/PlayerProjectile/custom/res/explosion_params.tres" id="2_01vfm"]
+[ext_resource type="Texture2D" uid="uid://ctafmeoou85ll" path="res://PlayerWeapon/PlayerProjectile/custom/res/Explosion1_SpriteSheet.png" id="3_r1xvb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orphh"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trq84"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ej5"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjipo"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t14pw"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(2048, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0x0wg"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(2560, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow050"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(3072, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is3o5"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(3584, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj8ft"]
+atlas = ExtResource("3_r1xvb")
+region = Rect2(4096, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehri8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orphh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trq84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ej5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjipo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t14pw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0x0wg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow050")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is3o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj8ft")
+}],
+"loop": false,
+"name": &"1",
+"speed": 10.0
+}]
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_whed1")
 params = ExtResource("2_01vfm")
 
-[node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 0.4
-one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_praog")
-
 [node name="GetEnemies" type="Timer" parent="."]
 wait_time = 0.02
 one_shot = true
 
-[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ehri8")
+animation = &"1"
+frame = 8
+frame_progress = 1.0
+
 [connection signal="timeout" from="GetEnemies" to="." method="_on_get_enemies_timeout"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

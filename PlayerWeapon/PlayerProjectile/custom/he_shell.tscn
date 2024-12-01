@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://wukljnnicdwi"]
+[gd_scene load_steps=7 format=3 uid="uid://wukljnnicdwi"]
 
 [ext_resource type="PackedScene" uid="uid://de2xd5kk32rma" path="res://PlayerWeapon/PlayerProjectile/master_bullet.tscn" id="1_uqshf"]
 [ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/custom/scripts/he_shell_script.gd" id="2_4hul2"]
 [ext_resource type="Resource" uid="uid://dbs7xqn2p72dc" path="res://PlayerWeapon/PlayerProjectile/custom/res/he_shell.tres" id="3_wtxq1"]
 [ext_resource type="PackedScene" uid="uid://2yujubb0fpdy" path="res://PlayerWeapon/PlayerProjectile/custom/explosion.tscn" id="4_pk81i"]
+[ext_resource type="Texture2D" uid="uid://7qwmbejav86c" path="res://PlayerWeapon/PlayerProjectile/custom/res/T_HEBullet.png" id="5_6qan6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m1qhq"]
 radius = 41.0
@@ -21,20 +22,10 @@ collision_layer = 512
 collision_mask = 1025
 monitorable = false
 
-[node name="ColorRect" type="ColorRect" parent="Area2D" index="0"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.932608, 0, 0.0595719, 1)
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D" type="Sprite2D" parent="Area2D" index="0"]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_6qan6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="1"]
 rotation = 1.5708
