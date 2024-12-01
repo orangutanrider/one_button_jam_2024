@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_3j1k6")
-clock_time = 2.0
+clock_time = 0.1

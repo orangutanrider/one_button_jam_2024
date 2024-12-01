@@ -1,7 +1,7 @@
 extends RayCast2D
 
 @export var params: ConveyorCursorRes
-@export var grease_tank: Node
+@export var grease_tank: NodeReferenceRelayRes
 
 var active_timer: float = 0.0
 
@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	play_detected_card(detection)
 
 func play_detected_card(card: Object):
-	if !grease_tank.try_spend_grease(card.read_grease_cost()):
+	if !grease_tank.get_ref().try_spend_grease(card.read_grease_cost()):
 		return
 	
 	card.arm()
