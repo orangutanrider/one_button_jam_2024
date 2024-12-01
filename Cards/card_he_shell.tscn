@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://be17c1wjqogtu"]
+
+[ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_6q2qu"]
+[ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_wi1f2"]
+[ext_resource type="Resource" uid="uid://bmvmblmbjcb6v" path="res://RefRelay/discard_relay.tres" id="3_fw6y7"]
+[ext_resource type="PackedScene" uid="uid://c8hcsxjvnjful" path="res://Cards/core/card_physical.tscn" id="4_21r58"]
+[ext_resource type="Texture2D" uid="uid://swep38b0rf60" path="res://Cards/art/he_shell.png" id="5_dkccn"]
+[ext_resource type="Theme" uid="uid://dbdmf7uekjsso" path="res://TextTheme/attack_header.tres" id="6_s04y3"]
+[ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="7_0brms"]
+[ext_resource type="Theme" uid="uid://c4eryhngsfaq1" path="res://TextTheme/grease.tres" id="8_7r4vj"]
+[ext_resource type="Script" path="res://Cards/played/p_discard.gd" id="9_f0juk"]
+[ext_resource type="Script" path="res://Cards/played/p_load_shells.gd" id="10_qtiex"]
+[ext_resource type="PackedScene" uid="uid://wukljnnicdwi" path="res://PlayerWeapon/PlayerProjectile/custom/he_shell.tscn" id="11_5s7v6"]
+[ext_resource type="Resource" uid="uid://k21bakgq6o7m" path="res://RefRelay/main_cannon_relay.tres" id="12_ti3kk"]
+
+[node name="ArtilleryTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
+position = Vector2(2, 0)
+script = ExtResource("1_6q2qu")
+params = ExtResource("2_wi1f2")
+grease_cost = 1
+discard_pile = ExtResource("3_fw6y7")
+bang = NodePath("CardPhysical/TriggerBang")
+collision = NodePath("CardPhysical/Collider")
+physical = NodePath("CardPhysical")
+conveyor_movement = NodePath("CardPhysical/ConveyorMovement")
+
+[node name="CardPhysical" parent="." instance=ExtResource("4_21r58")]
+
+[node name="Sprite2D" type="Sprite2D" parent="CardPhysical"]
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("5_dkccn")
+
+[node name="Header" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -336.364
+offset_top = -1050.09
+offset_right = -489.364
+offset_bottom = -930.091
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_s04y3")
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+text = "HE
+ Shell"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Body" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -270.909
+offset_top = -402.818
+offset_right = -508.909
+offset_bottom = -100.818
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("7_0brms")
+theme_override_colors/default_color = Color(0.301999, 0.3107, 0.293308, 1)
+text = "Load an AP shell into the main cannon"
+scroll_active = false
+autowrap_mode = 2
+
+[node name="Cost" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 236.364
+offset_top = -1097.36
+offset_right = -423.636
+offset_bottom = -893.364
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_7r4vj")
+theme_override_colors/default_color = Color(0.145, 0, 0.29, 1)
+text = "2
+"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Discard" type="Node" parent="."]
+script = ExtResource("9_f0juk")
+
+[node name="LoadShell" type="Node" parent="."]
+script = ExtResource("10_qtiex")
+shells = Array[PackedScene]([ExtResource("11_5s7v6")])
+cannon = ExtResource("12_ti3kk")

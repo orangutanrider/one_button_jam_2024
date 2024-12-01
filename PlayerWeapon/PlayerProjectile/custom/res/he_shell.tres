@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BulletParams" load_steps=2 format=3 uid="uid://dbs7xqn2p72dc"]
+
+[ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/bullet_params.gd" id="1_32dmu"]
+
+[resource]
+script = ExtResource("1_32dmu")
+speed = 600.0
+damage = 700

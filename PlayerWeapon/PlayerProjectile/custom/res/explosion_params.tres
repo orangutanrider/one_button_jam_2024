@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ExplosionParams" load_steps=2 format=3 uid="uid://ce5r2dqciyjfm"]
+
+[ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/custom/scripts/explosion_script_params.gd" id="1_juk05"]
+
+[resource]
+script = ExtResource("1_juk05")
+collision_mask = 1024
+radius = 300.0
+damage = 900.0

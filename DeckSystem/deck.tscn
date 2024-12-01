@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnkhrnwcculld"]
+[gd_scene load_steps=6 format=3 uid="uid://cnkhrnwcculld"]
 
 [ext_resource type="Script" path="res://DeckSystem/scripts/initializer.gd" id="1_hnacy"]
 [ext_resource type="PackedScene" uid="uid://dxepdy5igvcaj" path="res://Cards/card_artillery_targeting.tscn" id="2_rjvob"]
 [ext_resource type="PackedScene" uid="uid://ba4jb7777d81" path="res://Cards/card_direct_targeting.tscn" id="3_7713a"]
 [ext_resource type="PackedScene" uid="uid://c5pmh0cyi2tfm" path="res://Cards/card_ap_shell.tscn" id="4_38csy"]
+[ext_resource type="PackedScene" uid="uid://be17c1wjqogtu" path="res://Cards/card_he_shell.tscn" id="5_drvdj"]
 
 [node name="Deck" type="Node"]
 script = ExtResource("1_hnacy")
@@ -22,3 +23,7 @@ visible = false
 
 [node name="ArtilleryTargetingCard4" parent="." instance=ExtResource("4_38csy")]
 visible = false
+
+[node name="ArtilleryTargetingCard5" parent="." instance=ExtResource("5_drvdj")]
+
+[node name="ArtilleryTargetingCard6" parent="." instance=ExtResource("5_drvdj")]

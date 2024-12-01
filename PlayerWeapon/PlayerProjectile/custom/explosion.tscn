@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://2yujubb0fpdy"]
+[gd_scene load_steps=4 format=3 uid="uid://2yujubb0fpdy"]
 
 [ext_resource type="Texture2D" uid="uid://bggr1eqytj1f5" path="res://PlayerWeapon/PlayerProjectile/custom/res/explosiob.png" id="1_praog"]
 [ext_resource type="Script" path="res://PlayerWeapon/PlayerProjectile/custom/scripts/explosion_script.gd" id="1_whed1"]
+[ext_resource type="Resource" uid="uid://ce5r2dqciyjfm" path="res://PlayerWeapon/PlayerProjectile/custom/res/explosion_params.tres" id="2_01vfm"]
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_whed1")
+params = ExtResource("2_01vfm")
 
 [node name="DespawnTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(2, 2)
 texture = ExtResource("1_praog")
 
 [node name="GetEnemies" type="Timer" parent="."]

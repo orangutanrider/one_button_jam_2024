@@ -25,6 +25,6 @@ func aim_at_target(delta: float, target: Area2D):
 	
 
 	# rotation
-	var diff: float = angle - rotation
+	var diff: float = angle - global_rotation
 	var turn_power = clampf(diff, (-params.turn_rate * delta), (params.turn_rate * delta))
 	rotate(turn_power)
