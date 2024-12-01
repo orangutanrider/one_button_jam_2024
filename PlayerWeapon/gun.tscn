@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0n1mrhpljpa7"]
+[gd_scene load_steps=3 format=3 uid="uid://d0n1mrhpljpa7"]
 
 [ext_resource type="Script" path="res://PlayerWeapon/gun_script.gd" id="1_cwe5r"]
+[ext_resource type="Texture2D" uid="uid://b0am6qa0j5igh" path="res://Tank/barrel.png" id="2_80wpv"]
 
 [node name="Gun" type="Node2D"]
 script = ExtResource("1_cwe5r")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = 1.0
 offset_top = -10.0
 offset_right = 201.0
@@ -16,5 +18,11 @@ position = Vector2(200, 0)
 
 [node name="Shoottimer" type="Timer" parent="."]
 process_callback = 0
+
+[node name="Barrel" type="Sprite2D" parent="."]
+z_index = 350
+position = Vector2(104, 0)
+scale = Vector2(0.55, 0.55)
+texture = ExtResource("2_80wpv")
 
 [connection signal="timeout" from="Shoottimer" to="." method="_on_shoottimer_timeout"]

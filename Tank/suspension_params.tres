@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_ah2mo")
-FORCE_SCALAR = 40.0
+FORCE_SCALAR = 20.0
