@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5pmh0cyi2tfm"]
+[gd_scene load_steps=13 format=3 uid="uid://c5pmh0cyi2tfm"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_f4uwi"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_jt00y"]
@@ -8,6 +8,7 @@
 [ext_resource type="Theme" uid="uid://dbdmf7uekjsso" path="res://TextTheme/attack_header.tres" id="6_kquxu"]
 [ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="7_qtnjw"]
 [ext_resource type="Script" path="res://Cards/played/p_discard.gd" id="8_f5rs2"]
+[ext_resource type="Theme" uid="uid://c4eryhngsfaq1" path="res://TextTheme/grease.tres" id="8_pbylq"]
 [ext_resource type="Script" path="res://Cards/played/p_load_shells.gd" id="9_rdmsc"]
 [ext_resource type="PackedScene" uid="uid://dahwfkakp8b4x" path="res://PlayerWeapon/PlayerProjectile/custom/ap_shell.tscn" id="10_yy661"]
 [ext_resource type="Resource" uid="uid://k21bakgq6o7m" path="res://RefRelay/main_cannon_relay.tres" id="11_p6duk"]
@@ -16,6 +17,7 @@
 position = Vector2(2, 0)
 script = ExtResource("1_f4uwi")
 params = ExtResource("2_jt00y")
+grease_cost = 1
 discard_pile = ExtResource("3_ltp74")
 bang = NodePath("CardPhysical/TriggerBang")
 collision = NodePath("CardPhysical/Collider")
@@ -65,6 +67,25 @@ theme_override_colors/default_color = Color(0.301999, 0.3107, 0.293308, 1)
 text = "Load an AP shell into the main cannon"
 scroll_active = false
 autowrap_mode = 2
+
+[node name="Cost" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 236.364
+offset_top = -1097.36
+offset_right = -423.636
+offset_bottom = -893.364
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_pbylq")
+theme_override_colors/default_color = Color(0.145, 0, 0.29, 1)
+text = "1
+"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="Discard" type="Node" parent="."]
 script = ExtResource("8_f5rs2")

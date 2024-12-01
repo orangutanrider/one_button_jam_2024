@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba4jb7777d81"]
+[gd_scene load_steps=12 format=3 uid="uid://ba4jb7777d81"]
 
 [ext_resource type="Script" path="res://Cards/core/scripts/card_root.gd" id="1_dmj6n"]
 [ext_resource type="Resource" uid="uid://gibqlnb0yg7g" path="res://Cards/core/res/card_root_params.tres" id="2_bn1t0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Theme" uid="uid://d1awo0vew81i8" path="res://TextTheme/targeting_header.tres" id="5_1aixq"]
 [ext_resource type="PackedScene" uid="uid://ghmj5k5daa1g" path="res://Targeting/direct_targeting_shape.tscn" id="5_jdxbw"]
 [ext_resource type="Theme" uid="uid://dlhn4nsxjrivu" path="res://TextTheme/body_text.tres" id="6_rdq5w"]
+[ext_resource type="Theme" uid="uid://c4eryhngsfaq1" path="res://TextTheme/grease.tres" id="8_ojpoh"]
 [ext_resource type="Resource" uid="uid://y1ubfbuv6ucr" path="res://RefRelay/cannon_range_band_man_relay.tres" id="10_iau2f"]
 
 [node name="DirectTargetingCard" type="Node2D" node_paths=PackedStringArray("bang", "collision", "physical", "conveyor_movement")]
@@ -64,6 +65,26 @@ theme_override_colors/default_color = Color(0.301999, 0.3107, 0.293308, 1)
 text = "Attach to the main cannon for medium-ranged targeting"
 scroll_active = false
 autowrap_mode = 2
+
+[node name="Cost" type="RichTextLabel" parent="CardPhysical/Sprite2D"]
+custom_minimum_size = Vector2(30, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 236.364
+offset_top = -1088.27
+offset_right = -423.636
+offset_bottom = -884.273
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_ojpoh")
+theme_override_colors/default_color = Color(0.27379, 0.2166, 0.38, 1)
+text = "0
+
+"
+scroll_active = false
+autowrap_mode = 0
 
 [node name="TargetingCard" type="Node" parent="."]
 script = ExtResource("4_h87oc")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c4eryhngsfaq1"]
+
+[ext_resource type="FontFile" uid="uid://dy2ne71h6g6ra" path="res://Fonts/RubikBubbles-Regular.ttf" id="1_cjdrk"]
+
+[resource]
+default_font = ExtResource("1_cjdrk")
+default_font_size = 150
