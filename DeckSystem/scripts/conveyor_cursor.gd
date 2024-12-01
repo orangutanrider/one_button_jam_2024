@@ -21,7 +21,9 @@ func _physics_process(delta: float) -> void:
 	play_detected_card(detection)
 
 func play_detected_card(card: Object):
+	print("playing card")
 	if !grease_tank.get_ref().try_spend_grease(card.read_grease_cost()):
+		print("Not enough grease to play the card")
 		return
 	
 	card.arm()

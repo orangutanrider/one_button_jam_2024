@@ -1,6 +1,5 @@
 [gd_resource type="AudioBusLayout" load_steps=11 format=3 uid="uid://c6pw4l6obwiel"]
 
-
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_nyvyd"]
 resource_name = "Limiter"
 ceiling_db = -10.0

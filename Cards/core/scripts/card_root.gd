@@ -4,6 +4,7 @@ extends Node2D
 
 # Params
 @export var params: CardRootRes
+@export var grease_cost: int = 0
 
 # External reference
 @export var discard_pile: NodeReferenceRelayRes
@@ -43,6 +44,7 @@ func _process(delta: float):
 func _ready() -> void:
 	bang.armed.connect(armed)
 	bang.discarded.connect(discarded)
+	bang.set_grease_cost(grease_cost)
 	ghost()
 
 # Connected functions
