@@ -57,11 +57,12 @@ scale = Vector2(0.0825195, 0.0825195)
 sprite_frames = SubResource("SpriteFrames_rhrqn")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_mch8a")
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_mch8a")
 
 [node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_igjvw")

@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Tank/scripts/tank_engine_pressure_res.gd" id="1_l5lu4"]
 
 [sub_resource type="Curve" id="Curve_qpex6"]
+min_value = 1.0
+max_value = 2.0
 
 [resource]
 script = ExtResource("1_l5lu4")
