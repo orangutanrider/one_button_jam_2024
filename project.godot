@@ -50,6 +50,8 @@ BUTTON1={
 2d_physics/layer_7="Card triggers"
 2d_physics/layer_8="Card collider"
 2d_physics/layer_9="Targetable"
+2d_physics/layer_10="Player projectile"
+2d_physics/layer_11="Enemy hittable"
 
 [rendering]
 
