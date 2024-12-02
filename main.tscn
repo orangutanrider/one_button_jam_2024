@@ -1,11 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=20 format=3 uid="uid://bjd5mc6am3ew2"]
 
+[ext_resource type="PackedScene" uid="uid://bujrrfts1830j" path="res://EnvironmentArt/RainParticles.tscn" id="1_eae67"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
 [ext_resource type="Texture2D" uid="uid://mjt8pf6s82mq" path="res://ground_texture.png" id="2_3p1og"]
 [ext_resource type="PackedScene" uid="uid://cn7kpytcc8vb6" path="res://Tank/tank_body.tscn" id="2_ratli"]
 [ext_resource type="Script" path="res://Levels/enemy_spawn_point.gd" id="10_k4nxb"]
 [ext_resource type="PackedScene" uid="uid://dmadsdug41qt5" path="res://Enemies/bunker.tscn" id="11_pmpgs"]
 [ext_resource type="PackedScene" uid="uid://bc850rdflbunr" path="res://DeckSystem/deck_system.tscn" id="13_n2hk1"]
+[ext_resource type="Texture2D" uid="uid://bpankudsgbhfx" path="res://EnvironmentArt/T_SkyBackground_Stormy.png" id="13_wntrs"]
+[ext_resource type="Texture2D" uid="uid://bww00gxxb41d8" path="res://EnvironmentArt/T_Clouds_Stormy.png" id="14_4gj23"]
 [ext_resource type="Script" path="res://Camera/camera_swivel.gd" id="29_jvnny"]
 [ext_resource type="Resource" uid="uid://dl8at50jg6f2n" path="res://Camera/camera_res.tres" id="30_8vekv"]
 [ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
@@ -89,6 +92,12 @@ swivel = NodePath("../CameraSwivel")
 zoom = Vector2(0.3, 0.3)
 
 [node name="DeckSystem" parent="ScreenBody" instance=ExtResource("13_n2hk1")]
+
+[node name="CPUParticles2D" parent="ScreenBody" instance=ExtResource("1_eae67")]
+position = Vector2(148, -1511)
+scale_amount_min = 1.0
+scale_amount_max = 1.0
+color = Color(0.771116, 0.787266, 0.834118, 0.615686)
 
 [node name="AudioManager" parent="." instance=ExtResource("34_ji0kl")]
 
@@ -206,3 +215,28 @@ position = Vector2(7537, -121)
 
 [node name="Bunker9" parent="." instance=ExtResource("11_pmpgs")]
 position = Vector2(7093, 94)
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
+layer = -99
+scroll_limit_begin = Vector2(-875, 426)
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground2"]
+z_index = 1
+motion_scale = Vector2(1, 0.4)
+motion_mirroring = Vector2(7282, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
+z_index = 5
+position = Vector2(-976, -791)
+texture = ExtResource("14_4gj23")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
+scale = Vector2(1, 1.5)
+motion_scale = Vector2(1, 0.5)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+position = Vector2(-379, 164)
+scale = Vector2(1.5, 1)
+texture = ExtResource("13_wntrs")
