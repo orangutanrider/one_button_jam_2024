@@ -189,6 +189,40 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="30 flys/Area2D"]
 shape = SubResource("CircleShape2D_n54xv")
 
+[node name="100 flys" type="Node2D" parent="."]
+position = Vector2(10823, -288)
+script = ExtResource("10_k4nxb")
+crawlerN = 0
+flyerN = 100
+bunkerN = 0
+bomberN = 0
+
+[node name="Area2D" type="Area2D" parent="100 flys"]
+position = Vector2(-2696, 664)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="100 flys/Area2D"]
+shape = SubResource("CircleShape2D_n54xv")
+
+[node name="100 flys2" type="Node2D" parent="."]
+position = Vector2(11387, 176)
+script = ExtResource("10_k4nxb")
+crawlerN = 0
+flyerN = 100
+bunkerN = 0
+bomberN = 0
+
+[node name="Area2D" type="Area2D" parent="100 flys2"]
+position = Vector2(-2807, 422)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="100 flys2/Area2D"]
+shape = SubResource("CircleShape2D_n54xv")
+
 [node name="Bunker" parent="." instance=ExtResource("11_pmpgs")]
 position = Vector2(2022, 265)
 
@@ -237,6 +271,7 @@ motion_scale = Vector2(1, 0.5)
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
+modulate = Color(1, 0.88, 0.88, 1)
 position = Vector2(-379, 164)
 scale = Vector2(1.5, 1)
 texture = ExtResource("13_wntrs")

@@ -17,7 +17,7 @@
 position = Vector2(2, 0)
 script = ExtResource("1_6q2qu")
 params = ExtResource("2_wi1f2")
-grease_cost = 1
+grease_cost = 2
 discard_pile = ExtResource("3_fw6y7")
 bang = NodePath("CardPhysical/TriggerBang")
 collision = NodePath("CardPhysical/Collider")
