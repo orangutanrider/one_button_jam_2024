@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=26 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="PackedScene" uid="uid://bujrrfts1830j" path="res://EnvironmentArt/RainParticles.tscn" id="1_eae67"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bc850rdflbunr" path="res://DeckSystem/deck_system.tscn" id="13_n2hk1"]
 [ext_resource type="Texture2D" uid="uid://bpankudsgbhfx" path="res://EnvironmentArt/T_SkyBackground_Stormy.png" id="13_wntrs"]
 [ext_resource type="Texture2D" uid="uid://bww00gxxb41d8" path="res://EnvironmentArt/T_Clouds_Stormy.png" id="14_4gj23"]
+[ext_resource type="Texture2D" uid="uid://cfkxjtdbp18uq" path="res://Frog/frog_behind_1.PNG" id="15_2d0om"]
+[ext_resource type="Texture2D" uid="uid://duhm24f5bu6wb" path="res://Frog/frog_behind_0.PNG" id="16_b4285"]
+[ext_resource type="Texture2D" uid="uid://c0ll35ddcxl3l" path="res://Frog/frog_infront_0.PNG" id="17_eo608"]
 [ext_resource type="Script" path="res://Camera/camera_swivel.gd" id="29_jvnny"]
 [ext_resource type="Resource" uid="uid://dl8at50jg6f2n" path="res://Camera/camera_res.tres" id="30_8vekv"]
 [ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
@@ -30,6 +33,15 @@ radius = 821.944
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ap0n5"]
 radius = 360.169
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vsqf"]
+radius = 447.8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbnp5"]
+radius = 456.185
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nesrk"]
+radius = 657.062
 
 [node name="main" type="Node2D"]
 
@@ -172,56 +184,73 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="16 ants/Area2D"]
 shape = SubResource("CircleShape2D_ap0n5")
 
-[node name="30 flys" type="Node2D" parent="."]
-position = Vector2(7774, -1174)
+[node name="11" type="Node2D" parent="."]
+position = Vector2(8130, -552)
 script = ExtResource("10_k4nxb")
 crawlerN = 0
-flyerN = 25
+flyerN = 11
 bunkerN = 0
 bomberN = 0
 
-[node name="Area2D" type="Area2D" parent="30 flys"]
-position = Vector2(-2800, 1768)
+[node name="Area2D" type="Area2D" parent="11"]
+position = Vector2(-2610, 1095)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="30 flys/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="11/Area2D"]
 shape = SubResource("CircleShape2D_n54xv")
 
-[node name="100 flys" type="Node2D" parent="."]
-position = Vector2(10823, -288)
+[node name="22" type="Node2D" parent="."]
+position = Vector2(9225, -665)
 script = ExtResource("10_k4nxb")
 crawlerN = 0
-flyerN = 100
+flyerN = 22
 bunkerN = 0
 bomberN = 0
 
-[node name="Area2D" type="Area2D" parent="100 flys"]
-position = Vector2(-2696, 664)
+[node name="Area2D" type="Area2D" parent="22"]
+position = Vector2(-2179, 920)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="100 flys/Area2D"]
-shape = SubResource("CircleShape2D_n54xv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="22/Area2D"]
+shape = SubResource("CircleShape2D_1vsqf")
 
-[node name="100 flys2" type="Node2D" parent="."]
-position = Vector2(11387, 176)
+[node name="23" type="Node2D" parent="."]
+position = Vector2(10805, -451)
 script = ExtResource("10_k4nxb")
 crawlerN = 0
-flyerN = 100
+flyerN = 23
 bunkerN = 0
 bomberN = 0
 
-[node name="Area2D" type="Area2D" parent="100 flys2"]
-position = Vector2(-2807, 422)
+[node name="Area2D" type="Area2D" parent="23"]
+position = Vector2(-3072, 401)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="100 flys2/Area2D"]
-shape = SubResource("CircleShape2D_n54xv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="23/Area2D"]
+shape = SubResource("CircleShape2D_lbnp5")
+
+[node name="Divebomber flys" type="Node2D" parent="."]
+position = Vector2(6361, -1431)
+script = ExtResource("10_k4nxb")
+crawlerN = 0
+flyerN = 16
+bunkerN = 0
+bomberN = 0
+
+[node name="Area2D" type="Area2D" parent="Divebomber flys"]
+position = Vector2(-915, 1997)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Divebomber flys/Area2D"]
+shape = SubResource("CircleShape2D_nesrk")
 
 [node name="Bunker" parent="." instance=ExtResource("11_pmpgs")]
 position = Vector2(2022, 265)
@@ -275,3 +304,22 @@ modulate = Color(1, 0.88, 0.88, 1)
 position = Vector2(-379, 164)
 scale = Vector2(1.5, 1)
 texture = ExtResource("13_wntrs")
+
+[node name="Bunker10" parent="." instance=ExtResource("11_pmpgs")]
+position = Vector2(8870, 30)
+
+[node name="FrogBehind1" type="Sprite2D" parent="."]
+z_index = 380
+position = Vector2(11817, 2419)
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("15_2d0om")
+
+[node name="FrogBehind0" type="Sprite2D" parent="FrogBehind1"]
+position = Vector2(1, 1)
+scale = Vector2(1, 1)
+texture = ExtResource("16_b4285")
+
+[node name="FrogInfront0" type="Sprite2D" parent="FrogBehind1"]
+z_index = 100
+scale = Vector2(1, 1)
+texture = ExtResource("17_eo608")

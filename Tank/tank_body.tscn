@@ -104,7 +104,6 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot1")
 
 [node name="RollerPivot1" parent="." instance=ExtResource("4_r5jje")]
-z_index = 200
 position = Vector2(250, 75)
 
 [node name="Suspension2" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
@@ -114,7 +113,6 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot2")
 
 [node name="RollerPivot2" parent="." instance=ExtResource("4_r5jje")]
-z_index = 300
 position = Vector2(150, 75)
 
 [node name="Suspension3" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
@@ -124,7 +122,6 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot3")
 
 [node name="RollerPivot3" parent="." instance=ExtResource("4_r5jje")]
-z_index = 200
 position = Vector2(50, 75)
 
 [node name="Suspension4" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
@@ -134,7 +131,6 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot4")
 
 [node name="RollerPivot4" parent="." instance=ExtResource("4_r5jje")]
-z_index = 200
 position = Vector2(-50, 75)
 
 [node name="Suspension5" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
@@ -144,7 +140,6 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot5")
 
 [node name="RollerPivot5" parent="." instance=ExtResource("4_r5jje")]
-z_index = 200
 position = Vector2(-150, 75)
 
 [node name="Suspension6" type="Node2D" parent="." node_paths=PackedStringArray("ROLLER")]
@@ -154,7 +149,6 @@ PARAMS = ExtResource("3_no2mk")
 ROLLER = NodePath("../RollerPivot6")
 
 [node name="RollerPivot6" parent="." instance=ExtResource("4_r5jje")]
-z_index = 200
 position = Vector2(-250, 75)
 
 [node name="UpPoint" type="Node2D" parent="."]

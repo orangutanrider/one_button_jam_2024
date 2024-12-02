@@ -20,7 +20,6 @@ position = Vector2(200, 0)
 process_callback = 0
 
 [node name="Barrel" type="Sprite2D" parent="."]
-z_index = 350
 position = Vector2(104, 0)
 scale = Vector2(0.55, 0.55)
 texture = ExtResource("2_80wpv")
