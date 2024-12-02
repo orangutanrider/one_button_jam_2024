@@ -300,12 +300,10 @@ texture = ExtResource("15_2d0om")
 
 [node name="FrogBehind0" type="Sprite2D" parent="FrogBehind1"]
 position = Vector2(1, 1)
-scale = Vector2(1, 1)
 texture = ExtResource("16_b4285")
 
 [node name="FrogInfront0" type="Sprite2D" parent="FrogBehind1"]
 z_index = 100
-scale = Vector2(1, 1)
 texture = ExtResource("17_eo608")
 
 [node name="End" type="Sprite2D" parent="."]
@@ -314,7 +312,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("18_fr4p7")
 
 [node name="crash" type="Node2D" parent="."]
-position = Vector2(11566, 3392)
+position = Vector2(11566, 1954)
 script = ExtResource("10_k4nxb")
 crawlerN = 1000000
 flyerN = 0
