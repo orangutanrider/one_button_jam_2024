@@ -42,6 +42,7 @@ height = 222.0
 size = Vector2(568, 191)
 
 [node name="TankBody" type="RigidBody2D" node_paths=PackedStringArray("POSITIONED_UP_FORCES", "DOWN_FORCES", "FORWARD_FORCES")]
+z_index = 400
 position = Vector2(-195, -228)
 collision_layer = 4
 mass = 100.0
@@ -74,7 +75,6 @@ scale_amount_max = 0.5
 color_ramp = SubResource("Gradient_4dvor")
 
 [node name="TankBody" type="Sprite2D" parent="."]
-z_index = 400
 position = Vector2(6, -78)
 scale = Vector2(0.605, 0.605)
 texture = ExtResource("2_t1ta1")
@@ -205,6 +205,7 @@ script = ExtResource("9_cjydh")
 params = ExtResource("10_2rvlv")
 
 [node name="Swivel" type="Node2D" parent="Cannon" node_paths=PackedStringArray("targeting")]
+z_index = -1
 script = ExtResource("11_038fl")
 params = ExtResource("12_qdech")
 targeting = NodePath("../Targeting")

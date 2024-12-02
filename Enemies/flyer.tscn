@@ -65,6 +65,7 @@ shape = SubResource("RectangleShape2D_mch8a")
 
 [node name="GunSFX" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_igjvw")
+volume_db = 4.0
 bus = &"Bug Sounds"
 
 [node name="DetectableBody" type="Area2D" parent="."]

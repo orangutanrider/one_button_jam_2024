@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=25 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="PackedScene" uid="uid://bujrrfts1830j" path="res://EnvironmentArt/RainParticles.tscn" id="1_eae67"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
@@ -36,9 +36,6 @@ radius = 360.169
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1vsqf"]
 radius = 447.8
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_lbnp5"]
-radius = 456.185
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nesrk"]
 radius = 657.062
@@ -218,23 +215,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="22/Area2D"]
 shape = SubResource("CircleShape2D_1vsqf")
 
-[node name="23" type="Node2D" parent="."]
-position = Vector2(10805, -451)
-script = ExtResource("10_k4nxb")
-crawlerN = 0
-flyerN = 23
-bunkerN = 0
-bomberN = 0
-
-[node name="Area2D" type="Area2D" parent="23"]
-position = Vector2(-3072, 401)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="23/Area2D"]
-shape = SubResource("CircleShape2D_lbnp5")
-
 [node name="Divebomber flys" type="Node2D" parent="."]
 position = Vector2(6361, -1431)
 script = ExtResource("10_k4nxb")
@@ -310,7 +290,7 @@ position = Vector2(8870, 30)
 
 [node name="FrogBehind1" type="Sprite2D" parent="."]
 z_index = 380
-position = Vector2(11817, 2419)
+position = Vector2(11697, 2131)
 scale = Vector2(2.3, 2.3)
 texture = ExtResource("15_2d0om")
 

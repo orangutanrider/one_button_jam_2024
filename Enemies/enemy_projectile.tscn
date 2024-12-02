@@ -20,13 +20,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -2.0
-offset_right = 8.0
-offset_bottom = 2.0
+offset_left = -15.0
+offset_top = -9.0
+offset_right = 15.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.294434, 0.0675901, 0.113772, 1)
+color = Color(0.288835, 0.404303, 0.00589303, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_qt33n")

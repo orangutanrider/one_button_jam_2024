@@ -15,6 +15,7 @@ script = ExtResource("1_xh4hc")
 params = ExtResource("2_nmne0")
 
 [node name="Line2D" type="Line2D" parent="." node_paths=PackedStringArray("node_2")]
+z_index = -10
 points = PackedVector2Array(0, 0, 0, 37)
 width = 100.0
 texture = ExtResource("3_7ppgn")
@@ -23,6 +24,7 @@ script = ExtResource("4_nn1a1")
 node_2 = NodePath("../Roller")
 
 [node name="Roller" type="Area2D" parent="."]
+z_index = -5
 position = Vector2(0, 37)
 collision_layer = 2
 
