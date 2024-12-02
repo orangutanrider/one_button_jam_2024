@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bc850rdflbunr"]
+[gd_scene load_steps=31 format=3 uid="uid://bc850rdflbunr"]
 
 [ext_resource type="Texture2D" uid="uid://nv6loj7feksp" path="res://DeckSystem/shade.png" id="1_8ybm2"]
 [ext_resource type="Script" path="res://DeckSystem/scripts/draw_machine.gd" id="1_prigx"]
@@ -27,6 +27,7 @@
 [ext_resource type="Theme" uid="uid://c4eryhngsfaq1" path="res://TextTheme/grease.tres" id="25_3kcu2"]
 [ext_resource type="Script" path="res://PlayerResources/relay_to_hud.gd" id="26_5wc1n"]
 [ext_resource type="Texture2D" uid="uid://cv4vc3b6ncad0" path="res://DeckSystem/cursor.png" id="27_ejxgw"]
+[ext_resource type="AudioStream" uid="uid://bug37pa7smbau" path="res://SFX/Card_Select.ogg" id="28_jy1pf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tinjm"]
 size = Vector2(382.486, 165.439)
@@ -165,6 +166,11 @@ z_index = 3100
 position = Vector2(504, -191)
 scale = Vector2(1.785, 1.785)
 texture = ExtResource("27_ejxgw")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_jy1pf")
+volume_db = -5.0
+bus = &"Tank Sounds"
 
 [connection signal="area_entered" from="ConveyorBelt/JettisonTrigger" to="ConveyorBelt/JettisonTrigger" method="_on_area_entered"]
 [connection signal="area_entered" from="ConveyorBelt/DiscardTrigger" to="ConveyorBelt/DiscardTrigger" method="_on_area_entered"]

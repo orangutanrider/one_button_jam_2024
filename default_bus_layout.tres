@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=11 format=3 uid="uid://c6pw4l6obwiel"]
+[gd_resource type="AudioBusLayout" load_steps=14 format=3 uid="uid://c6pw4l6obwiel"]
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_nyvyd"]
 resource_name = "Limiter"
@@ -32,6 +32,19 @@ volume_db = 5.0
 resource_name = "Limiter"
 ceiling_db = -6.0
 
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_0546l"]
+resource_name = "Compressor"
+threshold = -10.0
+ratio = 48.0
+gain = 20.0
+
+[sub_resource type="AudioEffectAmplify" id="AudioEffectAmplify_ktuv1"]
+resource_name = "Amplify"
+volume_db = 5.0
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_wrb4y"]
+resource_name = "Limiter"
+
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_3u411"]
 resource_name = "Compressor"
 ratio = 48.0
@@ -43,7 +56,7 @@ resource_name = "Limiter"
 
 [sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_o34mm"]
 resource_name = "Limiter"
-ceiling_db = -7.9
+ceiling_db = -10.0
 
 [resource]
 bus/0/volume_db = 0.0672607
@@ -79,6 +92,12 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectCompressor_0546l")
+bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectAmplify_ktuv1")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectLimiter_wrb4y")
+bus/3/effect/2/enabled = true
 bus/4/name = &"Ambience"
 bus/4/solo = false
 bus/4/mute = false

@@ -28,6 +28,7 @@ func _startFiring() -> void:
 func _on_shoottimer_timeout() -> void:
 	##Set rotation and position of new bullet
 	BulletToFire._fire($BulletEmitLocation.global_position, global_rotation)
+	$AudioStreamPlayer2D.play()
 	BulletsToLoad.remove_at(BulletsToLoad.find(BulletToFire))
 	## Set another timer if there's more bullets or stop the timer if there's none
 	if !(BulletsToLoad.is_empty()):
