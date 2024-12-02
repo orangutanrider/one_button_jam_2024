@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjd5mc6am3ew2"]
+[gd_scene load_steps=27 format=3 uid="uid://bjd5mc6am3ew2"]
 
 [ext_resource type="PackedScene" uid="uid://bujrrfts1830j" path="res://EnvironmentArt/RainParticles.tscn" id="1_eae67"]
 [ext_resource type="Script" path="res://create_polygon_collision.gd" id="1_jfiiu"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cfkxjtdbp18uq" path="res://Frog/frog_behind_1.PNG" id="15_2d0om"]
 [ext_resource type="Texture2D" uid="uid://duhm24f5bu6wb" path="res://Frog/frog_behind_0.PNG" id="16_b4285"]
 [ext_resource type="Texture2D" uid="uid://c0ll35ddcxl3l" path="res://Frog/frog_infront_0.PNG" id="17_eo608"]
+[ext_resource type="Texture2D" uid="uid://ch0yk38mwirsa" path="res://Frog/end.png" id="18_fr4p7"]
 [ext_resource type="Script" path="res://Camera/camera_swivel.gd" id="29_jvnny"]
 [ext_resource type="Resource" uid="uid://dl8at50jg6f2n" path="res://Camera/camera_res.tres" id="30_8vekv"]
 [ext_resource type="Script" path="res://Camera/camera_follow.gd" id="31_hlrvo"]
@@ -39,6 +40,8 @@ radius = 447.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nesrk"]
 radius = 657.062
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mmllo"]
 
 [node name="main" type="Node2D"]
 
@@ -303,3 +306,25 @@ texture = ExtResource("16_b4285")
 z_index = 100
 scale = Vector2(1, 1)
 texture = ExtResource("17_eo608")
+
+[node name="End" type="Sprite2D" parent="."]
+position = Vector2(9422, 968)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_fr4p7")
+
+[node name="crash" type="Node2D" parent="."]
+position = Vector2(11566, 3392)
+script = ExtResource("10_k4nxb")
+crawlerN = 1000000
+flyerN = 0
+bunkerN = 0
+bomberN = 0
+
+[node name="Area2D" type="Area2D" parent="crash"]
+position = Vector2(0, 1000)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="crash/Area2D"]
+shape = SubResource("WorldBoundaryShape2D_mmllo")
