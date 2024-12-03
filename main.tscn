@@ -306,7 +306,7 @@ z_index = 100
 texture = ExtResource("17_eo608")
 
 [node name="End" type="Sprite2D" parent="."]
-position = Vector2(9422, 968)
+position = Vector2(9506, 1112)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("18_fr4p7")
 

@@ -57,6 +57,7 @@ BUTTON1={
 
 occlusion_culling/jitter_projection=false
 textures/canvas_textures/default_texture_repeat=1
+textures/vram_compression/import_etc2_astc=true
 textures/default_filters/anisotropic_filtering_level=3
 anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/screen_space_aa=1
