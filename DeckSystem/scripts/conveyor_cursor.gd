@@ -36,6 +36,7 @@ func try_play_detected_card(card: Object):
 	grease_tank_r.try_spend_grease(cost)
 	
 	card.arm()
+	$"../../AudioStreamPlayer".play()
 	active_timer = 0.0
 
 ## Activates the cursor to play a card underneath it

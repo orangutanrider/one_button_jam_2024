@@ -115,7 +115,6 @@ color = Color(0.771116, 0.787266, 0.834118, 0.615686)
 [node name="AudioManager" parent="." instance=ExtResource("34_ji0kl")]
 
 [node name="AudioStreamPlayer" parent="." instance=ExtResource("35_y2nll")]
-bus = &"Master"
 
 [node name="4ants" type="Node2D" parent="."]
 position = Vector2(2472, 374)
